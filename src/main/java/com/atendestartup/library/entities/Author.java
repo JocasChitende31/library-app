@@ -7,8 +7,8 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name = "tb_autor")
-public class Autor {
+@Table(name = "tb_authors")
+public class Author {
 
 	@Id
 	@GeneratedValue(strategy= GenerationType.IDENTITY)
@@ -17,11 +17,11 @@ public class Autor {
 	private String birthday;
 	private String nationality;
 
-	public Autor() {
+	public Author() {
 
 	}
 
-	public Autor(Long id, String name, String birthday, String nationality) {
+	public Author(Long id, String name, String birthday, String nationality) {
 		this.id = id;
 		this.name = name;
 		this.birthday = birthday;

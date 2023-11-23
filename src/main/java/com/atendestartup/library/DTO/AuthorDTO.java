@@ -1,6 +1,6 @@
 package com.atendestartup.library.DTO;
 
-import com.atendestartup.library.entities.Autor;
+import com.atendestartup.library.entities.Author;
 
 public class AuthorDTO {
 
@@ -13,7 +13,7 @@ public class AuthorDTO {
 
 	}
 
-	public AuthorDTO(Autor entity) {
+	public AuthorDTO(Author entity) {
 		id = entity.getId();
 		name = entity.getName();
 		birthday = entity.getBirthday();
