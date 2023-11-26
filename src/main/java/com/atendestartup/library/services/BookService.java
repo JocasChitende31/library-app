@@ -18,18 +18,25 @@ public class BookService {
 	@Autowired
 	private BookRepository bookRepository;
 
-	@Transactional(readOnly=true)
-	public 	BookDTO findById(Long id) {
+	@Transactional(readOnly = true)
+	public BookDTO findById(Long id) {
 		BookProjection result = bookRepository.searchById(id);
 		BookDTO dto = new BookDTO(result);
 		return dto;
 	}
-	
-	@Transactional(readOnly=true)
-	public List<BookMinDTO> findMinListBook(){
+
+	@Transactional(readOnly = true)
+	public List<BookMinDTO> findMinListBook() {
 		List<BookMinProjection> result = bookRepository.findMinListBook();
 		List<BookMinDTO> dto = result.stream().map(x -> new BookMinDTO(x)).toList();
 		return dto;
 	}
-	
+
+	@Transactional(readOnly = true)
+	public List<BookMinDTO> findByListCategoryId(Long id) {
+		List<BookMinProjection> result = bookRepository.searchByCategoryId(id);
+		List<BookMinDTO> dto = result.stream().map(x -> new BookMinDTO(x)).toList();
+		return dto;
+	}
+
 }
