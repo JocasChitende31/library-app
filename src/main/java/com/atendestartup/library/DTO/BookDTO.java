@@ -101,7 +101,7 @@ public class BookDTO {
 		return fkCategory;
 	}
 
-	public void setFkCategory(Long fkCategory) {
+	public void getFkCategory(Long fkCategory) {
 		this.fkCategory = fkCategory;
 	}
 

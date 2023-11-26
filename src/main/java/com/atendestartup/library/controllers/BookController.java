@@ -13,7 +13,7 @@ import com.atendestartup.library.DTO.BookMinDTO;
 import com.atendestartup.library.services.BookService;
 
 @RestController
-@RequestMapping(value = "/books/min/list")
+@RequestMapping(value = "/books")
 public class BookController {
 
 	@Autowired

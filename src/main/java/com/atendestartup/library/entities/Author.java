@@ -1,9 +1,14 @@
 package com.atendestartup.library.entities;
 
+import java.util.HashSet;
+import java.util.Objects;
+import java.util.Set;
+
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 
 @Entity
@@ -16,6 +21,9 @@ public class Author {
 	private String name;
 	private String birthday;
 	private String nationality;
+
+	@OneToMany(mappedBy = "fkAuthor")
+	private Set<Book> books = new HashSet<>();
 
 	public Author() {
 
@@ -58,6 +66,31 @@ public class Author {
 
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
+	}
+
+	public Set<Book> getBooks() {
+		return books;
+	}
+
+	public void setBooks(Set<Book> books) {
+		this.books = books;
+	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Author other = (Author) obj;
+		return Objects.equals(id, other.id);
 	}
 
 }

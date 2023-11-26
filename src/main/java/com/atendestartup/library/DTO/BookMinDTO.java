@@ -30,8 +30,6 @@ public class BookMinDTO {
 		edition = entity.getEdition();
 		imgUrl = entity.getImgUrl();
 		shortSummary = entity.getLongSummary();
-		fkCategory = entity.getFkCategory();
-		fkAuthor = entity.getFkAuthor();
 	}
 
 	public BookMinDTO(BookMinProjection projection) {

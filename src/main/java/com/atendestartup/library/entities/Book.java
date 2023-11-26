@@ -1,13 +1,14 @@
 package com.atendestartup.library.entities;
 
-import com.atendestartup.library.DTO.AuthorDTO;
-import com.atendestartup.library.DTO.CategoryDTO;
+import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,15 +28,19 @@ public class Book {
 	private String shortSummary;
 	@Column(columnDefinition = "TEXT")
 	private String longSummary;
-	private Long fkCategory;
-	private Long fkAuthor;
+	@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)
+	private Category fkCategory;
+	@ManyToOne
+	@JoinColumn(name = "author_id", nullable = false)
+	private Author fkAuthor;
 
 	public Book() {
 
 	}
 
 	public Book(Long id, String title, String year, String publisher, Integer edition, String imgUrl,
-			String shortSummary, String longSummary, AuthorDTO authorEntity, CategoryDTO categoryEntity) {
+			String shortSummary, String longSummary, Category category, Author author) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -44,8 +49,8 @@ public class Book {
 		this.imgUrl = imgUrl;
 		this.shortSummary = shortSummary;
 		this.longSummary = longSummary;
-		fkCategory = categoryEntity.getId();
-		fkAuthor = authorEntity.getId();
+		fkCategory = category;
+		fkAuthor = author;
 	}
 
 	public Long getId() {
@@ -112,19 +117,38 @@ public class Book {
 		this.longSummary = longSummary;
 	}
 
-	public Long getFkCategory() {
+	public Category getFkCategory() {
 		return fkCategory;
 	}
 
-	public void setGenre(Long id) {
+	public void setFkCategory(Category id) {
 		this.fkCategory = id;
 	}
 
-	public Long getFkAuthor() {
+	public Author getFkAuthor() {
 		return fkAuthor;
 	}
 
-	public void setFkAuthor(Long id) {
+	public void setFkAuthor(Author id) {
 		this.fkAuthor = id;
 	}
+
+	@Override
+	public int hashCode() {
+		return Objects.hash(fkAuthor, fkCategory, id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj)
+			return true;
+		if (obj == null)
+			return false;
+		if (getClass() != obj.getClass())
+			return false;
+		Book other = (Book) obj;
+		return Objects.equals(fkAuthor, other.fkAuthor) && Objects.equals(fkCategory, other.fkCategory)
+				&& Objects.equals(id, other.id);
+	}
+
 }
