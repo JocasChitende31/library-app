@@ -1,6 +1,7 @@
 package com.atendestartup.library.entities;
 
 import com.atendestartup.library.DTO.AuthorDTO;
+import com.atendestartup.library.DTO.CategoryDTO;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -20,30 +21,31 @@ public class Book {
 	@Column(name = "book_year")
 	private String year;
 	private String publisher;
-	private String genre;
 	private Integer edition;
+	private String imgUrl;
 	@Column(columnDefinition = "TEXT")
 	private String shortSummary;
 	@Column(columnDefinition = "TEXT")
 	private String longSummary;
-
+	private Long fkCategory;
 	private Long fkAuthor;
 
 	public Book() {
 
 	}
 
-	public Book(Long id, String title, String year, String publisher, Integer edition, String genre,
-			String shortSummary, String longSummary, AuthorDTO entity) {
+	public Book(Long id, String title, String year, String publisher, Integer edition, String imgUrl,
+			String shortSummary, String longSummary, AuthorDTO authorEntity, CategoryDTO categoryEntity) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
 		this.publisher = publisher;
 		this.edition = edition;
-		this.genre = genre;
+		this.imgUrl = imgUrl;
 		this.shortSummary = shortSummary;
 		this.longSummary = longSummary;
-		fkAuthor = entity.getId();
+		fkCategory = categoryEntity.getId();
+		fkAuthor = authorEntity.getId();
 	}
 
 	public Long getId() {
@@ -78,20 +80,20 @@ public class Book {
 		this.publisher = publisher;
 	}
 
-	public String getGenre() {
-		return genre;
-	}
-
-	public void setGenre(String genre) {
-		this.genre = genre;
-	}
-
 	public Integer getEdition() {
 		return edition;
 	}
 
 	public void setEdition(Integer edition) {
 		this.edition = edition;
+	}
+
+	public String getImgUrl() {
+		return imgUrl;
+	}
+
+	public void setImgUrl(String imgUrl) {
+		this.imgUrl = imgUrl;
 	}
 
 	public String getShortSummary() {
@@ -108,6 +110,14 @@ public class Book {
 
 	public void setLongSummary(String longSummary) {
 		this.longSummary = longSummary;
+	}
+
+	public Long getFkCategory() {
+		return fkCategory;
+	}
+
+	public void setGenre(Long id) {
+		this.fkCategory = id;
 	}
 
 	public Long getFkAuthor() {

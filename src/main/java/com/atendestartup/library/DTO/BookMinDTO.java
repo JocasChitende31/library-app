@@ -10,8 +10,10 @@ public class BookMinDTO {
 	private String year;
 	private String publisher;
 	private Integer edition;
-	private String genre;
+	private String imgUrl;
 	private String shortSummary;
+	private Long fkCategory;
+	private String genre;
 	private Long fkAuthor;
 	private String name;
 	private String nationality;
@@ -26,8 +28,9 @@ public class BookMinDTO {
 		year = entity.getYear();
 		publisher = entity.getPublisher();
 		edition = entity.getEdition();
-		genre = entity.getGenre();
+		imgUrl = entity.getImgUrl();
 		shortSummary = entity.getLongSummary();
+		fkCategory = entity.getFkCategory();
 		fkAuthor = entity.getFkAuthor();
 	}
 
@@ -37,9 +40,11 @@ public class BookMinDTO {
 		title = projection.getTitle();
 		year = projection.getBookYear();
 		publisher = projection.getPublisher();
-		genre = projection.getGenre();
 		edition = projection.getEdition();
+		imgUrl = projection.getImgUrl();
 		shortSummary = projection.getShortSummary();
+		fkCategory = projection.getFkCategory();
+		genre = projection.getGenre();
 		fkAuthor = projection.getFkAuthor();
 		name = projection.getName();
 		nationality = projection.getNationality();
@@ -61,16 +66,22 @@ public class BookMinDTO {
 		return publisher;
 	}
 
-	public String getGenre() {
-		return genre;
-	}
-
 	public Integer getEdition() {
 		return edition;
 	}
-
+	public String getImgUrl() {
+		return imgUrl;
+	}
 	public String getShortSummary() {
 		return shortSummary;
+	}
+
+	public Long getFkCategory() {
+		return fkCategory;
+	}
+
+	public String getGenre() {
+		return genre;
 	}
 
 	public Long getFkAuthor() {
