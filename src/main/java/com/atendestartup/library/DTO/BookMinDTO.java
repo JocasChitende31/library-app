@@ -25,7 +25,7 @@ public class BookMinDTO {
 	public BookMinDTO(Book entity) {
 		id = entity.getId();
 		title = entity.getTitle();
-		year = entity.getYear();
+		year = entity.getBookYear();
 		publisher = entity.getPublisher();
 		edition = entity.getEdition();
 		imgUrl = entity.getImgUrl();
@@ -56,7 +56,7 @@ public class BookMinDTO {
 		return title;
 	}
 
-	public String getYear() {
+	public String getBookYear() {
 		return year;
 	}
 

@@ -14,13 +14,33 @@ import com.atendestartup.library.repositories.AutorRepository;
 public class AuthorService {
 
 	@Autowired
-	private AutorRepository autorRepository;
-	
-	@Transactional(readOnly=true)
-	public List<AuthorDTO> findAll(){
-		
-		List<Author> result  = autorRepository.findAll();
-		List<AuthorDTO> dto = result.stream().map(x-> new AuthorDTO(x)).toList();
+	private AutorRepository authorRepository;
+
+	@Transactional(readOnly = true)
+	public List<AuthorDTO> findAll() {
+
+		List<Author> result = authorRepository.findAll();
+		List<AuthorDTO> dto = result.stream().map(x -> new AuthorDTO(x)).toList();
 		return dto;
+	}
+
+	@Transactional
+	public AuthorDTO findById(Long authId) {
+		Author result = authorRepository.findById(authId).get();
+		AuthorDTO dto = new AuthorDTO(result);
+		return dto;
+	}
+
+	@Transactional
+	public void createAuthor(String name, String birthday, String nationality) {
+		authorRepository.insertAuthor(name, birthday, nationality);
+	}
+	@Transactional
+	public void updateAuthor(Long authId, String name, String birthday, String nationality) {	
+		authorRepository.updateAuthor(authId, name, birthday, nationality);
+	}
+	@Transactional
+	public void deleteAuthor(Long authId) {
+		authorRepository.deleteById(authId);
 	}
 }

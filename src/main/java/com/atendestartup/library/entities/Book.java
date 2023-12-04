@@ -4,6 +4,7 @@ import java.util.Objects;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -28,11 +29,11 @@ public class Book {
 	private String shortSummary;
 	@Column(columnDefinition = "TEXT")
 	private String longSummary;
-	@ManyToOne
-	@JoinColumn(name = "category_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "category_id", referencedColumnName = "id")
 	private Category fkCategory;
-	@ManyToOne
-	@JoinColumn(name = "author_id", nullable = false)
+	@ManyToOne(fetch = FetchType.LAZY)
+	@JoinColumn(name = "author_id", referencedColumnName = "id")
 	private Author fkAuthor;
 
 	public Book() {
@@ -49,8 +50,8 @@ public class Book {
 		this.imgUrl = imgUrl;
 		this.shortSummary = shortSummary;
 		this.longSummary = longSummary;
-		fkCategory = category;
-		fkAuthor = author;
+		this.fkCategory = category;
+		this.fkAuthor = author;
 	}
 
 	public Long getId() {
@@ -69,11 +70,11 @@ public class Book {
 		this.title = title;
 	}
 
-	public String getYear() {
+	public String getBookYear() {
 		return year;
 	}
 
-	public void setYear(String year) {
+	public void setBookYear(String year) {
 		this.year = year;
 	}
 
@@ -117,19 +118,19 @@ public class Book {
 		this.longSummary = longSummary;
 	}
 
-	public Category getFkCategory() {
+	public Category getCategoryId() {
 		return fkCategory;
 	}
 
-	public void setFkCategory(Category id) {
+	public void setCategoryId(Category id) {
 		this.fkCategory = id;
 	}
 
-	public Author getFkAuthor() {
+	public Author getAuthorId() {
 		return fkAuthor;
 	}
 
-	public void setFkAuthor(Author id) {
+	public void setAuthorId(Author id) {
 		this.fkAuthor = id;
 	}
 

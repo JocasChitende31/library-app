@@ -1,5 +1,6 @@
 package com.atendestartup.library.DTO;
 
+import com.atendestartup.labrary.projections.AuthorProjection;
 import com.atendestartup.library.entities.Author;
 
 public class AuthorDTO {
@@ -19,6 +20,12 @@ public class AuthorDTO {
 		birthday = entity.getBirthday();
 		nationality = entity.getNationality();
 	}
+	public AuthorDTO(AuthorProjection projection) {
+		id = projection.getId();
+		name = projection.getName();
+		birthday=projection.getBirthday();
+		nationality = projection.getNationality();
+	}
 
 	public Long getId() {
 		return id;
@@ -28,7 +35,7 @@ public class AuthorDTO {
 		return name;
 	}
 
-	public String getBirhtday() {
+	public String getBirthday() {
 		return birthday;
 	}
 

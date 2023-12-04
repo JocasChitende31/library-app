@@ -57,7 +57,7 @@ public class BookDTO {
 		this.id = id;
 	}
 
-	public String getTilte() {
+	public String getTitle() {
 		return title;
 	}
 
