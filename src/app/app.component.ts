@@ -6,9 +6,10 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  pageTitle : string;
-
+  title : String;
+  cardTitle: String;
   constructor(){
-    this.pageTitle = 'Atende.Library';
+    this.title = 'Atende.Library';
+    this.cardTitle = 'Livraria';
   }
 }

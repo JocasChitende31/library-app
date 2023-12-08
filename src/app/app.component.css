@@ -5,6 +5,7 @@
     box-sizing: border-box;
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
+    letter-spacing: .5px;
   }
 
   h1,
@@ -13,7 +14,7 @@
   h4,
   h5,
   h6 {
-    margin: 8px 0;
+    margin: 10px 0;
   }
 
   p {
@@ -25,7 +26,9 @@
   }
 
   .toolbar {
-    position: absolute;
+    position: fixed;
+    z-index: 1000;
+    /* position: absolute; */
     top: 0;
     left: 0;
     right: 0;
@@ -44,7 +47,10 @@
     margin: 0 16px;
     border-radius: 50%;
   }
-
+  .toolbar #linkedin-logo{
+    height: 40px;
+    margin: 0 16px;
+  }
   .toolbar #twitter-logo {
     height: 40px;
     margin: 0 8px;
@@ -56,8 +62,9 @@
   }
 
   .toolbar #twitter-logo:hover,
-  .toolbar #youtube-logo:hover {
-    opacity: 0.8;
+  .toolbar #youtube-logo:hover,
+  .toolbar #linkedin-logo:hover {
+    opacity: 0.7;
   }
 
   .content {

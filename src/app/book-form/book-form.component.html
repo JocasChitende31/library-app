@@ -1,0 +1,69 @@
+<div class="container">
+    <div class="card mb-3 p-2">
+        <div class="row g-3">
+            <div class="col-md-12">
+                <h4 class="text-center card-title p-2">{{titleForm}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="pt-0 pl-3 pr-3 pb-3 ">
+        <div class="col-md-12">
+            <form class="row form pt-3" (ngSubmit)="onSubmit()" #bookForm="ngForm">
+                <div class="form-group col-md-12">
+                    <label for="title" class="form-label">Título do Livro</label>
+                    <input type="text" name="title" class="form-control" placeholder="Quem Pensa Enriquece"
+                        [(ngModel)]="book.title">
+                </div>
+                <div class="col-md-6">
+                    <label for="publisher" class="form-label">Editora</label>
+                    <input type="text" name="editora" class="form-control" placeholder="Faro Editorial"
+                        [(ngModel)]="book.publisher">
+                </div>
+                <div class="col-md-4">
+                    <label for="bookYear" class="form-label">Ano de Lançamento</label>
+                    <input type="text" class="form-control" name="bookYear" placeholder="15 março 2021"
+                        [(ngModel)]="book.bookYear">
+                </div>
+                <div class="col-md-2">
+                    <label for="edition" class="form-label">Edição</label>
+                    <input type="number" class="form-control" name="edition" min="1" placeholder="1"
+                        [(ngModel)]="book.edition">
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="genre" class="form-label">Selecione a Categoria</label>
+                    <select name="genre" id="genre" class="form-control" [(ngModel)]="book.fkCategory">
+                        <option *ngFor="let category of categories" [value]="category.id" [selected]="category">
+                            {{category.genre}}</option>
+                    </select>
+                </div>
+                <div class="col-md-12 mt-2">
+                    <label for="author" class="form-label">Selecione o Autor(a)</label>
+                    <select name="author" id="author" class="form-control" [(ngModel)]="book.fkAuthor">
+                        <option *ngFor="let author of authors" [value]="author.id" [selected]="author">{{author.name}}
+                        </option>
+                    </select>
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="imgUrl">Carregar a Capa "Imagem"</label>
+                    <input type="file" class="form-control" accept=".jpg,.jpeg,.png" [(ngModel)]="book.imgUrl">
+                </div>
+                <div class="col-12 mt-2">
+                    <label for="shortSummary" class="form-label">1ºResumo</label>
+                    <textarea class="form-control" name="shortSummary" id="shortSummary" rows="2"
+                        placeholder="Escrever o 1ª resumo com menos de 150 palavras..." minlength="400" maxlength="500"
+                        [(ngModel)]="book.shortSummary"></textarea>
+                </div>
+                <div class="col-12 mt-2 mb-2">
+                    <label for="longSummary" class="form-label">2ºResumo (1º + contiuação)</label>
+                    <textarea class="form-control" name="longtSummary" id="longSummary" rows="4"
+                        placeholder="Escrevao 2º resumo com mais de 250 paplavras..." minlength="501" maxlength="2000"
+                        [(ngModel)]="book.longSummary"></textarea>
+                </div>
+                <div class="col-md-12 mt-2 mb-3 d-flex justify-content-end">
+                    <button type="submit" class="btn btn-success" [disabled]="!bookForm.invalid">Salvar
+                        Formulário</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>

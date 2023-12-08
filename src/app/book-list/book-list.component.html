@@ -1,0 +1,56 @@
+<div *ngFor="let book of books">
+
+    <div class="card mb-4 p-2" style="background-color:#f6f2f1b8;">
+        <div class="row g-0">
+            <div class="col-md-2 mb-0 mr-4">
+                <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
+                    style="max-width: 200px; max-height: 100vh;">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title"><b>#{{book.id}}</b> {{book.title}} </h5>
+                    <hr>
+                    <div class="d-flex">
+                        <div class="mr-5">
+                            <h6>Ano de Lançamento</h6>
+                            <p class="card-text text-muted">{{book.bookYear}} </p>
+                        </div>
+                        <div class="mr-5">
+                            <h6>Ediçao</h6>
+                            <p class="card-text text-muted">{{book.edition}}a</p>
+                        </div>
+                        <div class="mr-5">
+                            <h6>Categoria</h6>
+                            <p class="card-text" hidden>{{book.fkCategory}}</p>
+                            <p class="card-text text-muted">{{book.genre}}</p>
+                        </div>
+                        <div>
+                            <h6>Editora</h6>
+                            <p class="card-text text-muted">{{book.publisher}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex mt-3">
+                        <div class="mr-5">
+                            <h6>Autor do Livro</h6>
+                            <p class="card-text" hidden>{{book.fkAuthor}}</p>
+                            <p class="card-text text-muted">{{book.name}}</p>
+                        </div>
+                        <div class="">
+                            <h6>Nacionalidade</h6>
+                            <p class="card-text text-muted">{{book.nationality}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex">
+                        <div>
+                            <h6>Pequeno Resumo</h6>
+                            <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
