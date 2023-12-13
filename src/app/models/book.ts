@@ -11,5 +11,6 @@ export class Book {
     longSummary: String | undefined;
     fkAuthor: Number | undefined;
     name: String | undefined;
+    birthday: String | undefined;
     nationality: String | undefined;
 }

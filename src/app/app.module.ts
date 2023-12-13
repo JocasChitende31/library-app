@@ -8,22 +8,30 @@ import { AppComponent } from './app.component';
 
 
 import { BookFormComponent } from './book-form/book-form.component';
+import { BookListByCategoryComponent } from './book-list-by-category/book-list-by-category.component';
 import { BookListComponent } from './book-list/book-list.component';
-import { BookServiceService } from './services/book-service.service';
 import { FooterComponent } from './footer/footer.component';
+import { BookServiceService } from './services/book-service.service';
+import { BookDetailsComponent } from './book-details/book-details.component';
+import { BookReadingComponent } from './book-reading/book-reading.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     BookListComponent,
     BookFormComponent,
-    FooterComponent
+    FooterComponent,
+    BookListByCategoryComponent,
+    BookDetailsComponent,
+    BookReadingComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     HttpClientModule,
-    FormsModule
+    FormsModule,
+    AppRoutingModule
+    
+
   ],
   providers: [BookServiceService],
   bootstrap: [AppComponent]

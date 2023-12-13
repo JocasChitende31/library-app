@@ -8,59 +8,113 @@
     </div>
     <div class="pt-0 pl-3 pr-3 pb-3 ">
         <div class="col-md-12">
-            <form class="row form pt-3" (ngSubmit)="onSubmit()" #bookForm="ngForm">
-                <div class="form-group col-md-12">
-                    <label for="title" class="form-label">Título do Livro</label>
-                    <input type="text" name="title" class="form-control" placeholder="Quem Pensa Enriquece"
-                        [(ngModel)]="book.title">
+            <form class="form pt-3" (ngSubmit)="onSubmit()" #frm="ngForm">
+                <div class="row pt-0 pl-3 pr-3 form-group" ngModelGroup="bookForm" #bookForm="ngModelGroup">
+                    <div class=" col-md-12">
+                        <label for="title" class="form-label">Título do Livro</label>
+                        <input type="text" ngModel #title="ngModel" id="title" name="title" class="form-control"
+                            placeholder="Ex: Quem Pensa Enriquece" [(ngModel)]="book.title" value="" required>
+                        <div *ngIf="title.invalid && title.touched">
+                            <span *ngIf="title.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label for="publisher" class="form-label">Editora</label>
+                        <input type="text" name="publisher" class="form-control" placeholder="Ex: Faro Editorial"
+                            [(ngModel)]="book.publisher" ngModel #publisher="ngModel" value required>
+                        <div *ngIf="publisher.invalid && publisher.touched">
+                            <span *ngIf="publisher.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label for="bookYear" class="form-label">Data/Ano de Lançamento</label>
+                        <input type="text" class="form-control" name="bookYear"
+                            placeholder="Ex: '15 março 2021' / '2021'" [(ngModel)]="book.bookYear" ngModel
+                            #bookYear="ngModel" required>
+                        <div *ngIf="bookYear.invalid && bookYear.touched">
+                            <span *ngIf="bookYear.errors?.['required']">
+                                ATENÇÃO! Preenchimento obrigatório*
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-2">
+                        <label for="edition" class="form-label">Edição</label>
+                        <input type="number" class="form-control" name="edition" min="1" placeholder="Ex: 1"
+                            [(ngModel)]="book.edition" ngModel #edition="ngModel" required>
+                        <div *ngIf="edition.invalid && edition.touched">
+                            <span *ngIf="edition.errors?.['required']">
+                                Obrigatório*
+                            </span>
+                            <span *ngIf="edition.errors?.['min']">
+                                Edição Inválida*
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="genre" class="form-label">Selecione a Categoria</label>
+                        <select name="genre" id="genre" class="form-control" [(ngModel)]="book.fkCategory" [ngModel]="book.fkCategory">
+                            <option *ngFor="let category of categories" [value]="category.id" [selected]="category">
+                                {{category.genre}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="author" class="form-label">Selecione o Autor(a)</label>
+                        <select name="author" id="author" class="form-control" [(ngModel)]="book.fkAuthor">
+                            <option *ngFor="let author of authors" [value]="author.id" [selected]="author">
+                                {{author.name}}
+                            </option>
+                        </select>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label for="imgUrl">Carregar a Capa "Imagem"</label>
+                        <input type="text" class="form-control" name="imgUrl" [(ngModel)]="book.imgUrl"
+                            placeholder="Cole aqui a url/link da imagem" ngModel #imgUrl="ngModel" minlength="30"
+                            required>
+                        <div *ngIf="imgUrl.invalid && imgUrl.touched">
+                            <span *ngIf="imgUrl.errors?.['required']">
+                                ATENÇÃO! Preenchimento obrigatório*
+                            </span>
+                            <span *ngIf="imgUrl.errors?.['minlength']">
+                                Url/Link inválido* Ex:
+                                https://komutu.com/wp-content/uploads/2023/01/pai-rico-pai-pobre.jpg
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2">
+                        <label for="shortSummary" class="form-label">1ºResumo</label>
+                        <textarea class="form-control" name="shortSummary" id="shortSummary" rows="2"
+                            placeholder="Escrever o 1ª resumo com menos de 350 caracteres!" minlength="350"
+                            maxlength="500" [(ngModel)]="book.shortSummary" ngModel #shortSummary="ngModel" required></textarea>
+                        <div *ngIf="shortSummary.invalid && shortSummary.touched">
+                            <span *ngIf="shortSummary.errors?.['required']">
+                                ATENÇÃO! Preenchimento obrigatório*
+                            </span>
+                            <span *ngIf="shortSummary.errors?.['minlength']">
+                                Texto muito curto, precisa ter no min: 350 (caracteres)*
+                            </span>
+                        </div>
+                    </div>
+                    <div class="col-12 mt-2 mb-1">
+                        <label for="longSummary" class="form-label">2ºResumo (1º + contiuação)</label>
+                        <textarea class="form-control" name="longtSummary" id="longSummary" rows="4"
+                            placeholder="Escrevao 2º resumo com mais de 500 caracteres!" minlength="500"
+                            maxlength="2000" [(ngModel)]="book.longSummary" ngModel #longSummary="ngModel"
+                            required></textarea>
+                        <div *ngIf="longSummary.invalid && longSummary.touched">
+                            <span *ngIf="longSummary.errors?.['required']">
+                                ATENÇÃO! Preenchimento obrigatório*
+                            </span>
+                            <span *ngIf="longSummary.errors?.['minlength']">
+                                Texto muito curto, precisa ter no min: 500 (caracteres)*
+                            </span>
+                        </div>
+                    </div>
                 </div>
-                <div class="col-md-6">
-                    <label for="publisher" class="form-label">Editora</label>
-                    <input type="text" name="editora" class="form-control" placeholder="Faro Editorial"
-                        [(ngModel)]="book.publisher">
+                <div class="col-md-12 d-flex justify-content-center" *ngIf="bookForm.invalid && bookForm.touched" >
+                    <span *ngIf="bookForm.getError" style="color: red; font-size: 14;">Deve preencher devidamente o formulário para habilitar o botão "Salvar" e poder submeter com successo.</span>
                 </div>
-                <div class="col-md-4">
-                    <label for="bookYear" class="form-label">Ano de Lançamento</label>
-                    <input type="text" class="form-control" name="bookYear" placeholder="15 março 2021"
-                        [(ngModel)]="book.bookYear">
-                </div>
-                <div class="col-md-2">
-                    <label for="edition" class="form-label">Edição</label>
-                    <input type="number" class="form-control" name="edition" min="1" placeholder="1"
-                        [(ngModel)]="book.edition">
-                </div>
-                <div class="col-md-12 mt-2">
-                    <label for="genre" class="form-label">Selecione a Categoria</label>
-                    <select name="genre" id="genre" class="form-control" [(ngModel)]="book.fkCategory">
-                        <option *ngFor="let category of categories" [value]="category.id" [selected]="category">
-                            {{category.genre}}</option>
-                    </select>
-                </div>
-                <div class="col-md-12 mt-2">
-                    <label for="author" class="form-label">Selecione o Autor(a)</label>
-                    <select name="author" id="author" class="form-control" [(ngModel)]="book.fkAuthor">
-                        <option *ngFor="let author of authors" [value]="author.id" [selected]="author">{{author.name}}
-                        </option>
-                    </select>
-                </div>
-                <div class="col-12 mt-2">
-                    <label for="imgUrl">Carregar a Capa "Imagem"</label>
-                    <input type="file" class="form-control" accept=".jpg,.jpeg,.png" [(ngModel)]="book.imgUrl">
-                </div>
-                <div class="col-12 mt-2">
-                    <label for="shortSummary" class="form-label">1ºResumo</label>
-                    <textarea class="form-control" name="shortSummary" id="shortSummary" rows="2"
-                        placeholder="Escrever o 1ª resumo com menos de 150 palavras..." minlength="400" maxlength="500"
-                        [(ngModel)]="book.shortSummary"></textarea>
-                </div>
-                <div class="col-12 mt-2 mb-2">
-                    <label for="longSummary" class="form-label">2ºResumo (1º + contiuação)</label>
-                    <textarea class="form-control" name="longtSummary" id="longSummary" rows="4"
-                        placeholder="Escrevao 2º resumo com mais de 250 paplavras..." minlength="501" maxlength="2000"
-                        [(ngModel)]="book.longSummary"></textarea>
-                </div>
-                <div class="col-md-12 mt-2 mb-3 d-flex justify-content-end">
-                    <button type="submit" class="btn btn-success" [disabled]="!bookForm.invalid">Salvar
+                <div class="col-md-12 mt-1 mb-3 d-flex justify-content-end pb-3">
+                    <button type="submit" class="btn btn-success" [disabled]="frm.invalid">Salvar
                         Formulário</button>
                 </div>
             </form>

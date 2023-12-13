@@ -76,7 +76,9 @@
     align-items: center;
   }
 
-
+  .selected{
+    background-color: #0d355e;
+  }
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,

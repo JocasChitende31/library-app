@@ -1,22 +1,30 @@
-<h6 class="font-weight-light">Categorias > <small class="text-info"> <i class="font-weight-light"
-            style="font-style: normal;">Livros </i> <b style="color: white;
-            font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
-            background-color: red;">{{qtdT}}</b>
-    </small></h6>
+<h6 class="font-weight-light text-muted">Categorias ><b *ngFor="let category of categories">
+
+        <small class="text-info" *ngIf="category.id === categoryId?.id">
+            {{category.genre}} <i
+                style="color: white; font-weight:bolder; font-size: 13px; border: .1px solid red; border-radius: 60%; padding: .5px 3.5px; background-color: red;">{{qtd}}</i>
+
+        </small>
+    </b></h6>
 <div class="mb-3 d-flex flex-wrap">
     <br>
     <div *ngFor="let category of categories" class="mr-4">
+        <!-- routerLink="/{{category.id}}/books"  -->
         <!-- href="/{{category.id}}/books" -->
-        <a routerLink="/{{category.id}}/books" class="badge badge-light" style="color:#0d355e;">{{category.genre}}</a>
+        <a  routerLinkActive="selected" routerLink="/{{category?.id}}/books" class="badge badge-light">{{category.genre}}</a>
+
     </div>
+
 </div>
-<div class="text-center" *ngIf="books.length <= 0">
+
+<div *ngIf="qtd === 0">
     <hr>
-    <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
-        <h5 class="text-white font-weight-light">{{serverUnvaliable}}</h5>
+    <div class="text-center p-5 mt-5 mb-5">
+        <h2 class="text-muted">Nenhum livro encontrado nesta categoria!</h2>
     </div>
 </div>
 <div *ngFor="let book of books">
+
     <div class="card mb-4 p-2" style="background-color:#f6f2f1b8;">
         <div class="row g-0">
             <div class="col-md-2 mb-0 mr-4">
@@ -66,21 +74,8 @@
                             <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
                         </div>
                     </div>
-                    <hr>
-                    <ul class="list-inline text-right">
-                        <li class="list-inline-item mr-5"><a class="text-success" routerLink="/details/{{book.id}}/book">+
-                                Detalhes</a>
-                        </li>
-                        <li class="list-inline-item mr-5"><a class="text-success"
-                                routerLink="/addbook/{{book.id}}/reading-list">+ A minha List Leitura</a>
-                        </li>
-                        <li class="list-inline-item mr-5"><button class="text-primary">Editar</button></li>
-                        <li class="list-inline-item mr-5"><button (click)="onDelete(book?.id)"
-                                class="text-danger">Eliminar</button></li>
-                    </ul>
                 </div>
             </div>
-
         </div>
     </div>
 

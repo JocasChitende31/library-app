@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Category } from '../models/category';
@@ -13,6 +13,12 @@ export class CategoryService {
     this.categoryUrl = "http://localhost:8080/api";
   }
 
-  public findAll(): Observable<Category[]>{
-    return this.http.get<Category[]>(`${this.categoryUrl}/categories`)}
+  public findAll(): Observable<Category[]> {
+    return this.http.get<Category[]>(`${this.categoryUrl}/categories`)
+  }
+  public findById(catId: any): Observable<Category> {
+    let params = new HttpParams().set('id', catId);
+    return this.http.get<Category>(`${this.categoryUrl}/${catId}/category`, { params: params })
+  }
+
 }

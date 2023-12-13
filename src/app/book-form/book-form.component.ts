@@ -13,9 +13,10 @@ import { CategoryService } from '../services/category.service';
   styleUrls: ['./book-form.component.css']
 })
 export class BookFormComponent implements OnInit {
-
   titleForm: String | undefined;
   selectCategoryStandard: String[];
+
+  defaultValue = "Escolha"
 
   book: Book;
   categories: Category[] = [];
@@ -31,6 +32,7 @@ export class BookFormComponent implements OnInit {
     this.titleForm = "Adicionar Livro a Galeria";
     this.selectCategoryStandard = ["Escolha a categoria"];
     this.book = new Book();
+
   }
   onSubmit() {
     this.bookService.save(this.book).subscribe(result => {
@@ -39,6 +41,9 @@ export class BookFormComponent implements OnInit {
   }
   goToBookList() {
     this.router.navigate(['/books']);
+  }
+  standInPage() {
+    this.router.navigate(['/create/book']);
   }
   ngOnInit(): void {
     this.categoryService.findAll().subscribe(data => {
