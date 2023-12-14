@@ -1,10 +1,10 @@
+import { DOCUMENT } from '@angular/common';
 import { Component, Inject, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from '../models/book';
-import { Category } from '../models/category';
-import { BookServiceService } from '../services/book-service.service';
-import { CategoryService } from '../services/category.service';
-import { DOCUMENT } from '@angular/common';
+import { Book } from '../../models/book';
+import { Category } from '../../models/category';
+import { BookServiceService } from '../../services/book-service.service';
+import { CategoryService } from '../../services/category.service';
 @Component({
   selector: 'app-book-list-by-category',
   templateUrl: './book-list-by-category.component.html',
@@ -54,9 +54,8 @@ export class BookListByCategoryComponent implements OnInit {
   goToCategory() {
     this.router.navigate([`/${this.id}/category`])
   }
-
   reload() {
     this._document.defaultView?.location.reload();
   }
-
+ 
 }

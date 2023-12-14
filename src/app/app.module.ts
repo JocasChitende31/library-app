@@ -7,13 +7,15 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
 
-import { BookFormComponent } from './book-form/book-form.component';
-import { BookListByCategoryComponent } from './book-list-by-category/book-list-by-category.component';
-import { BookListComponent } from './book-list/book-list.component';
+import { BookFormComponent } from './admin/book-form/book-form.component';
+import { BookListComponent } from './admin/book-list/book-list.component';
 import { FooterComponent } from './footer/footer.component';
+import { HeaderComponent } from './header/header.component';
 import { BookServiceService } from './services/book-service.service';
-import { BookDetailsComponent } from './book-details/book-details.component';
-import { BookReadingComponent } from './book-reading/book-reading.component';
+import { BookDetailsComponent } from './user/book-details/book-details.component';
+import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
+import { BookReadingComponent } from './user/book-reading/book-reading.component';
+import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
 
 @NgModule({
   declarations: [
@@ -23,7 +25,9 @@ import { BookReadingComponent } from './book-reading/book-reading.component';
     FooterComponent,
     BookListByCategoryComponent,
     BookDetailsComponent,
-    BookReadingComponent
+    BookReadingComponent,
+    HeaderComponent,
+    BookListUserComponent
   ],
   imports: [
     BrowserModule,

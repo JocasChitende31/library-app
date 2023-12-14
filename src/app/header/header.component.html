@@ -1,0 +1,54 @@
+<div class="spacetop"></div>
+<div class="navbar navbar-expand-lg navbar-light bg-light" style="border: 1px solid rgb(215, 215, 215);">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a href="#" class="navbar-brand">Livraria</a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        </div>
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav mr-auto list-group">
+                <li class="nav-item"><a class="nav-link list-group-item-action" routerLinkActive="selected" routerLink="/user/books">Lista de
+                        Livros</a></li>
+                <li class="nav-item"><a class="nav-link list-group-item-action" href="">Sobre</a></li>
+            </ul>
+        </div>
+        <div class="navbar-nav navbar-right" >
+            <li class="dropdown nav-item mr-2" >
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" data-toggle="dropdown"
+                    aria-haspopup="true" aria-expanded="false">Administrador<span class="caret"></span></a>
+                <ul class="dropdown-menu " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
+                    <div>
+                        <h6 class="dropdown-menu_title">Secção Autor</h6>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" href="#">Adicionar</a>
+                        </li>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" href="#">Listar</a>
+                        </li>
+                    </div>
+                    <div>
+                        <h6 class="dropdown-menu_title">Secção Categoria</h6>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" href="#">Adicionar</a>
+                        </li>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" href="#">Listar</a>
+                        </li>
+                    </div>
+                    <div>
+                        <h6 class="dropdown-menu_title">Secção Livro</h6>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/create/book" routerLinkActive="selected">Adicionar</a>
+                        </li>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/books" routerLinkActive="selected" >Listar</a>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+        </div>
+
+    </div>
+</div>

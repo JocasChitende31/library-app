@@ -1,4 +1,5 @@
-<h6 class="font-weight-light">Mais Detalhes > <small class="text-info">{{book?.title}}</small> </h6>
+<div class="pt-5"></div>
+<h6 class="font-weight-light mt-5">Mais Detalhes > <small class="text-info">{{book?.title}}</small> </h6>
 
 <div class="row g-0">
     <div class="col-md-3 pb-2">
@@ -20,6 +21,8 @@
                 </div>
                 <hr>
                 <div>
+                    <h5 class="card-title">status</h5>
+                    <hr>
                     <p class="">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Reprehenderit, odio!</p>
                 </div>
             </div>
@@ -75,7 +78,7 @@
                 <div class="card-body">
                     <h6 class="card-title font-weight-light">Pequeno Resumo</h6>
                     <hr>
-                    <p>{{book?.shortSummary}}</p>
+                    <p class="text-muted">{{book?.shortSummary}}</p>
                 </div>
             </div>
         </div>
@@ -84,7 +87,7 @@
                 <div class="card-body">
                     <h6 class="card-title font-weight-light">Longo Resumo</h6>
                     <hr>
-                    <p>{{book?.longSummary}}</p>
+                    <p class="text-muted">{{book?.longSummary}}</p>
                 </div>
             </div>
         </div>
