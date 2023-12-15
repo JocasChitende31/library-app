@@ -2,3 +2,7 @@ button{
     cursor: pointer;
     letter-spacing: .5px;
 }
+hr{
+    margin: 0;
+    padding: 0;
+}

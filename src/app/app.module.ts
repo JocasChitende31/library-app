@@ -16,6 +16,9 @@ import { BookDetailsComponent } from './user/book-details/book-details.component
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookReadingComponent } from './user/book-reading/book-reading.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
+import { AuthorListComponent } from './admin/author-list/author-list.component';
+import { AboutComponent } from './about/about.component';
+import { CategoryListComponent } from './admin/category-list/category-list.component';
 
 @NgModule({
   declarations: [
@@ -27,7 +30,10 @@ import { BookListUserComponent } from './user/book-list-user/book-list-user.comp
     BookDetailsComponent,
     BookReadingComponent,
     HeaderComponent,
-    BookListUserComponent
+    BookListUserComponent,
+    AuthorListComponent,
+    AboutComponent,
+    CategoryListComponent
   ],
   imports: [
     BrowserModule,

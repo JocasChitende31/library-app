@@ -11,7 +11,7 @@
             <ul class="navbar-nav mr-auto list-group">
                 <li class="nav-item"><a class="nav-link list-group-item-action" routerLinkActive="selected" routerLink="/user/books">Lista de
                         Livros</a></li>
-                <li class="nav-item"><a class="nav-link list-group-item-action" href="">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link list-group-item-action" routerLink="/about" routerLinkActive="selected">Sobre</a></li>
             </ul>
         </div>
         <div class="navbar-nav navbar-right" >
@@ -25,7 +25,7 @@
                             <a class="nav-link" href="#">Adicionar</a>
                         </li>
                         <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" href="#">Listar</a>
+                            <a class="nav-link" routerLink="/admin/authors" routerLinkActive="selected">Listar</a>
                         </li>
                     </div>
                     <div>
@@ -34,13 +34,13 @@
                             <a class="nav-link" href="#">Adicionar</a>
                         </li>
                         <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" href="#">Listar</a>
+                            <a class="nav-link" routerLink="/admin/categories" routerLinkActive="selected">Listar</a>
                         </li>
                     </div>
                     <div>
                         <h6 class="dropdown-menu_title">Secção Livro</h6>
                         <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/create/book" routerLinkActive="selected">Adicionar</a>
+                            <a class="nav-link" routerLink="/admin/create/book" routerLinkActive="selected">Adicionar</a>
                         </li>
                         <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="/admin/books" routerLinkActive="selected" >Listar</a>

@@ -1,5 +1,9 @@
 <div class="pt-5"></div>
-<h6 class="font-weight-light mt-5 ">Categorias > <small class="text-info"> <i class="font-weight-light"
+<div class=" mt-5">
+    <h5 class="font-weight-light">Livros</h5>
+</div>
+<hr>
+<h6 class="font-weight-light ">Por Categoria > <small class="text-info"> <i class="font-weight-light"
             style="font-style: normal;">Livros </i> <b style="color: white;
             font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
             background-color: red;">{{qtdT}}</b>
@@ -8,8 +12,13 @@
     <br>
     <div *ngFor="let category of categories" class="mr-4">
         <!-- href="/{{category.id}}/books" -->
-        <a routerLink="/{{category.id}}/category" class="badge badge-light" style="color:#0d355e;">{{category.genre}}</a>
+        <a routerLink="/{{category.id}}/category" class="badge badge-light"
+            style="color:#0d355e;">{{category.genre}}</a>
     </div>
+</div>
+<hr>
+<div>
+    <h5 class="font-weight-light">Todos</h5>
 </div>
 <div class="text-center" *ngIf="books.length <= 0">
     <hr>
@@ -69,7 +78,8 @@
                     </div>
                     <hr>
                     <ul class="list-inline text-right">
-                        <li class="list-inline-item mr-5"><a class="text-success" routerLink="/details/{{book.id}}/book">+
+                        <li class="list-inline-item mr-5"><a class="text-success"
+                                routerLink="/details/{{book.id}}/book">+
                                 Detalhes</a>
                         </li>
                         <li class="list-inline-item mr-5"><a class="text-success"
