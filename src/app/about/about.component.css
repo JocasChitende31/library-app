@@ -2,3 +2,7 @@ hr{
     padding: 0;
     margin: 0;
 }
+.about-text{
+    line-height: 25px;
+    text-align: justify;
+}

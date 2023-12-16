@@ -1,0 +1,27 @@
+<div class="pt-5"></div>
+<div class="container mt-5 mb-5">
+    <div class="card mb-3 p-2">
+        <div class="col-md-12">
+            <h4 class="card-title text-center p-2">
+                Adicionar Categoria
+            </h4>
+        </div>
+    </div>
+    <div class="pt-0 pb-5">
+        <div class="col-md-12">
+            <form class="form pt-3 pb-2" (ngSubmit)="onSubmit()">
+                <div class="row pt-0 pl-3 pr-3 form-group">
+                    <div class="col-md-12">
+                        <label for="genre" class="form-label">Categoria/Gênero</label>
+                        <input [(ngModel)]="category.genre" type="text" name="genre" id="genre" class="form-control"
+                            placeholder="Ex: História">
+                    </div>
+                </div>
+                <div class="col-md-12 mt-1 d-flex justify-content-end pb-3">
+                    <button type="submit" class="btn btn-primary">Salvar Categoria</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
+<div class="margin-form_b"></div>

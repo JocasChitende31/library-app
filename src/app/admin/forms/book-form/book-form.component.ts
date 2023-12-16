@@ -1,11 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Author } from '../../models/author';
-import { Book } from '../../models/book';
-import { Category } from '../../models/category';
-import { AuthorService } from '../../services/author.service';
-import { BookServiceService } from '../../services/book-service.service';
-import { CategoryService } from '../../services/category.service';
+import { Author } from '../../../models/author';
+import { Book } from '../../../models/book';
+import { Category } from '../../../models/category';
+import { AuthorService } from '../../../services/author.service';
+import { BookServiceService } from '../../../services/book-service.service';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-book-form',
@@ -29,7 +29,7 @@ export class BookFormComponent implements OnInit {
     private categoryService: CategoryService,
     private authorService: AuthorService,
   ) {
-    this.titleForm = "Adicionar Livro a Galeria";
+    this.titleForm = "Adicionar Livro à Galeria";
     this.selectCategoryStandard = ["Escolha a categoria"];
     this.book = new Book();
 

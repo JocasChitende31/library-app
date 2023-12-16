@@ -2,12 +2,13 @@
     border-top-right-radius: 0;
     border-bottom-right-radius: 0;
 
-    background-color: #f6f2f1b8;
+    /* background-color: #f6f2f1b8; */
+    background-color: #f8f9fa;
 }
 .card-imgUrl{
     border-top-right-radius: 0;
     border-top-left-radius: 0;
-    background-color: #f6f2f1b8;
+    background-color: #f8f9fa;
 }
 
 .row .book-card {
@@ -15,16 +16,16 @@
     border-top-left-radius: 0;
     border-bottom-right-radius: 0;
 
-    background-color: #f6f2f1b8;
+    background-color: #f8f9fa;
 }
 
 
 .row .card-short_summary {
     border-radius: 0;
-    background-color: #f6f2f1b8;
+    background-color: #f8f9fa;
 }
 .row .card-long_summary {
     border-top-right-radius: 0;
     border-top-left-radius: 0;
-    background-color: #f6f2f1b8;
+    background-color: #f8f9fa;
 }

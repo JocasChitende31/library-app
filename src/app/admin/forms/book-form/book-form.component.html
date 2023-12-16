@@ -7,7 +7,7 @@
             </div>
         </div>
     </div>
-    <div class="pt-0 pl-3 pr-3 pb-3 ">
+    <div class="pt-0 mb-5">
         <div class="col-md-12">
             <form class="form pt-3" (ngSubmit)="onSubmit()" #frm="ngForm">
                 <div class="row pt-0 pl-3 pr-3 form-group" ngModelGroup="bookForm" #bookForm="ngModelGroup">
@@ -19,7 +19,7 @@
                             <span *ngIf="title.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
                         </div>
                     </div>
-                    <div class="col-md-6">
+                    <div class="col-md-6 mt-2">
                         <label for="publisher" class="form-label">Editora</label>
                         <input type="text" name="publisher" class="form-control" placeholder="Ex: Faro Editorial"
                             [(ngModel)]="book.publisher" ngModel #publisher="ngModel" value required>
@@ -27,7 +27,7 @@
                             <span *ngIf="publisher.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
                         </div>
                     </div>
-                    <div class="col-md-4">
+                    <div class="col-md-4 mt-2">
                         <label for="bookYear" class="form-label">Data/Ano de Lançamento</label>
                         <input type="text" class="form-control" name="bookYear"
                             placeholder="Ex: '15 março 2021' / '2021'" [(ngModel)]="book.bookYear" ngModel
@@ -38,7 +38,7 @@
                             </span>
                         </div>
                     </div>
-                    <div class="col-md-2">
+                    <div class="col-md-2 mt-2">
                         <label for="edition" class="form-label">Edição</label>
                         <input type="number" class="form-control" name="edition" min="1" placeholder="Ex: 1"
                             [(ngModel)]="book.edition" ngModel #edition="ngModel" required>
@@ -116,7 +116,7 @@
                 </div>
                 <div class="col-md-12 mt-1 mb-3 d-flex justify-content-end pb-3">
                     <button type="submit" class="btn btn-success" [disabled]="frm.invalid">Salvar
-                        Formulário</button>
+                        Livro</button>
                 </div>
             </form>
         </div>

@@ -22,5 +22,13 @@ export class CategoryListComponent implements OnInit {
       this.categories = data;
     })
   }
-
+  onDelete(catId: any) {
+    this.categoryService.delete(catId).subscribe(data => {
+      this.goToListCatategories();
+    });
+  }
+  goToListCatategories(){
+    this.router.navigate(['/admin/categories']);
+    window.location.reload();
+  }
 }

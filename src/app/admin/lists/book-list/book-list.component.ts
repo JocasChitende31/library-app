@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Book } from '../../models/book';
-import { Category } from '../../models/category';
-import { BookServiceService } from '../../services/book-service.service';
-import { CategoryService } from '../../services/category.service';
+import { Book } from '../../../models/book';
+import { Category } from '../../../models/category';
+import { BookServiceService } from '../../../services/book-service.service';
+import { CategoryService } from '../../../services/category.service';
 
 @Component({
   selector: 'app-book-list',

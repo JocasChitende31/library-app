@@ -1,0 +1,13 @@
+.container .card{
+    background-color: #0d355e;
+}
+.container h4{
+    font-weight:500;color: white;
+}
+.container .form{
+    /* background-color: #f6f2f1b8; */
+    background-color: #f8f9fa;
+}
+.margin-form_b{
+    margin-bottom: 240px;
+}

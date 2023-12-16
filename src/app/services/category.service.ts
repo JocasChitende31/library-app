@@ -20,5 +20,12 @@ export class CategoryService {
     let params = new HttpParams().set('id', catId);
     return this.http.get<Category>(`${this.categoryUrl}/${catId}/category`, { params: params })
   }
+  public save(category: Category) {
+    return this.http.post<Category>(`${this.categoryUrl}/create/category`, category);
+  }
+  public delete(catId: any): Observable<Category> {
+    let params = new HttpParams().set('id', catId);
+    return this.http.delete<Category>(`${this.categoryUrl}/delete/${catId}/category`, { params: params });
+  }
 
 }

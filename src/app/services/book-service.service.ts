@@ -17,7 +17,7 @@ export class BookServiceService {
   public findAll(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.bookUrl}/books`);
   }
-  public findById(bookId: any): Observable<Book>{
+  public findById(bookId: any): Observable<Book> {
     return this.http.get<Book>(`${this.bookUrl}/${bookId}/book`);
   }
 

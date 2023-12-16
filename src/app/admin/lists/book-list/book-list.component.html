@@ -27,7 +27,7 @@
     </div>
 </div>
 <div *ngFor="let book of books">
-    <div class="card mb-4 p-2" style="background-color:#f6f2f1b8;">
+    <div class="card mb-4 p-2" style="background-color:#f8f9fa;">
         <div class="row g-0">
             <div class="col-md-2 mb-0 mr-4">
                 <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
@@ -78,16 +78,16 @@
                     </div>
                     <hr>
                     <ul class="list-inline text-right">
-                        <li class="list-inline-item mr-5"><a class="text-success"
+                        <li class="list-inline-item mr-5"><a class="btn btn-success"
                                 routerLink="/details/{{book.id}}/book">+
                                 Detalhes</a>
                         </li>
-                        <li class="list-inline-item mr-5"><a class="text-success"
+                        <li class="list-inline-item mr-5"><a class="btn btn-success"
                                 routerLink="/addbook/{{book.id}}/reading-list">+ A minha List Leitura</a>
                         </li>
-                        <li class="list-inline-item mr-5"><button class="text-primary">Editar</button></li>
-                        <li class="list-inline-item mr-5"><button (click)="onDelete(book?.id)"
-                                class="text-danger">Eliminar</button></li>
+                        <li class="list-inline-item mr-5"><button class="btn btn-primary">Editar</button></li>
+                        <li class="list-inline-item mr-5 "><button class="btn btn-danger"
+                                (click)="onDelete(book?.id)">Eliminar</button></li>
                     </ul>
                 </div>
             </div>

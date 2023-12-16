@@ -17,8 +17,8 @@
             <tr>
                 <th scope="row">{{category.id}}</th>
                 <td>{{category.genre}}</td>
-                <td><a href="#" class="text-primary">Editar</a></td>
-                <td><a href="#" class="text-danger">Eliminar</a></td>
+                <td class="text-center"><button class="btn text-primary ">Editar</button></td>
+                <td class="text-center"><button class="btn text-danger" (click)="onDelete(category?.id)">Eliminar</button></td>
             </tr>
         </tbody>
     </table>

@@ -23,8 +23,8 @@
                 <td>{{author.birthday}}</td>
                 <td>{{author.nationality}}</td>
                 <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptatem.</td>
-                <td><a href="#" class="text-primary">Editar</a></td>
-                <td><a href="#" class="text-danger">Eliminar</a></td>
+                <td><button  class="btn text-primary">Editar</button></td>
+                <td><button (click)="onDelete(author?.id)" class="btn text-danger">Eliminar</button></td>
             </tr>
         </tbody>
     </table>
