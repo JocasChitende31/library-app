@@ -6,23 +6,34 @@
                 style="color: white; font-weight:bolder; font-size: 13px; border: .1px solid red; border-radius: 60%; padding: .5px 3.5px; background-color: red;">{{qtd}}</i>
 
         </small>
-    </b></h6>
+    </b>
+
+</h6>
+
 <div class="mb-3 d-flex flex-wrap">
     <br>
     <div *ngFor="let category of categories" class="mr-4">
         <!-- routerLink="/{{category.id}}/books"  -->
         <!-- href="/{{category.id}}/books" -->
-        <a routerLinkActive="selected" routerLink="/{{category?.id}}/category" class="badge badge-light">{{category.genre}}</a>
+        <!-- <a routerLinkActive="selected" routerLink="/{{category?.id}}/category" class="badge badge-light">{{category.genre}}</a> -->
+        <a href="/{{category?.id}}/category" class="btn badge badge-light">{{category.genre}}</a>
 
     </div>
 
 </div>
-
+<hr>
+<div class="mt-2" *ngIf="qtd != 0">
+    <h6 class="text-danger"> <b class=" text-muted font-weight-light">Livro(s) encontrado(os) na categoria ></b>
+        {{categoryId?.genre}}</h6>
+</div>
+<div class="mt-2" *ngIf="qtd===0">
+    <h6 class="text-danger"></h6>
+</div>
 <div *ngIf="qtd === 0">
-    <hr>
-    <div class="text-center p-5 mt-5 mb-5">
-        <h2 class="text-muted">Nenhum livro encontrado nesta categoria!</h2>
+    <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
+        <h5 class="text-white font-weight-light">{{noContant}}</h5>
     </div>
+
 </div>
 <div *ngFor="let book of books">
 

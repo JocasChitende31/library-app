@@ -23,7 +23,7 @@
                 <td>{{author.birthday}}</td>
                 <td>{{author.nationality}}</td>
                 <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptatem.</td>
-                <td><button  class="btn text-primary">Editar</button></td>
+                <td><a routerLink="/admin/update/{{author?.id}}/author" class="btn text-primary">Editar</a></td>
                 <td><button (click)="onDelete(author?.id)" class="btn text-danger">Eliminar</button></td>
             </tr>
         </tbody>

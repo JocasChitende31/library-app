@@ -3,75 +3,80 @@
     <div class="card mb-3 p-2">
         <div class="row g-3">
             <div class="col-md-12">
-                <h4 class="text-center card-title p-2">{{titleForm}}</h4>
+                <h4 *ngIf="!bookId" class="text-center card-title p-2">{{titleCreateAuthor}}</h4>
+                <h4 *ngIf="bookId" class="text-center card-title p-2">{{titleUpdateAuthor}}</h4>
             </div>
         </div>
     </div>
     <div class="pt-0 mb-5">
         <div class="col-md-12">
-            <form class="form pt-3" (ngSubmit)="onSubmit()" #frm="ngForm">
-                <div class="row pt-0 pl-3 pr-3 form-group" ngModelGroup="bookForm" #bookForm="ngModelGroup">
+            <form class="form pt-3" [formGroup]="bookForm">
+                <div class="row pt-0 pl-3 pr-3 form-group">
                     <div class=" col-md-12">
+                        <label for="title" class="form-label">Id</label>
+                        <input type="text" id="id" name="id" class="form-control" placeholder="Ex: Id"
+                            formControlName="id">
                         <label for="title" class="form-label">Título do Livro</label>
-                        <input type="text" ngModel #title="ngModel" id="title" name="title" class="form-control"
-                            placeholder="Ex: Quem Pensa Enriquece" [(ngModel)]="book.title" value="" required>
-                        <div *ngIf="title.invalid && title.touched">
+                        <input type="text" id="title" name="title" class="form-control"
+                            placeholder="Ex: Quem Pensa Enriquece" formControlName="title">
+                        <!-- <div *ngIf="title.invalid && title.touched">
                             <span *ngIf="title.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="publisher" class="form-label">Editora</label>
                         <input type="text" name="publisher" class="form-control" placeholder="Ex: Faro Editorial"
-                            [(ngModel)]="book.publisher" ngModel #publisher="ngModel" value required>
-                        <div *ngIf="publisher.invalid && publisher.touched">
+                            formControlName="publisher">
+                        <!-- ngModel #publisher="ngModel" -->
+                        <!-- <div *ngIf="publisher.invalid && publisher.touched">
                             <span *ngIf="publisher.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-4 mt-2">
                         <label for="bookYear" class="form-label">Data/Ano de Lançamento</label>
                         <input type="text" class="form-control" name="bookYear"
-                            placeholder="Ex: '15 março 2021' / '2021'" [(ngModel)]="book.bookYear" ngModel
-                            #bookYear="ngModel" required>
-                        <div *ngIf="bookYear.invalid && bookYear.touched">
+                            placeholder="Ex: '15 março 2021' / '2021'" formControlName="bookYear">
+                        <!-- <div *ngIf="!bookForm.dirty">
                             <span *ngIf="bookYear.errors?.['required']">
                                 ATENÇÃO! Preenchimento obrigatório*
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-2 mt-2">
                         <label for="edition" class="form-label">Edição</label>
                         <input type="number" class="form-control" name="edition" min="1" placeholder="Ex: 1"
-                            [(ngModel)]="book.edition" ngModel #edition="ngModel" required>
-                        <div *ngIf="edition.invalid && edition.touched">
+                            formControlName="edition">
+                        <!-- <div *ngIf="edition.invalid && edition.touched">
                             <span *ngIf="edition.errors?.['required']">
                                 Obrigatório*
                             </span>
                             <span *ngIf="edition.errors?.['min']">
                                 Edição Inválida*
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-md-12 mt-2">
                         <label for="genre" class="form-label">Selecione a Categoria</label>
-                        <select name="genre" id="genre" class="form-control" [(ngModel)]="book.fkCategory" [ngModel]="book.fkCategory">
-                            <option *ngFor="let category of categories" [value]="category.id" [selected]="category">
+                        <select name="genre" id="genre" class="form-control" formControlName="fkCategory">
+                            <option value="" selected disabled>{{defaultValueCategory}}</option>
+                            <option *ngFor="let category of categories" value="{{category.id}}">
                                 {{category.genre}}</option>
                         </select>
                     </div>
                     <div class="col-md-12 mt-2">
                         <label for="author" class="form-label">Selecione o Autor(a)</label>
-                        <select name="author" id="author" class="form-control" [(ngModel)]="book.fkAuthor">
-                            <option *ngFor="let author of authors" [value]="author.id" [selected]="author">
+                        <select name="author" id="author" class="form-control" formControlName="fkAuthor">
+                            <option value="" selected disabled>{{defaultValueAuthor}}</option>
+                            <option *ngFor="let author of authors" value="{{author.id}}" >
                                 {{author.name}}
                             </option>
                         </select>
                     </div>
                     <div class="col-12 mt-2">
                         <label for="imgUrl">Carregar a Capa "Imagem"</label>
-                        <input type="text" class="form-control" name="imgUrl" [(ngModel)]="book.imgUrl"
-                            placeholder="Cole aqui a url/link da imagem" ngModel #imgUrl="ngModel" minlength="30"
-                            required>
-                        <div *ngIf="imgUrl.invalid && imgUrl.touched">
+                        <input type="text" class="form-control" name="imgUrl"
+                            placeholder="Cole aqui a url/link da imagem" minlength="30" formControlName="imgUrl">
+                        <!-- <div *ngIf="imgUrl.invalid && imgUrl.touched">
                             <span *ngIf="imgUrl.errors?.['required']">
                                 ATENÇÃO! Preenchimento obrigatório*
                             </span>
@@ -79,46 +84,59 @@
                                 Url/Link inválido* Ex:
                                 https://komutu.com/wp-content/uploads/2023/01/pai-rico-pai-pobre.jpg
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-12 mt-2">
                         <label for="shortSummary" class="form-label">1ºResumo</label>
                         <textarea class="form-control" name="shortSummary" id="shortSummary" rows="2"
                             placeholder="Escrever o 1ª resumo com menos de 350 caracteres!" minlength="350"
-                            maxlength="500" [(ngModel)]="book.shortSummary" ngModel #shortSummary="ngModel" required></textarea>
-                        <div *ngIf="shortSummary.invalid && shortSummary.touched">
+                            maxlength="500" formControlName="shortSummary"></textarea>
+                        <!-- <div *ngIf="shortSummary.invalid && shortSummary.touched">
                             <span *ngIf="shortSummary.errors?.['required']">
                                 ATENÇÃO! Preenchimento obrigatório*
                             </span>
                             <span *ngIf="shortSummary.errors?.['minlength']">
                                 Texto muito curto, precisa ter no min: 350 (caracteres)*
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                     <div class="col-12 mt-2 mb-1">
                         <label for="longSummary" class="form-label">2ºResumo (1º + contiuação)</label>
                         <textarea class="form-control" name="longtSummary" id="longSummary" rows="4"
                             placeholder="Escrevao 2º resumo com mais de 500 caracteres!" minlength="500"
-                            maxlength="2000" [(ngModel)]="book.longSummary" ngModel #longSummary="ngModel"
-                            required></textarea>
-                        <div *ngIf="longSummary.invalid && longSummary.touched">
+                            maxlength="2000" formControlName="longSummary"></textarea>
+                        <!-- <div *ngIf="longSummary.invalid && longSummary.touched">
                             <span *ngIf="longSummary.errors?.['required']">
                                 ATENÇÃO! Preenchimento obrigatório*
                             </span>
                             <span *ngIf="longSummary.errors?.['minlength']">
                                 Texto muito curto, precisa ter no min: 500 (caracteres)*
                             </span>
-                        </div>
+                        </div> -->
                     </div>
                 </div>
-                <div class="col-md-12 d-flex justify-content-center" *ngIf="bookForm.invalid && bookForm.touched" >
-                    <span *ngIf="bookForm.getError" style="color: red; font-size: 14;">Deve preencher devidamente o formulário para habilitar o botão "Salvar" e poder submeter com successo.</span>
+                <div class="col-md-12 d-flex justify-content-center" *ngIf="bookForm.invalid && bookForm.touched">
+                    <span *ngIf="bookForm.invalid" style="color: red; font-size: 14;">Deve preencher devidamente o
+                        formulário para habilitar o botão "Salvar" e poder submeter com successo.</span>
                 </div>
-                <div class="col-md-12 mt-1 mb-3 d-flex justify-content-end pb-3">
-                    <button type="submit" class="btn btn-success" [disabled]="frm.invalid">Salvar
+                <!-- <div class="col-md-12 mt-1 mb-3 d-flex justify-content-end pb-3">
+                    <button type="submit" class="btn btn-primary" [disabled]="frm.invalid">Salvar
                         Livro</button>
+                </div> -->
+                <div class=" col-md-12 d-flex flex-wrap justify-content-end pb-3">
+                    <div *ngIf="!bookId" class=" mt-1 mr-2 ">
+                        <button class="btn btn-primary" (click)="bookSubmit()">Salvar Autor</button>
+                    </div>
+                    <div *ngIf="bookId" class=" mt-1 mr-2 ">
+                        <button class="btn btn-primary" (click)="updateBook()">Actualizar Autor</button>
+                    </div>
+                    <div class=" mt-1 mr-2">
+                        <button class="btn btn-danger" (click)="goToBookList()">Cancelar</button>
+                    </div>
                 </div>
             </form>
         </div>
     </div>
 </div>
+
+

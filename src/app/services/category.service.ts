@@ -27,5 +27,9 @@ export class CategoryService {
     let params = new HttpParams().set('id', catId);
     return this.http.delete<Category>(`${this.categoryUrl}/delete/${catId}/category`, { params: params });
   }
+  public update(catId: any, category: Category): Observable<Category> {
+    // let params = new HttpParams().set('id', catId);
+    return this.http.put<Category>(`${this.categoryUrl}/update/${catId}/category`, category)
+  }
 
 }

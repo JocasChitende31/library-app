@@ -16,11 +16,18 @@ export class AuthorService {
   public findAll(): Observable<Author[]> {
     return this.http.get<Author[]>(`${this.authorUrl}/authors`);
   }
+  public findById(authId: any): Observable<Author> {
+    let params = new HttpParams().set('id', authId);
+    return this.http.get<Author>(`${this.authorUrl}/${authId}/author`, { params: params });
+  }
   public save(author: Author) {
     return this.http.post<Author>(`${this.authorUrl}/create/author`, author);
   }
-  public delete(autId: any): Observable<Author> {
-    let params = new HttpParams().set('id', autId)
-    return this.http.delete<Author>(`${this.authorUrl}/delete/${autId}/author`, { params: params });
+  public delete(authId: any): Observable<Author> {
+    let params = new HttpParams().set('id', authId)
+    return this.http.delete<Author>(`${this.authorUrl}/delete/${authId}/author`, { params: params });
+  }
+  public update(authId: any, author: Author): Observable<Author> {
+    return this.http.put<Author>(`${this.authorUrl}/update/${authId}/author`, author);
   }
 }

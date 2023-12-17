@@ -85,7 +85,7 @@
                         <li class="list-inline-item mr-5"><a class="btn btn-success"
                                 routerLink="/addbook/{{book.id}}/reading-list">+ A minha List Leitura</a>
                         </li>
-                        <li class="list-inline-item mr-5"><button class="btn btn-primary">Editar</button></li>
+                        <li class="list-inline-item mr-5"><a routerLink="/admin/update/{{book.id}}/book" class="btn btn-primary text-white">Editar</a></li>
                         <li class="list-inline-item mr-5 "><button class="btn btn-danger"
                                 (click)="onDelete(book?.id)">Eliminar</button></li>
                     </ul>

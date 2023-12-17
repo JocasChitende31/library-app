@@ -15,8 +15,11 @@ export class BookListByCategoryComponent implements OnInit {
   categories: Category[] = [];
   categoryId: Category | undefined;
   books: Book[] = [];
-  id: Number | undefined;
+  bookId: any;
+  catId: any;
   currentCategory: Category[] = [];
+  noContant = "Nenhum livro encontrado nesta categoria!"
+  bgDanger: String = '';
 
   constructor(
     private categoryService: CategoryService,
@@ -26,36 +29,39 @@ export class BookListByCategoryComponent implements OnInit {
     @Inject(DOCUMENT) private _document: Document
 
   ) {
-    this.id = this.route.snapshot.params['id'];
+    this.bookId = this.route.snapshot.params['id'];
     // this.route.params.subscribe(params => {
     //   this.id = params['id'];
     // })
+    this.bgDanger = 'bg-danger';
   }
 
   ngOnInit(): void {
 
-    const catId = this.route.snapshot.params['id'];
+    this.catId = this.route.snapshot.paramMap.get('id');
     this.categoryService.findAll().subscribe(data => {
       this.categories = data;
     })
-    this.bookService.findBookByCategoryId(catId).subscribe(data => {
-      this.books = data;
-      let i = 0;
-      for (let index = 0; index < data.length; index++) {
-        i++;
-        this.qtd = i;
-      }
-    })
-    this.categoryService.findById(catId).subscribe(result => {
+    if (this.catId) {
+      this.bookService.findBookByCategoryId(this.catId).subscribe(data => {
+        this.books = data;
+        let i = 0;
+        for (let index = 0; index < data.length; index++) {
+          i++;
+          this.qtd = i;
+        }
+      })
+    }
+    this.categoryService.findById(this.catId).subscribe(result => {
       this.categoryId = result;
     })
     this.goToCategory();
   }
   goToCategory() {
-    this.router.navigate([`/${this.id}/category`])
+    this.router.navigate([`/${this.catId}/category`])
   }
   reload() {
     this._document.defaultView?.location.reload();
   }
- 
+
 }

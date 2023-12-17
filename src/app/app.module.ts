@@ -2,7 +2,7 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { HttpClientModule } from '@angular/common/http';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 
@@ -10,6 +10,7 @@ import { AppComponent } from './app.component';
 import { AboutComponent } from './about/about.component';
 import { AuthorFormComponent } from './admin/forms/author-form/author-form.component';
 import { BookFormComponent } from './admin/forms/book-form/book-form.component';
+import { CategoryFormComponent } from './admin/forms/category-form/category-form.component';
 import { AuthorListComponent } from './admin/lists/author-list/author-list.component';
 import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
@@ -20,7 +21,6 @@ import { BookDetailsComponent } from './user/book-details/book-details.component
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
 import { BookReadingComponent } from './user/book-reading/book-reading.component';
-import { CategoryFormComponent } from './admin/forms/category-form/category-form.component';
 
 @NgModule({
   declarations: [
@@ -43,6 +43,7 @@ import { CategoryFormComponent } from './admin/forms/category-form/category-form
     BrowserModule,
     HttpClientModule,
     FormsModule,
+    ReactiveFormsModule,
     AppRoutingModule
 ],
   providers: [BookServiceService],

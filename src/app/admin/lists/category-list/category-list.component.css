@@ -2,6 +2,13 @@ hr{
     margin: 0;
     padding: 0;
 }
+a{
+    background-color: white;
+}
+a:hover{
+    background-color: #efefefb4;
+    text-decoration: underline;
+}
 button{
     background-color: white;
 }

@@ -3,33 +3,53 @@
     <div class="card mb-3 p-2">
         <div class="row g-3">
             <div class="col-md-12">
-                <h4 class="card-title text-center p-2">Adicionar Autor</h4>
+                <h4 class="card-title text-center p-2" *ngIf="!authId">{{titleCreateAuthor}}</h4>
+                <h4 class="card-title text-center p-2" *ngIf="authId">{{titleUpdateAuthor}}</h4>
             </div>
         </div>
     </div>
     <div class="pt-0 pb-5">
         <div class="col-md-12">
-            <form class="form pt-3 pb-2" (ngSubmit)="onSubmit()">
+            <form class="form pt-3 pb-2" [formGroup]="authorForm">
                 <div class="row pt-0 pl-3 pr-3 form-group">
+                    <div class="col-md-12" hidden>
+                        <label for="id" class="form-label">Id</label>
+                        <input type="text" id="id" name="id" class="form-control"
+                            placeholder="Ex: Artur Carlos Maurício Pestana dos Santos aka Pepetela"
+                            formControlName="id">
+                    </div>
                     <div class="col-md-12">
                         <label for="name" class="form-label">Nome do Autor</label>
-                        <input type="text" id="name" name="name" [(ngModel)]="author.name" class="form-control" placeholder="Ex: Artur Carlos Maurício Pestana dos Santos aka Pepetela" required>
+                        <input type="text" id="name" name="name" class="form-control"
+                            placeholder="Ex: Artur Carlos Maurício Pestana dos Santos aka Pepetela"
+                            formControlName="name">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="birthday" class="form-label">Data de Nascimento/Ano</label>
-                        <input type="text" name="birthday" id="birthday" [(ngModel)]="author.birthday" class="form-control" placeholder="Ex: 'Outubro 29, 1941' / '1941'">
+                        <input type="text" name="birthday" id="birthday" class="form-control"
+                            placeholder="Ex: 'Outubro 29, 1941' / '1941'" formControlName="birthday">
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="nationality" class="form-label">Nacionalidade</label>
-                        <input type="text" name="nationality" id="nationality" [(ngModel)]="author.nationality" class="form-control" placeholder="Ex: Angolana / Angonalan">
+                        <input type="text" name="nationality" id="nationality" class="form-control"
+                            placeholder="Ex: Angolana / Angonalan" formControlName="nationality">
                     </div>
                     <div class="col-md-12 mt-2">
                         <label for="status" class="form-label">Status do Autor</label>
-                        <textarea name="status" id="status" rows="2" class="form-control" maxlength="200" minlength="20" placeholder="Ex: Pepetela é um autor da literatura contemporânea angolanas... "></textarea>
+                        <textarea name="status" id="status" rows="2" class="form-control" maxlength="200" minlength="20"
+                            placeholder="Ex: Pepetela é um autor da literatura contemporânea angolanas... "></textarea>
                     </div>
                 </div>
-                <div class="col-md-12 mt-1  d-flex justify-content-end pb-3">
-                    <button type="submit" class="btn btn-success">Salvar Autor</button>
+                <div class=" col-md-12 d-flex flex-wrap justify-content-end pb-3">
+                    <div *ngIf="!authId" class=" mt-1 mr-2 ">
+                        <button class="btn btn-primary" (click)="authorSubmit()">Salvar Autor</button>
+                    </div>
+                    <div *ngIf="authId" class=" mt-1 mr-2 ">
+                        <button class="btn btn-primary" (click)="updateAuthor()">Actualizar Autor</button>
+                    </div>
+                    <div class=" mt-1 mr-2">
+                        <button class="btn btn-danger" (click)="goToListAuthor()">Cancelar</button>
+                    </div>
                 </div>
             </form>
         </div>

@@ -15,7 +15,7 @@ export class BookListUserComponent implements OnInit {
   serverUnvaliable: String = '';
   bgDanger: String = '';
   qtdT: Number = 0;
-  bookId: Number;
+  bookId: any;
   books: Book[] = [];
   categories: Category[] = [];
 
@@ -35,6 +35,7 @@ export class BookListUserComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.bookId = this.route.snapshot.paramMap.get('id');
     this.bookService.findAll().subscribe(data => {
       this.books = data;
 
@@ -50,6 +51,7 @@ export class BookListUserComponent implements OnInit {
     })
 
   }
+ 
   onDelete(bookId: any) {
     this.bookService.deleteBook(bookId).subscribe(data => {
       console.log(bookId);

@@ -1,4 +1,4 @@
-.selected{
+.selected:active{
     background-color: #0d355e;
     color: white;
     z-index: -1;

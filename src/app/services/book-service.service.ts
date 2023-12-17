@@ -32,4 +32,7 @@ export class BookServiceService {
     let params = new HttpParams().set('id', bookId);
     return this.http.delete<Book>(`${this.bookUrl}/delete/${bookId}/book`);
   }
+  public update(bookId: any, book: Book): Observable<Book> {
+    return this.http.put<Book>(`${this.bookUrl}/update/${bookId}/book`, book);
+  }
 }
