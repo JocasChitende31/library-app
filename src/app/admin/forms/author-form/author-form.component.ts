@@ -16,7 +16,7 @@ export class AuthorFormComponent implements OnInit {
     name: new FormControl('', Validators.required),
     birthday: new FormControl('', Validators.required),
     nationality: new FormControl('', Validators.required),
-    // stattus: new FormControl('', Validators.required)
+    status: new FormControl('', Validators.required)
   });
   authId: any;
   titleCreateAuthor = "Adicionar Autor";
@@ -37,7 +37,8 @@ export class AuthorFormComponent implements OnInit {
           id: res.id,
           name: res.name,
           birthday: res.birthday,
-          nationality: res.nationality
+          nationality: res.nationality,
+          status: res.status
         })
       })
     }

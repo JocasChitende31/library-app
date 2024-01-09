@@ -3,4 +3,5 @@ export class Author {
     name: String | undefined;
     birthday: String | undefined;
     nationality: String | undefined;
+    status: String | undefined
 }

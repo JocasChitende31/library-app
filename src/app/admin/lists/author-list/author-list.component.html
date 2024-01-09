@@ -10,7 +10,7 @@
             <tr>
                 <th scope="col">#</th>
                 <th scope="col">Nome</th>
-                <th scope="col">Data de Nascimento</th>
+                <th scope="col">Data_Nascimento</th>
                 <th scope="col">Nacionalidade</th>
                 <th scope="col">Status</th>
                 <th scope="colgroup" colspan="2" class="text-center">Ações</th>
@@ -22,7 +22,7 @@
                 <td>{{author.name}}</td>
                 <td>{{author.birthday}}</td>
                 <td>{{author.nationality}}</td>
-                <td>Lorem ipsum dolor sit amet consectetur adipisicing elit. Totam, voluptatem.</td>
+                <td>{{author.status}}</td>
                 <td><a routerLink="/admin/update/{{author?.id}}/author" class="btn text-primary">Editar</a></td>
                 <td><button (click)="onDelete(author?.id)" class="btn text-danger">Eliminar</button></td>
             </tr>

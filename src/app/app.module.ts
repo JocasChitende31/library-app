@@ -21,6 +21,7 @@ import { BookDetailsComponent } from './user/book-details/book-details.component
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
 import { BookReadingComponent } from './user/book-reading/book-reading.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 
 @NgModule({
   declarations: [
@@ -37,7 +38,8 @@ import { BookReadingComponent } from './user/book-reading/book-reading.component
     AboutComponent,
     CategoryListComponent,
     AuthorFormComponent,
-    CategoryFormComponent
+    CategoryFormComponent,
+    PageNotFoundComponent
   ],
   imports: [
     BrowserModule,

@@ -8,6 +8,7 @@ import { CategoryFormComponent } from './admin/forms/category-form/category-form
 import { AuthorListComponent } from './admin/lists/author-list/author-list.component';
 import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BookDetailsComponent } from './user/book-details/book-details.component';
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
@@ -20,7 +21,7 @@ const routes: Routes = [
   { path: 'user/books', component: BookListUserComponent },
   { path: 'addbook/:id/reading-list', component: BookReadingComponent },
   { path: 'details/:id/book', component: BookDetailsComponent },
-  {path: 'admin/update/:id/book', component: BookFormComponent},
+  { path: 'admin/update/:id/book', component: BookFormComponent },
   { path: 'admin/authors', component: AuthorListComponent },
   { path: 'admin/update/:id/author', component: AuthorFormComponent },
   { path: 'admin/create/author', component: AuthorFormComponent },
@@ -29,7 +30,9 @@ const routes: Routes = [
   { path: 'admin/update/:id/category', component: CategoryFormComponent },
   { path: 'admin/create/book', component: BookFormComponent },
   { path: ':id/category', component: BookListByCategoryComponent },
-  { path: 'about', component: AboutComponent }
+  { path: 'my-list-reading/book', component: BookReadingComponent },
+  { path: 'about', component: AboutComponent },
+  {path: '**', pathMatch: 'full', component: PageNotFoundComponent}
 ];
 
 @NgModule({
