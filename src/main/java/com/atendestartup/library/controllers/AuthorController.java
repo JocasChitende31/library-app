@@ -3,6 +3,7 @@ package com.atendestartup.library.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -15,14 +16,15 @@ import org.springframework.web.bind.annotation.RestController;
 import com.atendestartup.library.DTO.AuthorDTO;
 import com.atendestartup.library.services.AuthorService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/authors")
+@RequestMapping(value = "/api")
 public class AuthorController {
 
 	@Autowired
 	private AuthorService authorService;
 
-	@GetMapping
+	@GetMapping(value = "/authors")
 	public List<AuthorDTO> findAll() {
 		List<AuthorDTO> result = authorService.findAll();
 		return result;
@@ -39,7 +41,8 @@ public class AuthorController {
 		String name = body.getName();
 		String birthday = body.getBirthday();
 		String nationality = body.getNationality();
-		authorService.createAuthor(name, birthday, nationality);
+		String status = body.getStatus();
+		authorService.createAuthor(name, birthday, nationality, status);
 	}
 
 	@PutMapping(value = "/update/{authId}/author")
@@ -47,9 +50,11 @@ public class AuthorController {
 		String newName = body.getName();
 		String newBirthday = body.getBirthday();
 		String newNationality = body.getNationality();
-		authorService.updateAuthor(authId, newName, newBirthday, newNationality);
+		String newStatus = body.getStatus();
+		authorService.updateAuthor(authId, newName, newBirthday, newNationality, newStatus);
 	}
-	@DeleteMapping(value="/delete/{authId}/author")
+
+	@DeleteMapping(value = "/delete/{authId}/author")
 	public void deleteAthourById(@PathVariable Long authId) {
 		authorService.deleteAuthor(authId);
 	}

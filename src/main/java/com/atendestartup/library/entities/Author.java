@@ -4,6 +4,7 @@ import java.util.HashSet;
 import java.util.Objects;
 import java.util.Set;
 
+import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
@@ -21,6 +22,8 @@ public class Author {
 	private String name;
 	private String birthday;
 	private String nationality;
+	@Column(columnDefinition = "TEXT")
+	private String status;
 
 	@OneToMany(mappedBy = "fkAuthor")
 	private Set<Book> books = new HashSet<>();
@@ -29,11 +32,12 @@ public class Author {
 
 	}
 
-	public Author(Long id, String name, String birthday, String nationality) {
+	public Author(Long id, String name, String birthday, String nationality, String status) {
 		this.id = id;
 		this.name = name;
 		this.birthday = birthday;
 		this.nationality = nationality;
+		this.status = status;
 	}
 
 	public Long getId() {
@@ -66,6 +70,14 @@ public class Author {
 
 	public void setNationality(String nationality) {
 		this.nationality = nationality;
+	}
+
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
 	}
 
 	public Set<Book> getBooks() {

@@ -5,5 +5,6 @@ public interface AuthorProjection {
 	String getName();
 	String getBirthday();
 	String getNationality();
+	String getStatus();
 	
 }

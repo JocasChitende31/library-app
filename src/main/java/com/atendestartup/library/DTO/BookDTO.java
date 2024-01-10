@@ -21,6 +21,7 @@ public class BookDTO {
 	private String name;
 	private String birthday;
 	private String nationality;
+	private String status;
 
 	public BookDTO() {
 
@@ -47,6 +48,7 @@ public class BookDTO {
 		name = projection.getName();
 		birthday = projection.getBirthday();
 		nationality = projection.getNationality();
+		status = projection.getStatus();
 	}
 
 	public Long getId() {
@@ -143,6 +145,9 @@ public class BookDTO {
 
 	public String getNationality() {
 		return nationality;
+	}
+	public String getStatus() {
+		return status;
 	}
 
 }

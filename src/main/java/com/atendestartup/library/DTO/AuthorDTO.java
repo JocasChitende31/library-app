@@ -9,6 +9,7 @@ public class AuthorDTO {
 	private String name;
 	private String birthday;
 	private String nationality;
+	private String status;
 
 	public AuthorDTO() {
 
@@ -19,12 +20,15 @@ public class AuthorDTO {
 		name = entity.getName();
 		birthday = entity.getBirthday();
 		nationality = entity.getNationality();
+		status = entity.getStatus();
 	}
+
 	public AuthorDTO(AuthorProjection projection) {
 		id = projection.getId();
 		name = projection.getName();
-		birthday=projection.getBirthday();
+		birthday = projection.getBirthday();
 		nationality = projection.getNationality();
+		status = projection.getStatus();
 	}
 
 	public Long getId() {
@@ -41,5 +45,9 @@ public class AuthorDTO {
 
 	public String getNationality() {
 		return nationality;
+	}
+
+	public String getStatus() {
+		return status;
 	}
 }

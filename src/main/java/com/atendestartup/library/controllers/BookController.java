@@ -3,6 +3,7 @@ package com.atendestartup.library.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,25 +17,27 @@ import com.atendestartup.library.DTO.BookDTO;
 import com.atendestartup.library.DTO.BookMinDTO;
 import com.atendestartup.library.services.BookService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/books")
+@RequestMapping(value = "/api")
 public class BookController {
 
 	@Autowired
 	private BookService bookService;
 
-	@GetMapping(value = "/{id}")
+	@GetMapping(value="/books")
+	public List<BookMinDTO> findMinList() {
+		List<BookMinDTO> result = bookService.findMinListBook();
+		return result;
+	}
+	
+	@GetMapping(value = "/{id}/book")
 	public BookDTO findById(@PathVariable Long id) {
 		BookDTO result = bookService.findById(id);
 		return result;
 	}
 
-	@GetMapping
-	public List<BookMinDTO> findMinList() {
-
-		List<BookMinDTO> result = bookService.findMinListBook();
-		return result;
-	}
+	
 
 	@PostMapping("/create/book")
 	public void createBook(@RequestBody BookDTO body) {

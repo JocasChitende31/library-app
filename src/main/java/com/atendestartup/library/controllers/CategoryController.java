@@ -3,6 +3,7 @@ package com.atendestartup.library.controllers;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -19,8 +20,9 @@ import com.atendestartup.library.entities.Category;
 import com.atendestartup.library.services.BookService;
 import com.atendestartup.library.services.CategoryService;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
-@RequestMapping(value = "/categories")
+@RequestMapping(value = "/api")
 public class CategoryController {
 
 	@Autowired
@@ -28,7 +30,7 @@ public class CategoryController {
 	@Autowired
 	private BookService bookService;
 
-	@GetMapping
+	@GetMapping(value="/categories")
 	public List<CategoryDTO> findAll() {
 		List<CategoryDTO> result = categoryService.findAll();
 		return result;

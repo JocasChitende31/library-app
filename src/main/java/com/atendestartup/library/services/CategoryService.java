@@ -24,7 +24,7 @@ public class CategoryService {
 
 	@Transactional(readOnly = true)
 	public List<CategoryDTO> findAll() {
-		List<Category> result = categoryRepository.findAll();
+		List<CategoryProjection> result = categoryRepository.findListCategory();
 		List<CategoryDTO> dto = result.stream().map(x -> new CategoryDTO(x)).toList();
 		return dto;
 	}

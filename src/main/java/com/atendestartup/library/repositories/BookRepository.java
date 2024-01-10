@@ -14,7 +14,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 
 	@Query(nativeQuery = true, value = """
 			SELECT
-			tb_books.id,
+			tb_books.id AS id,
 			tb_books.title,
 			tb_books.book_year AS bookYear,
 			tb_books.publisher AS publisher,
@@ -24,7 +24,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 			tb_books.category_id AS fkCategory,
 			tb_category.genre,
 			tb_books.author_id AS fkAuthor,
-			tb_authors.id,
 			tb_authors.name,
 			tb_authors.nationality
 			FROM
@@ -33,7 +32,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 			tb_category ON tb_books.category_id = tb_category.id
 			INNER JOIN
 			tb_authors ON tb_books.author_id = tb_authors.id
-			ORDER BY tb_books.id DESC
+			ORDER BY tb_books.title ASC
 			""")
 	List<BookMinProjection> findMinListBook();
 
@@ -52,7 +51,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				tb_books.author_id AS fkAuthor,
 				tb_authors.name,
 				tb_authors.birthday,
-				tb_authors.nationality
+				tb_authors.nationality,
+				tb_authors.status,
 				FROM tb_books
 				INNER JOIN
 				tb_category ON tb_books.category_id = tb_category.id
@@ -77,7 +77,8 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				tb_books.author_id AS fkAuthor,
 				tb_authors.name,
 				tb_authors.birthday,
-				tb_authors.nationality
+				tb_authors.nationality,
+				tb_authors.status,
 				FROM tb_books
 				INNER JOIN
 				tb_category ON tb_books.category_id = tb_category.id

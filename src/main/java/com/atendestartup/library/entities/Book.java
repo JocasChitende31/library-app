@@ -2,6 +2,7 @@ package com.atendestartup.library.entities;
 
 import java.util.Objects;
 
+import jakarta.persistence.Basic;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.FetchType;
@@ -18,6 +19,8 @@ public class Book {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
+	@Basic(optional=false)
+	@Column(name="id")
 	private Long id;
 	private String title;
 	@Column(name = "book_year")

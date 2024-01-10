@@ -28,4 +28,6 @@ public interface BookProjection {
 	String getBirthday();
 
 	String getNationality();
+	
+	String getStatus();
 }
