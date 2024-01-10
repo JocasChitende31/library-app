@@ -1,0 +1,23 @@
+.spacetop{
+    margin: 60px 0 0 0;
+    padding: auto;
+}
+.selected{
+    background-color: #0d365e2a;
+    /* color: rgb(101, 101, 101); */
+    /* color: rgb(255, 255, 255); */
+    border-bottom: 2px solid #0d355e;
+
+}
+.dropdown-menu{
+    top: 44.5px;
+    border-top-right-radius: 0;
+    border-top-left-radius: 0;
+
+}
+.dropdown-menu_title{
+    background-color: #0d355e;
+    padding: 10px 0px 10px 3px;
+    letter-spacing: 1px;
+    color: white;
+}

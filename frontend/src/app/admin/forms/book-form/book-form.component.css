@@ -1,0 +1,26 @@
+.container .card{
+    background-color: #0d355e;
+}
+.container h4{
+    font-weight:500;color: white;
+}
+.container .form{
+    /* background-color: #f6f2f1b8; */
+    background-color: #f8f9fa;
+}
+
+textarea.ng-invalid.ng-touched,
+input.ng-invalid.ng-touched {
+    border: 1px solid red;
+}
+
+select.ng-touched,
+textarea.ng-valid,
+input.ng-valid {
+    border: 1px solid greenyellow;
+}
+
+span{
+    color:red;
+    font-size: 12px;
+}

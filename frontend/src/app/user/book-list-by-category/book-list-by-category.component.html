@@ -1,0 +1,94 @@
+<div class="pt-5"></div>
+<h6 class="font-weight-light text-muted mt-5">Categorias ><b *ngFor="let category of categories">
+
+        <small class="text-info" *ngIf="category.id === categoryId?.id">
+            {{category.genre}} <i
+                style="color: white; font-weight:bolder; font-size: 13px; border: .1px solid red; border-radius: 60%; padding: .5px 3.5px; background-color: red;">{{qtd}}</i>
+
+        </small>
+    </b>
+
+</h6>
+
+<div class="mb-3 d-flex flex-wrap">
+    <br>
+    <div *ngFor="let category of categories" class="mr-4">
+        <!-- routerLink="/{{category.id}}/books"  -->
+        <!-- href="/{{category.id}}/books" -->
+        <!-- <a routerLinkActive="selected" routerLink="/{{category?.id}}/category" class="badge badge-light">{{category.genre}}</a> -->
+        <a href="/{{category?.id}}/category" class="btn badge badge-light">{{category.genre}}</a>
+
+    </div>
+
+</div>
+<hr>
+<div class="mt-2" *ngIf="qtd != 0">
+    <h6 class="text-danger"> <b class=" text-muted font-weight-light">Livro(s) encontrado(os) na categoria ></b>
+        {{categoryId?.genre}}</h6>
+</div>
+<div class="mt-2" *ngIf="qtd===0">
+    <h6 class="text-danger"></h6>
+</div>
+<div *ngIf="qtd === 0">
+    <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
+        <h5 class="text-white font-weight-light">{{noContant}}</h5>
+    </div>
+
+</div>
+<div *ngFor="let book of books">
+
+    <div class="card mb-4 p-2" style="background-color:#f8f9fa;">
+        <div class="row g-0">
+            <div class="col-md-2 mb-0 mr-4">
+                <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
+                    style="max-width: 200px; max-height: 100vh;">
+            </div>
+            <div class="col-md-9">
+                <div class="card-body">
+                    <h5 class="card-title" hidden><b>#{{book.id}}</b></h5>
+                    <h5 class="card-title">{{book.title}} </h5>
+                    <hr>
+                    <div class="d-flex flex-wrap mt-3">
+                        <div class="mr-5">
+                            <h6 class="font-weight-light">Ano de Lançamento</h6>
+                            <p class="card-text text-muted">{{book.bookYear}} </p>
+                        </div>
+                        <div class="mr-5">
+                            <h6 class="font-weight-light">Ediçao</h6>
+                            <p class="card-text text-muted">{{book.edition}}a</p>
+                        </div>
+                        <div class="mr-5">
+                            <h6 class="font-weight-light">Categoria</h6>
+                            <p class="card-text" hidden>{{book.fkCategory}}</p>
+                            <p class="card-text text-muted">{{book.genre}}</p>
+                        </div>
+                        <div>
+                            <h6 class="font-weight-light">Editora</h6>
+                            <p class="card-text text-muted">{{book.publisher}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex flex-wrap mt-3">
+                        <div class="mr-5">
+                            <h6 class="font-weight-light">Autor do Livro</h6>
+                            <p class="card-text" hidden>{{book.fkAuthor}}</p>
+                            <p class="card-text text-muted">{{book.name}}</p>
+                        </div>
+                        <div class="">
+                            <h6 class="font-weight-light">Nacionalidade</h6>
+                            <p class="card-text text-muted">{{book.nationality}}</p>
+                        </div>
+                    </div>
+                    <hr>
+                    <div class="d-flex">
+                        <div>
+                            <h6 class="font-weight-light">Pequeno Resumo</h6>
+                            <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</div>
