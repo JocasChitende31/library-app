@@ -52,13 +52,15 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				tb_authors.name,
 				tb_authors.birthday,
 				tb_authors.nationality,
-				tb_authors.status,
-				FROM tb_books
+				tb_authors.status
+				FROM 
+				tb_books
 				INNER JOIN
 				tb_category ON tb_books.category_id = tb_category.id
 				INNER JOIN
 				tb_authors ON tb_books.author_id = tb_authors.id
 				WHERE tb_books.id = :bookId
+				
 				""")
 	BookProjection searchById(Long bookId);
 
@@ -78,7 +80,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				tb_authors.name,
 				tb_authors.birthday,
 				tb_authors.nationality,
-				tb_authors.status,
+				tb_authors.status
 				FROM tb_books
 				INNER JOIN
 				tb_category ON tb_books.category_id = tb_category.id
