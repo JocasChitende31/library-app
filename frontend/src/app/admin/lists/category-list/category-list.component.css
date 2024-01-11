@@ -16,3 +16,6 @@ button:hover{
     background-color: #efefefb4;
     text-decoration: underline;
 }
+tbody{
+    background-color: #f8f9fa;
+}
