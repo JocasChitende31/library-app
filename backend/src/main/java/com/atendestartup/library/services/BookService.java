@@ -2,6 +2,7 @@ package com.atendestartup.library.services;
 
 import java.util.List;
 
+import com.atendestartup.library.entities.Book;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -19,16 +20,20 @@ public class BookService {
 	private BookRepository bookRepository;
 
 	@Transactional(readOnly = true)
-	public BookDTO findById(Long id) {
-		BookProjection result = bookRepository.searchById(id);
-		BookDTO dto = new BookDTO(result);
-		return dto;
-	}
-
-	@Transactional(readOnly = true)
 	public List<BookMinDTO> findMinListBook() {
 		List<BookMinProjection> result = bookRepository.findMinListBook();
 		List<BookMinDTO> dto = result.stream().map(x -> new BookMinDTO(x)).toList();
+		return dto;
+	}
+	@Transactional
+	public Book findBookByTitle(String title){
+		Book result = this.bookRepository.findBookByTitle(title);
+		return result;
+	}
+	@Transactional(readOnly = true)
+	public BookDTO findById(Long id) {
+		BookProjection result = bookRepository.searchById(id);
+		BookDTO dto = new BookDTO(result);
 		return dto;
 	}
 

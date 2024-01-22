@@ -39,4 +39,18 @@ public class AuthorizationService implements UserDetailsService {
         List<RegisterDTO> data = listUser.stream().map(x -> new RegisterDTO(x.getId(), x.getLogin(), x.getPassword(), x.getRole())).toList();
         return data;
     }
+
+    @Transactional
+    public void update(String id, RegisterDTO body) {
+        String newLogin = body.login();
+        String newEncryptedPassword = new BCryptPasswordEncoder().encode(body.password());
+        String newRole = body.role().toString();
+        this.userRepository.update(id, newLogin, newEncryptedPassword, newRole);
+    }
+
+    @Transactional
+    public void delete(String id) {
+        User user = this.userRepository.findById(id).get();
+        this.userRepository.delete(user);
+    }
 }

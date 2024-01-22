@@ -35,7 +35,7 @@ public class AuthorController {
             return ResponseEntity.badRequest().build();
         else
             this.authorService.createAuthor(body);
-        return ResponseEntity.ok().build();
+            return ResponseEntity.ok().build();
     }
 
     @PutMapping(value = "/update/{authId}/author")

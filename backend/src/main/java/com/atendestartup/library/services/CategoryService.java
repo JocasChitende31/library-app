@@ -29,8 +29,8 @@ public class CategoryService {
 		return dto;
 	}
 	@Transactional
-	public CategoryDTO findByGenre(String genre){
-		CategoryDTO result = this.categoryRepository.findByGenre(genre);
+	public Category findByGenre(String genre){
+		Category result = this.categoryRepository.findByGenre(genre);
 		return result;
 	}
 	@Transactional

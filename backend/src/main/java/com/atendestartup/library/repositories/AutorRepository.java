@@ -13,10 +13,9 @@ public interface AutorRepository extends JpaRepository<Author, Long> {
 
 
     @Query(nativeQuery = true, value = """
-            	SELECT tb_authors.name FROM tb_authors WHERE name = :name
+            	SELECT * FROM tb_authors WHERE tb_authors.name = :name
             """)
-    AuthorDTO findByName(String name);
-
+    Author findByName(String name);
     @Query(nativeQuery = true, value = """
             SELECT * FROM tb_authors
             ORDER BY tb_authors.name ASC

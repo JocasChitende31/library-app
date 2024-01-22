@@ -13,6 +13,10 @@ import com.atendestartup.library.entities.Book;
 public interface BookRepository extends JpaRepository<Book, Long> {
 
 	@Query(nativeQuery = true, value = """
+	SELECT * FROM tb_books WHERE tb_books.title = :title
+	""")
+	Book findBookByTitle(String title);
+	@Query(nativeQuery = true, value = """
 			SELECT
 			tb_books.id AS id,
 			tb_books.title,

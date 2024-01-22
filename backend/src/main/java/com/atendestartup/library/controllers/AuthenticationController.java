@@ -1,7 +1,10 @@
 package com.atendestartup.library.controllers;
 
 import com.atendestartup.library.DTO.AuthenticationDTO;
+import com.atendestartup.library.DTO.LoginResponseDTO;
 import com.atendestartup.library.DTO.RegisterDTO;
+import com.atendestartup.library.entities.User;
+import com.atendestartup.library.infraSecurity.TokenService;
 import com.atendestartup.library.services.AuthorizationService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +25,9 @@ public class AuthenticationController {
     @Autowired
     private AuthorizationService authorizationService;
 
+    @Autowired
+    private TokenService tokenService;
+
     @PostMapping(value = "/login")
     public ResponseEntity login(@RequestBody @Valid AuthenticationDTO body) {
 
@@ -29,7 +35,9 @@ public class AuthenticationController {
 
         var auth = this.authenticationManager.authenticate(usernamePassword);
 
-        return ResponseEntity.ok().build();
+        var token = this.tokenService.generateToken((User) auth.getPrincipal());
+
+        return ResponseEntity.ok(new LoginResponseDTO(token));
     }
 
     @PostMapping(value = "/register")
@@ -46,6 +54,17 @@ public class AuthenticationController {
         List<RegisterDTO> data = this.authorizationService.findAll();
         return ResponseEntity.ok(data);
 
+    }
+
+    @PutMapping(value = "/user/{id}/update")
+    public ResponseEntity update(@PathVariable String id, @RequestBody @Valid RegisterDTO body){
+        this.authorizationService.update(id, body);
+        return ResponseEntity.ok().build();
+    }
+    @DeleteMapping(value = "/user/{id}/delete")
+    public ResponseEntity delete(@PathVariable String id){
+        this.authorizationService.delete(id);
+        return ResponseEntity.ok().build();
     }
 
 }

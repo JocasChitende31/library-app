@@ -18,8 +18,8 @@ public class AuthorService {
 	private AutorRepository authorRepository;
 
 	@Transactional
-	public AuthorDTO findByName(String name){
-		AuthorDTO result = this.authorRepository.findByName(name);
+	public Author findByName(String name){
+		Author result = this.authorRepository.findByName(name);
 		return result;
 	}
 	@Transactional(readOnly = true)
