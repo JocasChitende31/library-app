@@ -6,8 +6,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import com.atendestartup.labrary.projections.BookMinProjection;
-import com.atendestartup.labrary.projections.BookProjection;
+import com.atendestartup.library.projections.BookMinProjection;
+import com.atendestartup.library.projections.BookProjection;
 import com.atendestartup.library.entities.Book;
 
 public interface BookRepository extends JpaRepository<Book, Long> {

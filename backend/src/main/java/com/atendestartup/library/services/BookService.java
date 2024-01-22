@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.atendestartup.labrary.projections.BookMinProjection;
-import com.atendestartup.labrary.projections.BookProjection;
+import com.atendestartup.library.projections.BookMinProjection;
+import com.atendestartup.library.projections.BookProjection;
 import com.atendestartup.library.DTO.BookDTO;
 import com.atendestartup.library.DTO.BookMinDTO;
 import com.atendestartup.library.repositories.BookRepository;

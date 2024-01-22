@@ -1,6 +1,7 @@
-package com.atendestartup.labrary.projections;
+package com.atendestartup.library.projections;
 
-public interface BookProjection {
+public interface BookMinProjection {
+
 	Long getId();
 
 	String getTitle();
@@ -14,8 +15,6 @@ public interface BookProjection {
 	String getImgUrl();
 
 	String getShortSummary();
-	
-	String getLongSummary();
 
 	Long getFkCategory();
 
@@ -24,10 +23,6 @@ public interface BookProjection {
 	Long getFkAuthor();
 
 	String getName();
-	
-	String getBirthday();
 
 	String getNationality();
-	
-	String getStatus();
 }

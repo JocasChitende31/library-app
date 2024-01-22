@@ -6,8 +6,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import com.atendestartup.labrary.projections.BookMinProjection;
-import com.atendestartup.labrary.projections.CategoryProjection;
+import com.atendestartup.library.projections.BookMinProjection;
+import com.atendestartup.library.projections.CategoryProjection;
 import com.atendestartup.library.DTO.CategoryDTO;
 import com.atendestartup.library.entities.Category;
 import com.atendestartup.library.repositories.BookRepository;
@@ -25,14 +25,18 @@ public class CategoryService {
 	@Transactional(readOnly = true)
 	public List<CategoryDTO> findAll() {
 		List<CategoryProjection> result = categoryRepository.findListCategory();
-		List<CategoryDTO> dto = result.stream().map(x -> new CategoryDTO(x)).toList();
+		List<CategoryDTO> dto = result.stream().map(x -> new CategoryDTO(x.getId(), x.getGenre())).toList();
 		return dto;
 	}
-
+	@Transactional
+	public CategoryDTO findByGenre(String genre){
+		CategoryDTO result = this.categoryRepository.findByGenre(genre);
+		return result;
+	}
 	@Transactional
 	public CategoryDTO findCategoryById(Long catId) {
 		CategoryProjection result = categoryRepository.findCategoryById(catId);
-		CategoryDTO dto = new CategoryDTO(result);
+		CategoryDTO dto = new CategoryDTO(result.getId(),result.getGenre());
 		return dto;
 	}
 
@@ -51,18 +55,21 @@ public class CategoryService {
 	}
 
 	@Transactional
-	public void createCategory(Category category) {
-		categoryRepository.save(category);
+	public void createCategory(CategoryDTO body) {
+		Category newCategory = new Category(body.id(), body.genre());
+		this.categoryRepository.save(newCategory);
 	}
 
 	@Transactional
-	public void updateCategory(Long id, String genre) {
-		categoryRepository.updateCategory(id, genre);
+	public void updateCategory(Long id, CategoryDTO body) {
+		String newGenre = body.genre();
+		this.categoryRepository.updateCategory(id, newGenre);
 	}
 
 	@Transactional
 	public void deleteCategoryById(Long catId) {
-		categoryRepository.deleteCategoryById(catId);
+		Category category = this.categoryRepository.findById(catId).get();
+		this.categoryRepository.delete(category);
 	}
 
 }

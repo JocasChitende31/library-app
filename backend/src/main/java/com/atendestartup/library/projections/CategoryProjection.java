@@ -1,4 +1,4 @@
-package com.atendestartup.labrary.projections;
+package com.atendestartup.library.projections;
 
 public interface CategoryProjection {
 

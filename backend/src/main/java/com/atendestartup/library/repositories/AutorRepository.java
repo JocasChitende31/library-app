@@ -1,31 +1,31 @@
 package com.atendestartup.library.repositories;
 
-import java.util.List;
-
+import com.atendestartup.library.DTO.AuthorDTO;
+import com.atendestartup.library.entities.Author;
+import com.atendestartup.library.projections.AuthorProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 
-import com.atendestartup.labrary.projections.AuthorProjection;
-import com.atendestartup.library.entities.Author;
+import java.util.List;
 
 public interface AutorRepository extends JpaRepository<Author, Long> {
 
-	@Query(nativeQuery = true, value = """
-			SELECT * FROM tb_authors
-			ORDER BY tb_authors.name ASC
-			""")
-	List<AuthorProjection> findListAuthor();
 
-	@Modifying
-	@Query(nativeQuery = true, value = """
-			INSERT INTO tb_authors (name, birthday, nationality, status) values(:name, :birthday, :nationality, :status)
-			""")
-	void insertAuthor(String name, String birthday, String nationality, String status);
+    @Query(nativeQuery = true, value = """
+            	SELECT tb_authors.name FROM tb_authors WHERE name = :name
+            """)
+    AuthorDTO findByName(String name);
 
-	@Modifying
-	@Query(nativeQuery = true, value = """
-			UPDATE tb_authors SET name = :newName, birthday = :newBirthday, nationality = :newNationality, status = :newStatus
-			WHERE tb_authors.id = :authId """)
-	void updateAuthor(Long authId, String newName, String newBirthday, String newNationality, String newStatus);
+    @Query(nativeQuery = true, value = """
+            SELECT * FROM tb_authors
+            ORDER BY tb_authors.name ASC
+            """)
+    List<AuthorProjection> findListAuthor();
+
+    @Modifying
+    @Query(nativeQuery = true, value = """
+            UPDATE tb_authors SET name = :newName, birthday = :newBirthday, nationality = :newNationality, status = :newStatus
+            WHERE tb_authors.id = :authId """)
+    void updateAuthor(Long authId, String newName, String newBirthday, String newNationality, String newStatus);
 }

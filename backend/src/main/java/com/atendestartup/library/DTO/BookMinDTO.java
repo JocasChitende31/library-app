@@ -1,6 +1,6 @@
 package com.atendestartup.library.DTO;
 
-import com.atendestartup.labrary.projections.BookMinProjection;
+import com.atendestartup.library.projections.BookMinProjection;
 import com.atendestartup.library.entities.Book;
 
 public class BookMinDTO {

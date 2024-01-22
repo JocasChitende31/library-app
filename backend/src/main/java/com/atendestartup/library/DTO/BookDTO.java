@@ -2,7 +2,7 @@ package com.atendestartup.library.DTO;
 
 import org.springframework.beans.BeanUtils;
 
-import com.atendestartup.labrary.projections.BookProjection;
+import com.atendestartup.library.projections.BookProjection;
 import com.atendestartup.library.entities.Book;
 
 public class BookDTO {
