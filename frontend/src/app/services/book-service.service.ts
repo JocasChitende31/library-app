@@ -1,6 +1,8 @@
-import { HttpClient, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
+import { DISABLE_GLOBAL_EXCEPTION_HANDLING } from '../core/interceptors/token.interceptor';
+import { AppConstants } from '../env/app-constants';
 import { Book } from '../models/book';
 
 @Injectable({
@@ -8,17 +10,19 @@ import { Book } from '../models/book';
 })
 export class BookServiceService {
 
-  private bookUrl: string;
+  
+  private bookUrl: String;
 
   constructor(private http: HttpClient) {
-    this.bookUrl = 'http://localhost:8080/api';
+    this.bookUrl = AppConstants.baseUrlApi;
+    
   }
 
   public findAll(): Observable<Book[]> {
-    return this.http.get<Book[]>(`${this.bookUrl}/books`);
+    return this.http.get<Book[]>(`${this.bookUrl}/books`, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
   }
   public findById(bookId: any): Observable<Book> {
-    return this.http.get<Book>(`${this.bookUrl}/${bookId}/book`);
+    return this.http.get<Book>(`${this.bookUrl}/${bookId}/book`, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
   }
 
   public save(book: Book) {
@@ -26,7 +30,7 @@ export class BookServiceService {
   }
   public findBookByCategoryId(catId: any): Observable<Book[]> {
     let params = new HttpParams().set('id', catId)
-    return this.http.get<Book[]>(`${this.bookUrl}/${catId}/books`, { params: params });
+    return this.http.get<Book[]>(`${this.bookUrl}/${catId}/books`, { params: params, context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
   }
   public deleteBook(bookId: any): Observable<Book> {
     let params = new HttpParams().set('id', bookId);

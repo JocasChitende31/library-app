@@ -1,6 +1,7 @@
-<div class="pt-5"></div>
-<div class=" mt-5">
-    <h5 class="font-weight-light">Livros</h5>
+<div class="pt-5 mt-5"></div>
+<div class="title-manager col-5 p-0"
+    style="display: flex; flex-direction: row; align-items: center; align-content: center">
+    Admin > <h6 class=" text-title" style="color: #2b7cce !important;">Gerenciar de Livros</h6>
 </div>
 <hr>
 <h6 class="font-weight-light ">Por Categoria > <small class="text-info"> <i class="font-weight-light"
@@ -12,9 +13,15 @@
     <br>
     <div *ngFor="let category of categories" class="mr-4">
         <!-- href="/{{category.id}}/books" -->
-        <a routerLink="/{{category.id}}/category" class="badge badge-light"
-            style="color:#0d355e;">{{category.genre}}</a>
+        <a routerLink="/{{category.id}}/category" class="badge badge-light" style="color:#0d355e;"
+            routerLinkActive="selected">{{category.genre}}</a>
     </div>
+</div>
+<hr>
+<div>
+    <a routerLink="/admin/create/book">Adicionar Novo Livro</a>
+    &nbsp;
+    <a routerLink="/uploadFile">Upload File PDF</a>
 </div>
 <hr>
 <div>
@@ -27,11 +34,11 @@
     </div>
 </div>
 <div *ngFor="let book of books">
-    <div class="card mb-4 p-2" style="background-color:#f8f9fa;">
+    <div class="card mb-4 p-2" style="border: #0d355e;">
         <div class="row g-0">
             <div class="col-md-2 mb-0 mr-4">
                 <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
-                    style="max-width: 200px; max-height: 100vh;">
+                    style="max-width: 200px; max-height: 100vh; padding-top: 5px;">
             </div>
             <div class="col-md-9">
                 <div class="card-body">
@@ -78,16 +85,46 @@
                     </div>
                     <hr>
                     <ul class="list-inline text-right">
-                        <li class="list-inline-item mr-5"><a class="btn btn-success"
-                                routerLink="/details/{{book.id}}/book">+
-                                Detalhes</a>
+                        <li class="list-inline-item"><a class="btn btn-secondary" routerLink="/details/{{book.id}}/book" style="display: flex;"><mat-icon class="mat-18 mr-1"> remove_red_eye</mat-icon>
+                            Detalhes</a>
                         </li>
-                        <li class="list-inline-item mr-5"><a class="btn btn-success"
-                                routerLink="/addbook/{{book.id}}/reading-list">+ A minha List Leitura</a>
+                        <li class="list-inline-item"><a class="btn btn-success"
+                                routerLink="/addbook/{{book.id}}/reading-list" style="display: flex;"><mat-icon class="mat-18 mr-1">my_library_add</mat-icon> A minha
+                                List Leitura</a>
                         </li>
-                        <li class="list-inline-item mr-5"><a routerLink="/admin/update/{{book.id}}/book" class="btn btn-primary text-white">Editar</a></li>
-                        <li class="list-inline-item mr-5 "><button class="btn btn-danger"
-                                (click)="onDelete(book?.id)">Eliminar</button></li>
+                        <li class="list-inline-item"><button *ngIf="book.downloaderRefPDF !==null"class="btn btn-success" type="button" data-toggle="modal"
+                                data-target="#exampleModal" (click)="downloadFile(book?.downloaderRefPDF)" style="display: flex;" ><mat-icon class="mat-18 mr-1">download_for_offline</mat-icon>Download
+                                PDF</button>
+                            <!-- Modal -->
+                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                                aria-labelledby="exampleModalLabel" aria-hidden="true">
+                                <div class="modal-dialog" role="document">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="exampleModalLabel">Clique no link abaixo: {{titleOfBookDownload}}</h5>
+                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+                                        </div>
+                                        <div class="modal-body" *ngIf="linkGenerated">
+                                            <a class="btn btn-secondary" href="{{linkGenerated}}" type="button">Baixar
+                                                <i class="material-icons">download</i></a>
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-danger"
+                                                data-dismiss="modal">Fechar</button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </li>
+                        <!-- {{book?.downloaderRefPDF}} -->
+                            
+                        <li class="list-inline-item "><a routerLink="/admin/update/{{book.id}}/book"
+                                class="btn btn-primary text-white" style="display: flex;"> <mat-icon class="mat-18 mr-1">edit</mat-icon>Editar</a></li>
+                        <li class="list-inline-item "><button class="btn btn-danger"
+                                (click)="onDelete(book?.id)" style="display:flex ;" ><mat-icon class="mat-18 mr-1">delete_forever</mat-icon>Eliminar</button></li>
                     </ul>
                 </div>
             </div>

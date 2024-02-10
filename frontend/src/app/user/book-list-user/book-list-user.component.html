@@ -2,17 +2,19 @@
 
 <h6 class="font-weight-light mt-5">
     <hr class="mb-3">
-    Categorias > <small class="text-info"> <i class="font-weight-light"
-            style="font-style: normal;">Livros </i> <b style="color: white;
+    Categorias > <small class="text-info"> <i class="font-weight-light" style="font-style: normal;">Livros </i> <b
+            style="color: white;
             font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
             background-color: red;">{{qtdT}}</b>
-    </small></h6>
-    
+    </small>
+</h6>
+
 <div class="mb-3 mt-2 d-flex flex-wrap ">
     <!-- <br> -->
     <div *ngFor="let category of categories" class="mr-4">
         <!-- href="/{{category.id}}/books" -->
-        <a routerLink="/{{category.id}}/category" class="badge badge-light" style="color:#0d355e;">{{category.genre}}</a>
+        <a routerLink="/{{category.id}}/category" class="badge badge-light" style="color:#0d355e;"
+            routerLinkActive="selected">{{category.genre}}</a>
     </div>
 </div>
 <hr>
@@ -26,7 +28,8 @@
     </div>
 </div>
 <div *ngFor="let book of books">
-    <div class="card mb-4 p-2" style="background-color:#f8f9fa;">
+    <div class="card mb-4 p-2" style=" border: #0d355e;
+    border-bottom: 5px solid #1e72c7;;">
         <div class="row g-0">
             <div class="col-md-2 mb-0 mr-4">
                 <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
@@ -77,13 +80,41 @@
                     </div>
                     <hr>
                     <ul class="list-inline text-right mt-3 mb-0">
-                        <li class="list-inline-item mr-5"><a class="btn btn-success" routerLink="/details/{{book.id}}/book">+
-                                Detalhes</a>
+                        <li class="list-inline-item"><a class="btn btn-secondary"
+                                routerLink="/details/{{book.id}}/book" style="display: flex;"> <mat-icon class="mat-18 mr-1"> remove_red_eye</mat-icon>
+                                 Detalhes</a>
                         </li>
-                        <li class="list-inline-item mr-5"><a class="btn btn-success"
-                                routerLink="/addbook/{{book.id}}/reading-list">+ A minha List Leitura</a>
+                        <li class="list-inline-item"><a class="btn btn-success"
+                                routerLink="/addbook/{{book.id}}/reading-list" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> A minha List Leitura</a>
                         </li>
-                        <a href="" ></a>
+                        <li class="list-inline-item"><button *ngIf="book.downloaderRefPDF !==null"class="btn btn-success" type="button" data-toggle="modal"
+                            data-target="#exampleModal" (click)="downloadFile(book?.downloaderRefPDF)" style="display: flex;"><mat-icon class="mat-18 mr-1">download_for_offline</mat-icon>Download
+                            PDF</button>
+                        <!-- Modal -->
+                        <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
+                            aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog" role="document">
+                                <div class="modal-content">
+                                    <div class="modal-header">
+                                        <h5 class="modal-title" id="exampleModalLabel" >Clique no link abaixo: {{titleOfBookDownload}}</h5>
+                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                            <span aria-hidden="true">&times;</span>
+                                        </button>
+                                    </div>
+                                    <div class="modal-body" *ngIf="linkGenerated">
+                                        <a class="btn btn-secondary" href="{{linkGenerated}}" type="button">Baixar
+                                            <i class="material-icons">download</i></a>
+                                    </div>
+                                    <div class="modal-footer">
+                                        <button type="button" class="btn btn-danger"
+                                            data-dismiss="modal">Fechar</button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </li>
+                    <!-- {{book?.downloaderRefPDF}} -->
                     </ul>
                 </div>
             </div>

@@ -1,55 +1,143 @@
 <div class="spacetop"></div>
-<div class="navbar navbar-expand-lg navbar-light bg-light" style="border: 1px solid rgb(215, 215, 215);">
+<div class=" navbar navbar-expand-lg navbar-light bg-light"
+    style="border: 1px solid rgb(215, 215, 215); z-index: 2000000;">
     <div class="container-fluid">
         <div class="navbar-header">
-            <a href="#" class="navbar-brand">Livraria</a>
-            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+            <a routerLink="/books" class="navbar-brand"><i class="material-icons">local_library</i></a>
+            <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
+                aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
             <ul class="navbar-nav mr-auto list-group">
-                <li class="nav-item"><a class="nav-link list-group-item-action" routerLinkActive="selected" routerLink="/user/books">Lista de
-                        Livros</a></li>
-                <li class="nav-item"><a class="nav-link list-group-item-action" routerLink="/my-list-reading/book" routerLinkActive="selected">Minha Lista de Leitura</a></li>
-                <li class="nav-item"><a class="nav-link list-group-item-action" routerLink="/about" routerLinkActive="selected">Sobre</a></li>
+                <li class="nav-item"><a class="nav-link list-group-item-action" routerLinkActive="selected"
+                        routerLink="/books">Página Inicial</a></li>
+
+                <li *ngIf="isAuthenticated" class="nav-item"><a class="nav-link list-group-item-action"
+                        routerLink="/my-list-reading/book" routerLinkActive="selected">Minha Lista de Leitura</a></li>
+                <li class="nav-item"><a class="nav-link list-group-item-action" routerLink="/about"
+                        routerLinkActive="selected">Sobre</a></li>
             </ul>
         </div>
-        <div class="navbar-nav navbar-right" >
-            <li class="dropdown nav-item mr-2" >
-                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown" role="button" data-toggle="dropdown"
-                    aria-haspopup="true" aria-expanded="false">Administrador<span class="caret"></span></a>
-                <ul class="dropdown-menu " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
-                    <div>
-                        <h6 class="dropdown-menu_title">Secção Autor</h6>
+        <div class="navbar-nav navbar-right" *ngIf="getLoggedUserRole() === 'USER'">
+            <li class="dropdown nav-item ">
+                <a href="#" class="dropdown-toggle-split nav-link" data-toggle="dropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="selected">
+                    <span class="text-success">{{getLoggedName()}}</span> <i class="material-icons">account_circle</i>
+                </a>
+                <ul class="dropdown-menu pr-0" aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
+                    <div class="" *ngIf="getLoggedName()">
+                        <h6 class="dropdown-menu_title" style="display: flex; align-items: center;"><i
+                                class="material-icons text-success">fiber_manual_record</i>Perfil Status</h6>
                         <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/admin/create/author" routerLinkActive="selected">Adicionar</a>
+                            <a class="nav-link" routerLink="perfil" routerLink="user/profile/{{getLoggedName()}}"
+                                routerLinkActive="selected">Perfil</a>
                         </li>
-                        <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/admin/authors" routerLinkActive="selected">Listar</a>
-                        </li>
-                    </div>
-                    <div>
-                        <h6 class="dropdown-menu_title">Secção Categoria</h6>
-                        <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/admin/create/category" routerLinkActive="selected">Adicionar</a>
-                        </li>
-                        <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/admin/categories" routerLinkActive="selected">Listar</a>
-                        </li>
-                    </div>
-                    <div>
-                        <h6 class="dropdown-menu_title">Secção Livro</h6>
-                        <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/admin/create/book" routerLinkActive="selected">Adicionar</a>
-                        </li>
-                        <li class="dropdown-item font-weight-light p-0">
-                            <a class="nav-link" routerLink="/admin/books" routerLinkActive="selected" >Listar</a>
+                        <hr style="padding: 0; margin:0">
+                        <li class="dropdown-item font-weight-light p-0" style="cursor: pointer;">
+                            <a class="nav-link text-danger" (click)="logout()" routerLinkActive="selected">Terminal
+                                Sesssão <i class="material-icons">exit_to_app</i></a>
                         </li>
                     </div>
                 </ul>
             </li>
         </div>
+        <div *ngIf="getLoggedUserRole() === 'ADMIN'" class="navbar-nav navbar-right" style="z-index: 2000;">
+            <li class="dropdown nav-item mr-2">
+                <a *ngIf="getLoggedName()" href="#" class="dropdown-toggle-split nav-link" data-toggle="dropdown"
+                    role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                    style="display: flex; align-items: center;">
+                    <!--Administrador<span class="caret"></span>-->
+                    <span class="text-success">{{getLoggedName()}}</span><i class="material-icons">admin_panel_settings</i>
+                </a>
+                <ul class="dropdown-menu " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
+                    <div>
 
+                        <h6 class="dropdown-menu_title mat-icon"><i class="material-icons"
+                                style="padding: 2px;">people_alt</i> Secção_Autor</h6>
+                        <!--  <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/create/author"
+                                routerLinkActive="selected"><i class="material-icons">add_box</i> Adicionar</a>
+                        </li> -->
+                        <!--  <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/authors" routerLinkActive="selected"><i class="material-icons">list</i> Listar</a>
+                        </li> -->
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/authors" routerLinkActive="selected"><i
+                                    class="material-icons">roofing</i> Painel de Controle</a>
+                        </li>
+                    </div>
+
+                    <div>
+                        <h6 class="dropdown-menu_title mat-icon"><i class="material-icons">category</i> Secção_Categoria
+                        </h6>
+                        <!--  <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/create/category"
+                                routerLinkActive="selected"><i class="material-icons">add_box</i> Adicionar</a>
+                        </li>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/categories" routerLinkActive="selected"><i class="material-icons">list</i>Listar</a>
+                        </li> -->
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/categories" routerLinkActive="selected"><i
+                                    class="material-icons">roofing</i> Painel de Controle</a>
+                        </li>
+                    </div>
+                    <div>
+                        <h6 class="dropdown-menu_title mat-icon"><i class="material-icons">book</i>Secção_Livro</h6>
+                        <!-- <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/create/book"
+                                routerLinkActive="selected"><i class="material-icons">add_box</i> Adicionar</a>
+                        </li>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/books" routerLinkActive="selected"><i class="material-icons">list</i> Listar</a>
+                        </li> -->
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="/admin/books" routerLinkActive="selected"><i
+                                    class="material-icons">roofing</i> Painel de Controle</a>
+                        </li>
+                    </div>
+                    <div>
+                        <h6 class="dropdown-menu_title mat-icon"><i
+                                class="material-icons">miscellaneous_services</i>Configurações</h6>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="admin/config/logged/profile/{{getLoggedName()}}"
+                                routerLinkActive="selected"><i class="material-icons">manage_accounts</i> Gerenciar</a>
+                        </li>
+                    </div>
+                    <div>
+                        <h6 class="dropdown-menu_title mat-icon"><i
+                                class="material-icons text-success">fiber_manual_record</i> Perfil Status </h6>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link text-danger" (click)="logout()" routerLinkActive="selected" style="cursor: pointer;"> Terminar
+                                Sessão <i class="material-icons text-danger">exit_to_app</i></a>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+        </div>
+        <div class="navbar-nav navbar-right" *ngIf="!getLoggedName()">
+            <li class="dropdown nav-item mr-2">
+                <a href="#" class="dropdown-toggle-split nav-link" data-toggle="dropdown" role="button"
+                    data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="selected">
+                    <i class="material-icons">account_circle</i>
+                </a>
+                <ul class="dropdown-menu mr-5 " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
+                    <div>
+                        <h6 class="dropdown-menu_title text-center">Espaço Conta</h6>
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="login" routerLinkActive="selected">Entrar <i
+                                    class="material-icons">login</i></a>
+                        </li>
+                        <hr style="padding: 0; margin:0">
+                        <li class="dropdown-item font-weight-light p-0">
+                            <a class="nav-link" routerLink="signup" routerLinkActive="selected">Cadastrar <i
+                                    class="material-icons">person_add_alt</i></a>
+                        </li>
+                    </div>
+                </ul>
+            </li>
+        </div>
     </div>
 </div>

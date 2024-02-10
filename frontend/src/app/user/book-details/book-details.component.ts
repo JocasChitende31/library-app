@@ -15,13 +15,18 @@ export class BookDetailsComponent implements OnInit {
     private bookService: BookServiceService,
     private route: ActivatedRoute
   ) {
-    this.id = this.route.snapshot.params['id'];
+    this.getBookItem();
   }
 
   ngOnInit(): void {
-    this.bookService.findById(this.id).subscribe(data => {
+    
+  }
+  getBookItem(){
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.bookService.findById(id).subscribe(data => {
       this.book = data;
     })
   }
+
 
 }

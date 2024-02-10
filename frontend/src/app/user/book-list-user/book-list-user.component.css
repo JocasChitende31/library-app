@@ -1,3 +1,10 @@
+.card{
+    border-radius: 5px !important;
+    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08) !important;
+    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08) !important;
+    border: 0px solid none !important;
+    border-bottom: 5px solid #1e72c7;
+}
 button{
     cursor: pointer;
     letter-spacing: .5px;
@@ -5,4 +12,20 @@ button{
 hr{
     margin: 0;
     padding: 0;
+}
+.modal-body{
+    display: flex;
+    justify-content: center;
+    justify-items: center;
+    align-items: center;
+}
+.btn-secondary{
+    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+    background: linear-gradient(to right, #0d355e, #1e72c7);
+    color: white;
+}
+.btn-secondary:hover{
+    background: -webkit-gradient(linear, left top, right top, from(#1e72c7f5), to(#0d365ef1));
+    background: linear-gradient(to right, #0d365ef0, #1e72c7f3);
+    color: white;
 }

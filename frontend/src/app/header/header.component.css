@@ -1,23 +1,57 @@
-.spacetop{
+.spacetop {
     margin: 60px 0 0 0;
     padding: auto;
 }
-.selected{
-    background-color: #0d365e2a;
-    /* color: rgb(101, 101, 101); */
-    /* color: rgb(255, 255, 255); */
-    border-bottom: 2px solid #0d355e;
 
+.selected {
+    color: #2b7cce !important;
+    border-bottom: 2px solid #2b7cce;
+    font-weight: 600;
 }
-.dropdown-menu{
+
+.dropdown-menu {
     top: 44.5px;
     border-top-right-radius: 0;
     border-top-left-radius: 0;
-
+    left: -70px;
+    padding: auto;
 }
-.dropdown-menu_title{
-    background-color: #0d355e;
-    padding: 10px 0px 10px 3px;
+
+.dropdown-menu_title {
+    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+    background: linear-gradient(to right, #0d355e, #1e72c7);
+    padding: 10px 5px 10px 3px;
     letter-spacing: 1px;
     color: white;
+    font-weight: lighter;
+}
+.dropdown-item{
+    background-color: white;
+}
+.dropdown-item a:hover{
+    color: #2b7cce;
+}
+.mat-icon {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    align-content: center;
+    justify-items: center;
+}
+
+.material-icons {
+    padding: 2px;
+}
+
+.nav-link {
+    display: flex;
+    align-items: center;
+   justify-content:center;
+   width: 100%;
+}
+.mr-5{
+    margin-left: -10px;
+}
+.mr-15{
+    margin-right: 500px !important;
 }

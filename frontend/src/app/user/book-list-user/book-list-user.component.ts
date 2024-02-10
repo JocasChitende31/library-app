@@ -1,15 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Book } from 'src/app/models/book';
 import { Category } from 'src/app/models/category';
 import { BookServiceService } from 'src/app/services/book-service.service';
 import { CategoryService } from 'src/app/services/category.service';
+import { FileServService } from 'src/app/services/upload-service/file-serv.service';
 
 @Component({
   selector: 'app-book-list-user',
   templateUrl: './book-list-user.component.html',
   styleUrls: ['./book-list-user.component.css']
 })
+
 export class BookListUserComponent implements OnInit {
 
   serverUnvaliable: String = '';
@@ -17,11 +19,14 @@ export class BookListUserComponent implements OnInit {
   qtdT: Number = 0;
   bookId: any;
   books: Book[] = [];
-  categories: Category[] = [];
+  @Input() categories: Category[] = [];
+  linkGenerated = '';
+  titleOfBookDownload?: String;
 
   constructor(
     private bookService: BookServiceService,
     private categoryService: CategoryService,
+    private filesService: FileServService,
     private route: ActivatedRoute,
     private router: Router
   ) {
@@ -47,7 +52,6 @@ export class BookListUserComponent implements OnInit {
     });
     this.categoryService.findAll().subscribe(data => {
       this.categories = data;
-
     })
 
   }
@@ -62,6 +66,21 @@ export class BookListUserComponent implements OnInit {
     this.router.navigate(['/books']);
     window.location.reload();
   }
+  downloadFile(fielId: any) {
+    if (fielId !== null) {
+      this.filesService.downloadFile(fielId).subscribe(data => {
+        var obj = JSON.parse(JSON.stringify(data));
+        this.books.forEach(element => {
+          if (element.downloaderRefPDF === fielId) {
+            this.titleOfBookDownload = element.title;
+            console.log(this.titleOfBookDownload);
+          }
+        });
+        const downloadLink = obj['url'];
+        this.linkGenerated = downloadLink;
+      })
+    }
 
-
+    this.titleOfBookDownload = 'Indisponível';
+  }
 }

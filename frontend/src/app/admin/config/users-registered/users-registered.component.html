@@ -1,0 +1,23 @@
+<div class="mt-5" style="z-index: -1;">
+    <table class="table table-hover">
+        <thead class="bg-t-th-light-blue">
+            <tr>
+                <th scope="col">#</th>
+                <th scope="col">login</th>
+                <th scope="col">password</th>
+                <th scope="col">role</th>
+                <th scope="colgroup" colspan="2" class="text-center">Ações</th>
+            </tr>
+        </thead>
+        <tbody *ngFor="let user of users">
+            <tr>
+                <th scope="row">{{user.id}}</th>
+                <td>{{user.login}}</td>
+                <td>{{user.password}}</td>
+                <td>{{user.role}}</td>
+                <td><a routerLink="" class="btn text-primary">Editar</a></td>
+                <td><button (click)="onDelete()" class="btn text-danger">Eliminar</button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>

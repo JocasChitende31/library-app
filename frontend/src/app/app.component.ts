@@ -1,5 +1,4 @@
-import { Component } from '@angular/core';
-
+import { Component, Input } from '@angular/core';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -8,6 +7,7 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title : String;
   cardTitle: String;
+
   constructor(){
     this.title = 'Atende.Library';
     this.cardTitle = 'Livraria';

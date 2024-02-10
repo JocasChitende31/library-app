@@ -1,5 +1,5 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnInit } from '@angular/core';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-header',
@@ -8,11 +8,30 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
-  constructor(private router: ActivatedRoute) {
-
-   }
+  @Input() isAuthenticated: any
+ 
+  constructor(private route: ActivatedRoute, private router: Router) {
+    this.getLoggedName();
+    this.getLoggedUserRole();
+  }
 
   ngOnInit(): void {
+  
+  }
+  getLoggedName(){
+    return localStorage.getItem('userLogged');
+  }
+  getLoggedUserRole(){
+    return localStorage.getItem('role');
+  }
+
+  logout() {
+    localStorage.clear();
+    this.redirectTo();
+  }
+
+  redirectTo() {
+    this.router.navigate(['/login']);
   }
 
 }

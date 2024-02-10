@@ -14,4 +14,5 @@ export class Book {
     birthday: String | undefined;
     nationality: String | undefined;
     status: String | undefined;
+    downloaderRefPDF: String | undefined;
 }

@@ -1,5 +1,7 @@
 .container .card{
-    background-color: #0d355e;
+    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+    background: linear-gradient(to right, #0d355e, #1e72c7);
+    color: white;
 }
 .container h4{
     font-weight:500;color: white;
@@ -23,4 +25,9 @@ input.ng-valid {
 span{
     color:red;
     font-size: 12px;
+}
+.bg-t-th-light-blue {
+    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+    background: linear-gradient(to right, #0d355e, #1e72c7);
+    color: white;
 }

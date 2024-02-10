@@ -11,6 +11,7 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./book-list-by-category.component.css']
 })
 export class BookListByCategoryComponent implements OnInit {
+  serviceUnavailable: String = "";
   qtd: Number = 0;
   categories: Category[] = [];
   categoryId: Category | undefined;
@@ -33,11 +34,15 @@ export class BookListByCategoryComponent implements OnInit {
     // this.route.params.subscribe(params => {
     //   this.id = params['id'];
     // })
-    this.bgDanger = 'bg-danger';
+    if(this.categories.length <=0){
+      setTimeout(()=>{
+        this.serviceUnavailable = this.noContant;
+      this.bgDanger = 'bg-danger';
+      },2000)
+    }
   }
 
   ngOnInit(): void {
-
     this.catId = this.route.snapshot.paramMap.get('id');
     this.categoryService.findAll().subscribe(data => {
       this.categories = data;

@@ -13,15 +13,15 @@
             <form class="form pt-3" [formGroup]="bookForm">
                 <div class="row pt-0 pl-3 pr-3 form-group">
                     <div class=" col-md-12">
-                        <label for="title" class="form-label">Id</label>
-                        <input type="text" id="id" name="id" class="form-control" placeholder="Ex: Id"
+                        <label for="title" class="form-label" hidden>Id</label>
+                        <input type="hidden" id="id" name="id" class="form-control" placeholder="Ex: Id"
                             formControlName="id">
                         <label for="title" class="form-label">Título do Livro</label>
                         <input type="text" id="title" name="title" class="form-control"
                             placeholder="Ex: Quem Pensa Enriquece" formControlName="title">
-                        <!-- <div *ngIf="title.invalid && title.touched">
+                        <!--<div *ngIf="title.invalid && title.touched">
                             <span *ngIf="title.errors?.['required']">ATENÇÃO! Preenchimento obrigatório*</span>
-                        </div> -->
+                        </div>-->
                     </div>
                     <div class="col-md-6 mt-2">
                         <label for="publisher" class="form-label">Editora</label>
@@ -85,6 +85,15 @@
                                 https://komutu.com/wp-content/uploads/2023/01/pai-rico-pai-pobre.jpg
                             </span>
                         </div> -->
+                    </div>
+                    <div class="col-md-12 mt-2">
+                        <label for="downloaderRefPDF" class="form-label">Carregar Ficheiro PDF</label>
+                        <select name="downloaderRefPDF" id="downloaderRefPDF" class="form-control" formControlName="downloaderRefPDF">
+                            <option value="" selected disabled>{{defaultValueDownladerRefPDF}}</option>
+                            <option *ngFor="let file of files" value="{{file.id}}" >
+                                {{file.fileName}}
+                            </option>
+                        </select>
                     </div>
                     <div class="col-12 mt-2">
                         <label for="shortSummary" class="form-label">1ºResumo</label>

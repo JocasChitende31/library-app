@@ -35,7 +35,9 @@
     height: 60px;
     display: flex;
     align-items: center;
-    background-color: #0d355e;
+    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+    background: linear-gradient(to right, #0d355e, #1e72c7);
+   /*  background-color: #0d355e; */
     /* background-color: #1976d2; */
     color: white;
     font-weight: 600;
@@ -76,9 +78,9 @@
     align-items: center;
   }
 
-  .selected{
+/*   .selected{
     background-color: #0d355e;
-  }
+  } */
   /* Responsive Styles */
   @media screen and (max-width: 767px) {
     .card-container > *:not(.circle-link) ,
@@ -99,4 +101,8 @@
     position: fixed;
     z-index: 1;
     width: 100%;
+}
+mat-tab-group{
+  z-index: -10000;
+  position: relative;
 }

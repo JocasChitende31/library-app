@@ -26,11 +26,16 @@ export class CategoryFormComponent implements OnInit {
     private categoryService: CategoryService
   ) {
     // this.category = new Category();
+    this.getCategoryItem();
   }
   ngOnInit(): void {
-    this.catId = this.route.snapshot.paramMap.get('id');
+    
+  }
+  getCategoryItem(){
+    const catId = Number(this.route.snapshot.paramMap.get('id'));
+    this.catId = catId;
     if (this.catId) {
-      this.categoryService.findById(this.catId).subscribe(res => {
+      this.categoryService.findById(catId).subscribe(res => {
         this.categoryForm.patchValue({
           id: res.id,
           genre: res.genre
@@ -38,12 +43,12 @@ export class CategoryFormComponent implements OnInit {
       })
     }
   }
-
   categorySubmit() {
     if (this.categoryForm.valid) {
       this.categoryService.save(this.categoryForm.value).subscribe(result => {
         this.goToList();
         this.categoryForm.reset();
+        
       });
     }
   }

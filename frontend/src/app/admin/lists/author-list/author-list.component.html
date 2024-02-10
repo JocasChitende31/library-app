@@ -1,31 +1,50 @@
-<div class="pt-5">
+<div class="pt-5 mt-5">
 </div>
-<div class="mt-5">
-    <h5 class="font-weight-light">Autores</h5>
+<div class="title-manager col-5 p-0" style="display: flex; flex-direction: row; align-items: center; align-content: center">
+    Admin > <h6 class="text-title" style="color: #2b7cce !important;">Gerenciar de Autores</h6>
 </div>
-<hr>
-<div>
-    <table class="table table-hover">
-        <thead style="background-color: #0d355e; color: white;">
-            <tr>
-                <th scope="col">#</th>
-                <th scope="col">Nome</th>
-                <th scope="col">Data_Nascimento</th>
-                <th scope="col">Nacionalidade</th>
-                <th scope="col">Status</th>
-                <th scope="colgroup" colspan="2" class="text-center">Ações</th>
-            </tr>
-        </thead>
-        <tbody *ngFor="let author of authors" >
-            <tr >
-                <th scope="row">{{author.id}}</th>
-                <td>{{author.name}}</td>
-                <td>{{author.birthday}}</td>
-                <td>{{author.nationality}}</td>
-                <td>{{author.status}}</td>
-                <td><a routerLink="/admin/update/{{author?.id}}/author" class="btn text-primary">Editar</a></td>
-                <td><button (click)="onDelete(author?.id)" class="btn text-danger">Eliminar</button></td>
-            </tr>
-        </tbody>
-    </table>
+
+<div ng-cloack style="z-index: -1;">
+    <mat-tab-group class="mat-elevation-z0">
+        <mat-tab >
+            <ng-template mat-tab-label>
+                <i class="material-icons">list</i> Autores
+              </ng-template>
+            <div>
+                <table class="table table-hover">
+                    <thead class="bg-t-th-light-blue">
+                        <tr>
+                            <th scope="col">#</th>
+                            <th scope="col">Nome</th>
+                            <th scope="col">Data_Nascimento</th>
+                            <th scope="col">Nacionalidade</th>
+                            <th scope="col">Status</th>
+                            <th scope="colgroup" colspan="2" class="text-center">Ações</th>
+                        </tr>
+                    </thead>
+                    <tbody *ngFor="let author of authors" >
+                        <tr >
+                            <th scope="row">{{author.id}}</th>
+                            <td>{{author.name}}</td>
+                            <td>{{author.birthday}}</td>
+                            <td>{{author.nationality}}</td>
+                            <td>{{author.status}}</td>
+                            <td><a routerLink="/admin/update/{{author?.id}}/author" class="btn text-primary">Editar</a></td>
+                            <td><button (click)="onDelete(author?.id)" class="btn text-danger">Eliminar</button></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+              </mat-tab>
+        <mat-tab> <ng-template mat-tab-label>
+            <i class="material-icons">add_box</i> Autores
+          </ng-template>
+          <app-author-form></app-author-form>
+         </mat-tab>
+        <mat-tab label="Third"> 
+            <ng-template mat-tab-label>
+                <i class="material-icons">info</i> Mais
+              </ng-template>
+            Mais... </mat-tab>
+    </mat-tab-group>
 </div>

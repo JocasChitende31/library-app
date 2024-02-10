@@ -31,13 +31,13 @@
 </div>
 <div *ngIf="qtd === 0">
     <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
-        <h5 class="text-white font-weight-light">{{noContant}}</h5>
+        <h5 class="text-white font-weight-light">{{serviceUnavailable}}</h5>
     </div>
 
 </div>
 <div *ngFor="let book of books">
 
-    <div class="card mb-4 p-2" style="background-color:#f8f9fa;">
+    <div class="card mb-4 p-2" style="border:#0d355e; border-bottom: 5px solid #1e72c7; ">
         <div class="row g-0">
             <div class="col-md-2 mb-0 mr-4">
                 <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"

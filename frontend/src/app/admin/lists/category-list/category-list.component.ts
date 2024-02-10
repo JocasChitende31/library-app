@@ -11,10 +11,11 @@ import { CategoryService } from 'src/app/services/category.service';
 export class CategoryListComponent implements OnInit {
 
   categories: Category[] = [];
+
   constructor(
     private categoryService: CategoryService,
     private router: Router,
-    private route: ActivatedRoute
+    private routeActived: ActivatedRoute
   ) { }
 
   ngOnInit(): void {
@@ -22,13 +23,18 @@ export class CategoryListComponent implements OnInit {
       this.categories = data;
     })
   }
+  
   onDelete(catId: any) {
     this.categoryService.delete(catId).subscribe(data => {
       this.goToListCatategories();
     });
   }
+
   goToListCatategories(){
     this.router.navigate(['/admin/categories']);
     window.location.reload();
+  }
+  loadCreateCategory(){
+    this.router.navigate(['/create/category'], {relativeTo: this.routeActived});
   }
 }
