@@ -35,6 +35,7 @@ public class SecurityConfigurations {
                         .requestMatchers(HttpMethod.GET, "/api/{catId}/category").permitAll()
                         .requestMatchers(HttpMethod.GET, "/api/{catId}/books").permitAll()
                         .requestMatchers(HttpMethod.GET, "/auth/users").hasRole("ADMIN")
+                        .requestMatchers(HttpMethod.GET, "/auth/user/{login}").permitAll()
                         .requestMatchers(HttpMethod.POST, "/auth/login").permitAll()
                         .requestMatchers(HttpMethod.POST, "auth/register").permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/create/book").hasRole("ADMIN")

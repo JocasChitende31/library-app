@@ -11,10 +11,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/auth")
 public class AuthenticationController {
@@ -53,9 +55,12 @@ public class AuthenticationController {
     public ResponseEntity findAll(){
         List<RegisterDTO> data = this.authorizationService.findAll();
         return ResponseEntity.ok(data);
-
     }
-
+    @GetMapping(value = "/user/{login}")
+    public ResponseEntity findByName(@PathVariable @Valid String login){
+        UserDetails data = this.authorizationService.loadUserByUsername(login);
+        return  ResponseEntity.ok(data);
+    }
     @PutMapping(value = "/user/{id}/update")
     public ResponseEntity update(@PathVariable String id, @RequestBody @Valid RegisterDTO body){
         this.authorizationService.update(id, body);

@@ -22,6 +22,7 @@ public class BookDTO {
 	private String birthday;
 	private String nationality;
 	private String status;
+	private String downloaderRefPDF;
 
 	public BookDTO() {
 
@@ -49,6 +50,7 @@ public class BookDTO {
 		birthday = projection.getBirthday();
 		nationality = projection.getNationality();
 		status = projection.getStatus();
+		downloaderRefPDF = projection.getDownloaderRefPDF();
 	}
 
 	public Long getId() {
@@ -148,6 +150,10 @@ public class BookDTO {
 	}
 	public String getStatus() {
 		return status;
+	}
+
+	public String getDownloaderRefPDF(){
+		return this.downloaderRefPDF;
 	}
 
 }

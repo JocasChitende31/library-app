@@ -42,11 +42,12 @@ public class BookController {
         String longSummary = body.getLongSummary();
         Long categoryId = body.getFkCategory();
         Long authorId = body.getFkAuthor();
+        String downloaderRefPDF = body.getDownloaderRefPDF();
         if (this.bookService.findBookByTitle(title) != null)
             return ResponseEntity.badRequest().build();
         else
             this.bookService.createBook(title, year, publisher, edition, imgUrl, shortSummary, longSummary, categoryId,
-                    authorId);
+                    authorId, downloaderRefPDF);
         return ResponseEntity.ok().build();
     }
 
@@ -61,8 +62,9 @@ public class BookController {
         String newLongSummary = body.getLongSummary();
         Long newCategoryId = body.getFkCategory();
         Long newAuthorId = body.getFkAuthor();
+        String downloaderRefPDF = body.getDownloaderRefPDF();
         bookService.updateBook(bookId, newTitle, newYear, newPublisher, newEdition, newImgUrl, newShortSummary,
-                newLongSummary, newCategoryId, newAuthorId);
+                newLongSummary, newCategoryId, newAuthorId, downloaderRefPDF);
     }
 
     @DeleteMapping(value = "/delete/{bookId}/book")

@@ -38,13 +38,15 @@ public class Book {
 	@ManyToOne(fetch = FetchType.LAZY)
 	@JoinColumn(name = "author_id", referencedColumnName = "id")
 	private Author fkAuthor;
+	@Column(name="downloader_ref_pdf")
+	private String downloaderRefPDF;
 
 	public Book() {
 
 	}
 
 	public Book(Long id, String title, String year, String publisher, Integer edition, String imgUrl,
-			String shortSummary, String longSummary, Category category, Author author) {
+			String shortSummary, String longSummary, Category category, Author author, String downloaderRefPDF) {
 		this.id = id;
 		this.title = title;
 		this.year = year;
@@ -55,6 +57,7 @@ public class Book {
 		this.longSummary = longSummary;
 		this.fkCategory = category;
 		this.fkAuthor = author;
+		this.downloaderRefPDF = downloaderRefPDF;
 	}
 
 	public Long getId() {
@@ -135,6 +138,13 @@ public class Book {
 
 	public void setAuthorId(Author id) {
 		this.fkAuthor = id;
+	}
+
+	public String getDownloaderRefPDF(){
+		return this.downloaderRefPDF;
+	}
+	public void setDownloaderRefPDF(String downloaderRefPDF){
+		this.downloaderRefPDF = downloaderRefPDF;
 	}
 
 	@Override

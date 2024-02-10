@@ -30,4 +30,6 @@ public interface BookProjection {
 	String getNationality();
 	
 	String getStatus();
+
+	String getDownloaderRefPDF();
 }

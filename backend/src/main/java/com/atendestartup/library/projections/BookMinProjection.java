@@ -25,4 +25,5 @@ public interface BookMinProjection {
 	String getName();
 
 	String getNationality();
+	String getDownloaderRefPDF();
 }

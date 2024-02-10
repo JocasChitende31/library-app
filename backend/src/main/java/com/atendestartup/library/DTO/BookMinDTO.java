@@ -18,6 +18,8 @@ public class BookMinDTO {
 	private String name;
 	private String nationality;
 
+	private String downloaderRefPDF;
+
 	public BookMinDTO() {
 
 	}
@@ -30,6 +32,7 @@ public class BookMinDTO {
 		edition = entity.getEdition();
 		imgUrl = entity.getImgUrl();
 		shortSummary = entity.getLongSummary();
+		downloaderRefPDF = entity.getDownloaderRefPDF();
 	}
 
 	public BookMinDTO(BookMinProjection projection) {
@@ -46,51 +49,56 @@ public class BookMinDTO {
 		fkAuthor = projection.getFkAuthor();
 		name = projection.getName();
 		nationality = projection.getNationality();
+		downloaderRefPDF = projection.getDownloaderRefPDF();
 	}
 
 	public Long getId() {
-		return id;
+		return this.id;
 	}
 
 	public String getTitle() {
-		return title;
+		return this.title;
 	}
 
 	public String getBookYear() {
-		return year;
+		return this.year;
 	}
 
 	public String getPublisher() {
-		return publisher;
+		return this.publisher;
 	}
 
 	public Integer getEdition() {
-		return edition;
+		return this.edition;
 	}
 	public String getImgUrl() {
-		return imgUrl;
+		return this.imgUrl;
 	}
 	public String getShortSummary() {
-		return shortSummary;
+		return this.shortSummary;
 	}
 
 	public Long getFkCategory() {
-		return fkCategory;
+		return this.fkCategory;
 	}
 
 	public String getGenre() {
-		return genre;
+		return this.genre;
 	}
 
 	public Long getFkAuthor() {
-		return fkAuthor;
+		return this.fkAuthor;
 	}
 
 	public String getName() {
-		return name;
+		return this.name;
 	}
 
 	public String getNationality() {
-		return nationality;
+		return this.nationality;
+	}
+
+	public String getDownloaderRefPDF(){
+		return this.downloaderRefPDF;
 	}
 }

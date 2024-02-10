@@ -46,16 +46,16 @@ public class BookService {
 
 	@Transactional
 	public void createBook(String title, String book_year, String publisher, Integer edition, String img_url,
-			String short_summary, String long_summary, Long categoryId, Long authorId) {
+			String short_summary, String long_summary, Long categoryId, Long authorId, String downloader_ref_pdf) {
 		bookRepository.insertBook(title, book_year, publisher, edition, img_url, short_summary, long_summary,
-				categoryId, authorId);
+				categoryId, authorId, downloader_ref_pdf);
 
 	}
 
 	@Transactional
 	public void updateBook(Long bookId, String title, String book_year, String publisher, Integer edition, String img_url,
-			String short_summary, String long_summary, Long categoryId, Long authorId) {
-		bookRepository.updateBook(bookId, title, book_year, publisher, edition, img_url, short_summary, long_summary, categoryId, authorId);
+			String short_summary, String long_summary, Long categoryId, Long authorId, String downloader_ref_pdf) {
+		bookRepository.updateBook(bookId, title, book_year, publisher, edition, img_url, short_summary, long_summary, categoryId, authorId, downloader_ref_pdf);
 	}
 	@Transactional 
 	public void deleteBook(Long bookId) {
