@@ -1,24 +1,13 @@
 package com.atendestartup.library.entities;
 
-import java.util.Collection;
-import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
+import java.util.*;
 
+import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import com.atendestartup.library.enums.UserRole;
-
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.EnumType;
-import jakarta.persistence.Enumerated;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
 
 
 @Entity
@@ -39,6 +28,8 @@ public class User implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 
+	@OneToOne(mappedBy = "fkUser")
+	private ReadingList readingListSet;
 	public User() {
 	}
 
@@ -84,7 +75,12 @@ public class User implements UserDetails {
 	public int hashCode() {
 		return Objects.hash(this.id);
 	}
-	
+	public ReadingList getReadingListSet(){
+		return this.readingListSet;
+	}
+	public void setReadingListSet(ReadingList readingListSet){
+		this.readingListSet = readingListSet;
+	}
 	
 	public boolean equals(Object obj) {
 		if(this == obj)

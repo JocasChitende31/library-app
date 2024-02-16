@@ -1,17 +1,12 @@
 package com.atendestartup.library.entities;
 
+import java.util.HashSet;
 import java.util.Objects;
+import java.util.Set;
 
-import jakarta.persistence.Basic;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
+import javax.naming.Name;
 
 @Entity
 @Table(name = "tb_books")
@@ -41,6 +36,8 @@ public class Book {
 	@Column(name="downloader_ref_pdf")
 	private String downloaderRefPDF;
 
+	@OneToMany(mappedBy = "fkBook")
+	private Set<ReadingList> readingLists = new HashSet<>();
 	public Book() {
 
 	}
@@ -147,6 +144,12 @@ public class Book {
 		this.downloaderRefPDF = downloaderRefPDF;
 	}
 
+	public Set<ReadingList> getReadingLists(){
+		return this.readingLists;
+	}
+	public void setReadingLists(Set<ReadingList> readingLists){
+		this.readingLists = readingLists;
+	}
 	@Override
 	public int hashCode() {
 		return Objects.hash(fkAuthor, fkCategory, id);

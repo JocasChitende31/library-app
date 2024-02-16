@@ -11,7 +11,6 @@ import com.atendestartup.library.projections.BookProjection;
 import com.atendestartup.library.entities.Book;
 
 public interface BookRepository extends JpaRepository<Book, Long> {
-
 	@Query(nativeQuery = true, value = """
 	SELECT * FROM tb_books WHERE tb_books.title = :title
 	""")
@@ -40,7 +39,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 			ORDER BY tb_books.title ASC
 			""")
 	List<BookMinProjection> findMinListBook();
-
 	@Query(nativeQuery = true, value = """
 			SELECT
 				tb_books.id,
@@ -69,7 +67,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				
 				""")
 	BookProjection searchById(Long bookId);
-
 	@Query(nativeQuery = true, value = """
 			SELECT
 				tb_books.id,
@@ -99,7 +96,6 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				ORDER BY tb_belonging.positio
 						""")
 	List<BookMinProjection> searchByCategoryId(Long catId);
-
 	@Modifying
 	@Query(nativeQuery = true, value = """
 			INSERT INTO tb_books (title, book_year, publisher, edition, img_url, short_summary, long_summary, category_id, author_id, downloader_ref_pdf) values(:title, :book_year, :publisher, :edition, :img_url, :short_summary, :long_summary, :categoryId, :authorId, :downloader_ref_pdf)
