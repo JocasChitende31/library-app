@@ -11,7 +11,7 @@
 <mat-card class="login">
     <mat-card-content>
         <form class="form-login" fxLayout.gt-md="column" [formGroup]="loginForm">
-            <h3 class="font-weight-light text-center">Use Suas Credências<mat-icon>library_add_check</mat-icon></h3>
+            <h3 class=" text-center" style="color: white;">Use Suas Credências<mat-icon>library_add_check</mat-icon></h3>
             <mat-form-field>
                 <mat-label>Nome do usuário ou email</mat-label>
                 <mat-icon matPrefix mat18>account_box</mat-icon>
@@ -26,7 +26,7 @@
             </mat-form-field>
             <button mat-raised-button (click)="login()">Entrar <mat-icon>arrow_circle_right</mat-icon></button>
         </form>
-        <div class="text-center mt-2">
+        <div class="text-center mt-2 font-weight-light">
             <a href="#" style="color: white; text-align: right;">
                 Esqueceu! Recuperar palavra-passe.
             </a>
