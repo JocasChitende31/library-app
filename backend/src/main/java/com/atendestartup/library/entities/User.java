@@ -28,8 +28,8 @@ public class User implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 
-	@OneToOne(mappedBy = "fkUser")
-	private ReadingList readingListSet;
+	@OneToOne(mappedBy = "user")
+	private ReadingList readingList;
 	public User() {
 	}
 
@@ -75,11 +75,11 @@ public class User implements UserDetails {
 	public int hashCode() {
 		return Objects.hash(this.id);
 	}
-	public ReadingList getReadingListSet(){
-		return this.readingListSet;
+	public ReadingList getReadingList(){
+		return this.readingList;
 	}
-	public void setReadingListSet(ReadingList readingListSet){
-		this.readingListSet = readingListSet;
+	public void setReadingList(ReadingList readingList){
+		this.readingList = readingList;
 	}
 	
 	public boolean equals(Object obj) {
