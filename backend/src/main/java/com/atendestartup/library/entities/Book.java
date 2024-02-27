@@ -36,7 +36,7 @@ public class Book {
 	@Column(name="downloader_ref_pdf")
 	private String downloaderRefPDF;
 
-	@OneToMany(mappedBy = "fkBook")
+	@OneToMany(mappedBy = "book")
 	private Set<ReadingList> readingLists = new HashSet<>();
 	public Book() {
 

@@ -6,11 +6,9 @@ import com.atendestartup.library.services.ReadingListService;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping(value = "/api")
 public class ReadingListController {
@@ -19,8 +17,11 @@ public class ReadingListController {
     private ReadingListService readingListService;
     @PostMapping(value = "/add-reading-list")
     public ResponseEntity addToReadingList(@RequestBody @Valid ReadingListDTO body){
-     this.readingListService.addBook(body);
-     return ResponseEntity.ok().build();
+        String id = body.getId();
+        String user = body.getUser();
+        Long book = body.getBook();
+     this.readingListService.addBook(user,book);
+     return ResponseEntity.ok("Adicionad a lista com sucesso!");
     }
 
 }

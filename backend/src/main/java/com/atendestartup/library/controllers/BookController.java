@@ -29,7 +29,6 @@ public class BookController {
         BookDTO result = bookService.findById(id);
         return result;
     }
-
     @PostMapping("/create/book")
     public ResponseEntity createBook(@RequestBody @Valid BookDTO body) {
 

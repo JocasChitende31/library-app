@@ -1,5 +1,7 @@
 package com.atendestartup.library.entities;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
+import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
 import jakarta.persistence.*;
 
 import java.util.Objects;
@@ -11,22 +13,27 @@ public class ReadingList {
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
+    @Basic(optional=false)
+    @Column(name="id")
     private String id = UUID.randomUUID().toString();
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-    private User fkUser;
-    @ManyToOne(fetch = FetchType.LAZY)
+    private User user;
+
+
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
-    private Book fkBook;
+    private Book book;
 
     public ReadingList(){
 
     }
-    public ReadingList(String id, User fkUser, Book fkBook){
+
+    public ReadingList(String id,  User user, Book book){
         this.id = id;
-        this.fkUser = fkUser;
-        this.fkBook = fkBook;
+        this.user = user;
+        this.book = book;
     }
 
     public String getId() {
@@ -38,21 +45,21 @@ public class ReadingList {
     }
 
     public User getFkUser(){
-        return  this.fkUser;
+        return  this.user;
     }
-    public void setFkUser(User fkUser){
-        this.fkUser = fkUser;
+    public void setFkUser(User user){
+        this.user = user;
     }
     public Book getFkBook(){
-        return  this.fkBook;
+        return  this.book;
     }
-    public void setFkBook(Book fkBook){
-        this.fkBook = fkBook;
+    public void setFkBook(Book book){
+        this.book = book;
     }
 
     @Override
     public int hashCode(){
-        return Objects.hash(this.id,this.fkUser, this.fkBook);
+        return Objects.hash(this.id,this.book, this.book);
     }
     @Override
     public boolean equals(Object obj){
@@ -63,6 +70,6 @@ public class ReadingList {
         if (getClass() != obj.getClass())
             return false;
         ReadingList other = (ReadingList) obj;
-        return  Objects.equals(this.id, other.id) && Objects.equals(this.fkUser, other.fkUser) && Objects.equals(this.fkBook, other.fkBook);
+        return  Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user) && Objects.equals(this.book, other.book);
     }
 }
