@@ -2,6 +2,8 @@ package com.atendestartup.library.entities;
 
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotNull;
+import org.springframework.lang.NonNull;
 
 import java.util.Objects;
 import java.util.UUID;
@@ -18,11 +20,12 @@ public class ReadingList {
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
+    @NotNull
     private User user;
-
 
     @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
+    @NotNull
     private Book book;
 
     public ReadingList(){

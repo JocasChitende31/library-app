@@ -9,8 +9,8 @@ import org.springframework.data.jpa.repository.Query;
 public class  ReadingListDTO {
 
     private String id;
-    private String user;
-    private Long book;
+    private User user;
+    private Book book;
 
     public ReadingListDTO(){
 
@@ -19,9 +19,9 @@ public class  ReadingListDTO {
         BeanUtils.copyProperties(entity, this);
     }
     public  ReadingListDTO(ReadingListProjection projection){
-        id = projection.getId();
-        user = projection.getUser();
-        book = projection.getBook();
+        //id = projection.getId();
+       // user = projection.getUser();
+       // book = projection.getBook();
     }
     public String getId(){
         return  this.id;
@@ -29,16 +29,11 @@ public class  ReadingListDTO {
     public void setId(String id){
         this.id = id;
     }
-    public String getUser(){
+    public User getUser(){
         return this.user;
     }
-    public void setUser(String user){
-        this.user = user;
-    }
-    public Long getBook(){
+    public Book getBook(){
         return  this.book;
     }
-    public void setBook(Long book){
-        this.book = book;
-    }
+
 }

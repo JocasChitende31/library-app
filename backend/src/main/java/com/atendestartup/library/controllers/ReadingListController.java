@@ -1,5 +1,6 @@
 package com.atendestartup.library.controllers;
 
+import com.atendestartup.library.DTO.ReadingListDTO;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
@@ -21,7 +22,7 @@ public class ReadingListController {
     @Autowired
     private ReadingListService readingListService;
     @PostMapping(value = "/add-reading-list")
-    public ResponseEntity addToReadingList(@RequestBody @Valid ReadingList body){
+    public ResponseEntity addToReadingList(@RequestBody @Valid ReadingListDTO body){
         /* String id = body.getId();
         String user = body.getUser();
         Long book = body.getBook(); */

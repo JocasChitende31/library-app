@@ -1,6 +1,7 @@
 package com.atendestartup.library.entities;
 
 import java.util.HashSet;
+import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
@@ -37,7 +38,7 @@ public class Book {
 	private String downloaderRefPDF;
 
 	@OneToMany(mappedBy = "book")
-	private Set<ReadingList> readingLists = new HashSet<>();
+	private List<ReadingList> readingLists;
 	public Book() {
 
 	}
@@ -144,10 +145,10 @@ public class Book {
 		this.downloaderRefPDF = downloaderRefPDF;
 	}
 
-	public Set<ReadingList> getReadingLists(){
+	public List<ReadingList> getReadingLists(){
 		return this.readingLists;
 	}
-	public void setReadingLists(Set<ReadingList> readingLists){
+	public void setReadingLists(List<ReadingList> readingLists){
 		this.readingLists = readingLists;
 	}
 	@Override
