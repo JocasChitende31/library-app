@@ -1,7 +1,6 @@
 package com.atendestartup.library.entities;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
-import com.fasterxml.jackson.databind.annotation.JsonDeserialize;
+
 import jakarta.persistence.*;
 
 import java.util.Objects;
