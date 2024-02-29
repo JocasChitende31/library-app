@@ -1,6 +1,9 @@
 package com.atendestartup.library.entities;
 
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotNull;
 import org.springframework.lang.NonNull;
@@ -18,12 +21,12 @@ public class ReadingList {
     @Column(name="id")
     private String id = UUID.randomUUID().toString();
 
-    @OneToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @NotNull
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     @NotNull
     private Book book;
@@ -32,7 +35,8 @@ public class ReadingList {
 
     }
 
-    public ReadingList(String id,  User user, Book book){
+    @JsonCreator
+    public ReadingList(String id, User user, Book book){
         this.id = id;
         this.user = user;
         this.book = book;
@@ -45,6 +49,7 @@ public class ReadingList {
     public void setId(String id) {
         this.id = id;
     }
+
 
     public User getFkUser(){
         return  this.user;

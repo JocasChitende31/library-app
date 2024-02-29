@@ -18,8 +18,12 @@ public class ReadingListService {
 
     @Transactional
     public void addBook(@Valid ReadingListDTO body){
-        ReadingList data = new ReadingList(body.getId(),body.getUser(), body.getBook());
+        ReadingList data = new ReadingList(body.getId(), body.getUser(), body.getBook());
         this.readingListRepository.save(data);
     }
-
+    @Transactional
+    public ReadingList findByBookId(Long id){
+        ReadingList data = this.readingListRepository.findByBookId(id);
+        return data;
+    }
 }

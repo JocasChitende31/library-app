@@ -26,8 +26,11 @@ public class ReadingListController {
         /* String id = body.getId();
         String user = body.getUser();
         Long book = body.getBook(); */
-     this.readingListService.addBook(body);
-     return ResponseEntity.ok("Adicionad a lista com sucesso!");
+        if(this.readingListService.findByBookId(body.getBook().getId()) != null)
+            return ResponseEntity.badRequest().body("Already exist on the list!");
+        else
+            this.readingListService.addBook(body);
+        return ResponseEntity.ok("Adicionad a lista com sucesso!");
     }
 
 }

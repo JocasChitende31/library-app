@@ -28,8 +28,8 @@ public class User implements UserDetails {
 	@Enumerated(EnumType.STRING)
 	private UserRole role;
 
-	@OneToOne(mappedBy = "user")
-	private ReadingList readingList;
+	@OneToMany(mappedBy = "user")
+	private List<ReadingList> readingList;
 	public User() {
 	}
 
@@ -75,10 +75,10 @@ public class User implements UserDetails {
 	public int hashCode() {
 		return Objects.hash(this.id);
 	}
-	public ReadingList getReadingList(){
+	public List<ReadingList> getReadingList(){
 		return this.readingList;
 	}
-	public void setReadingList(ReadingList readingList){
+	public void setReadingList(List<ReadingList> readingList){
 		this.readingList = readingList;
 	}
 	
