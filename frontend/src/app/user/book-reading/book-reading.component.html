@@ -1,52 +1,61 @@
 <div class="pt-5"></div>
 <div class="mt-5">
   <div class="card " style="border: none;">
-      <h1 class="card-title pl-3"> <mat-icon class="mat-18 mr-1 favorite-icon " >favorite</mat-icon>  Favoritos</h1>
-    <div class="container">
-      <div class="row">
-        <div class="card" style="width: 20rem;">
-          <div class="card-body">
-            <img src="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_960_720.jpg" class="card-img-top"
-              alt="">
-            <hr>
-            <h5 class="card-title">Card Title</h5>
-            <hr>
-            <div class=" d-flex justify-content-center">
-              <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
-              <a href="..." class="btn btn-success   mr-1"><mat-icon class="mat-18">download_for_offline</mat-icon></a>
-              <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+    <h1 class="card-title pl-3"> <mat-icon class="mat-18 mr-1 favorite-icon ">favorite</mat-icon> Favoritos</h1>
+    <div class="text-center" *ngIf="myReadingList.length <= 0">
+      <hr>
+      <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
+        <h2 class="text-white font-weight-light">{{noContent}}</h2>
+      </div>
+    </div>
+    <div *ngFor="let myList of myReadingList">
+      <div class="container">
+        <div class="row">
+          <div class="card" style="width: 20rem;">
+            <div class="card-body">
+              <img src="{{myList.imgUrl}}"
+                class="card-img-top" alt="">
+              <hr>
+              <h5 class="card-title">{{myList.title}}</h5>
+              <hr>
+              <div class=" d-flex justify-content-center">
+                <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
+                <a href="..." class="btn btn-success   mr-1"><mat-icon
+                    class="mat-18">download_for_offline</mat-icon></a>
+                <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card" style="width: 20rem;">
-          <div class="card-body">
-            <img src="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_960_720.jpg" class="card-img-top"
-              alt="">
-            <hr>
-            <h5 class="card-title">Card Title</h5>
-            <hr>
-            <div class=" d-flex justify-content-center">
-              <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
-              <a href="..." class="btn btn-success   mr-1"><mat-icon class="mat-18">download_for_offline</mat-icon></a>
-              <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+          <!-- <div class="card" style="width: 20rem;">
+            <div class="card-body">
+              <img src="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_960_720.jpg" class="card-img-top"
+                alt="">
+              <hr>
+              <h5 class="card-title">Card Title</h5>
+              <hr>
+              <div class=" d-flex justify-content-center">
+                <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
+                <a href="..." class="btn btn-success   mr-1"><mat-icon class="mat-18">download_for_offline</mat-icon></a>
+                <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+              </div>
             </div>
           </div>
-        </div>
-        <div class="card" style="width: 20rem;">
-          <div class="card-body">
-            <img src="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_960_720.jpg" class="card-img-top"
-              alt="">
-            <hr>
-            <h5 class="card-title">Card Title</h5>
-            <hr>
-            <div class=" d-flex justify-content-center">
-              <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
-              <a href="..." class="btn btn-success   mr-1"><mat-icon class="mat-18">download_for_offline</mat-icon></a>
-              <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+          <div class="card" style="width: 20rem;">
+            <div class="card-body">
+              <img src="https://cdn.pixabay.com/photo/2024/02/27/00/13/heliconia-8599119_960_720.jpg" class="card-img-top"
+                alt="">
+              <hr>
+              <h5 class="card-title">Card Title</h5>
+              <hr>
+              <div class=" d-flex justify-content-center">
+                <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
+                <a href="..." class="btn btn-success   mr-1"><mat-icon class="mat-18">download_for_offline</mat-icon></a>
+                <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+              </div>
             </div>
-          </div>
+          </div> -->
+
         </div>
-        
       </div>
     </div>
   </div>

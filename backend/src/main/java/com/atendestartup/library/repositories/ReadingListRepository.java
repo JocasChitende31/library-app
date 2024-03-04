@@ -1,6 +1,5 @@
 package com.atendestartup.library.repositories;
 
-import com.atendestartup.library.DTO.MyReadingListDTO;
 import com.atendestartup.library.entities.ReadingList;
 import com.atendestartup.library.projections.ReadingListProjection;
 import org.springframework.data.jpa.repository.JpaRepository;
