@@ -1,7 +1,6 @@
-import { HttpClient, HttpContext } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { DISABLE_GLOBAL_EXCEPTION_HANDLING } from '../core/interceptors/token.interceptor';
 import { AppConstants } from '../env/app-constants';
 import { ReadingList } from '../models/reading-list';
 
@@ -16,7 +15,8 @@ export class ReadingListService {
     this.readingListUrl = AppConstants.baseUrlApi;
    }
 
-  public findMyReadingList(userId: String): Observable<ReadingList[]>{
-    return this.http.get<ReadingList[]>(this.readingListUrl + `/my-reading-list/${userId}`,{ context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true)  });
+  public findMyReadingList(userId: any): Observable<ReadingList[]>{
+    let params = new HttpParams().set('id', userId);
+    return this.http.get<ReadingList[]>(this.readingListUrl + `/my-reading-list/${userId}`, {params: params});
   }
 }

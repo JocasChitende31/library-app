@@ -8,10 +8,10 @@
         <h2 class="text-white font-weight-light">{{noContent}}</h2>
       </div>
     </div>
-    <div *ngFor="let myList of myReadingList">
+    <div >
       <div class="container">
         <div class="row">
-          <div class="card" style="width: 20rem;">
+          <div class="card" style="width: 20rem;" *ngFor="let myList of myReadingList">
             <div class="card-body">
               <img src="{{myList.imgUrl}}"
                 class="card-img-top" alt="">

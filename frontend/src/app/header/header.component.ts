@@ -1,5 +1,6 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AuthorizationService } from '../auth/service/authorization.service';
 
 @Component({
   selector: 'app-header',
@@ -8,15 +9,25 @@ import { ActivatedRoute, Router } from '@angular/router';
 })
 export class HeaderComponent implements OnInit {
 
+userOn?: String;
   @Input() isAuthenticated: any
- 
-  constructor(private route: ActivatedRoute, private router: Router) {
+
+  constructor(private route: ActivatedRoute, private router: Router, private userService: AuthorizationService) {
     this.getLoggedName();
     this.getLoggedUserRole();
+
+    let userLogged = localStorage.getItem("userLogged");
+    this.findUserLogged(userLogged);
   }
 
   ngOnInit(): void {
-  
+
+  }
+
+  findUserLogged(userLogged:any){
+    this.userService.getByLogin(userLogged).subscribe(data=>{
+      this.userOn = data.id;
+  })
   }
   getLoggedName(){
     return localStorage.getItem('userLogged');

@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { AuthorizationService } from 'src/app/auth/service/authorization.service';
 import { ReadingList } from 'src/app/models/reading-list';
 import { ReadingListService } from 'src/app/services/reading-list.service';
 
@@ -7,29 +9,47 @@ import { ReadingListService } from 'src/app/services/reading-list.service';
   templateUrl: './book-reading.component.html',
   styleUrls: ['./book-reading.component.css']
 })
+
 export class BookReadingComponent implements OnInit {
   noContent: String = '';
   bgDanger: String = '';
   myReadingList: ReadingList[] = [];
 
-  constructor(private readingListService: ReadingListService ) {
+  constructor(private readingListService: ReadingListService, private userService: AuthorizationService, private router: Router ) {
+  
+      let loginUser = localStorage.getItem("userLogged");
+      this.findUserLogged(loginUser);
+      this.findIfThereIsContentToDisplay();
+  }
+  
+  ngOnInit(): void {
+  }
+
+  findMyReadingList(userId:any){
+    this.readingListService.findMyReadingList(userId).subscribe(data=>{
+      console.log("Favoritos: ", data);
+      this.myReadingList = data;
+    }, error=>{
+      console.log("error", error);
+    });
+  }
+
+  findUserLogged(loginUser:any){
+    this.userService.getByLogin(loginUser).subscribe(userFound=>{
+      this.findMyReadingList(userFound.id);
+  })
+  };
+
+  findIfThereIsContentToDisplay(){
     if (this.myReadingList.length <= 0) {
       setTimeout(() => {
           this.noContent = 'Sem favoritos, pode adicionar!';
           this.bgDanger = 'bg-danger';
-        }, 3500);
+        }, 1000);
       }
-
-      /* this.findMyReadingList("bff69d28-25e8-4757-9d5e-ccabb5ea349f"); */
   }
 
-
-  ngOnInit(): void {
-  }
-
-  findMyReadingList(userId:String){
-    this.readingListService.findMyReadingList(userId).subscribe(data=>{
-      this.myReadingList = data;
-    });
+  rediretTo(){
+    this.router.navigate(['/login']);
   }
 }
