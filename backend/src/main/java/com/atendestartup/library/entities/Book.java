@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Objects;
 import java.util.Set;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 import javax.naming.Name;
@@ -38,6 +39,7 @@ public class Book {
 	private String downloaderRefPDF;
 
 	@OneToMany(mappedBy = "book")
+	@JsonIgnore
 	private List<ReadingList> readingLists;
 	public Book() {
 

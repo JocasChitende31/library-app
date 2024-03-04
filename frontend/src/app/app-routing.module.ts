@@ -37,7 +37,7 @@ const routes: Routes = [
   { path: 'admin/update/:id/category', component: CategoryFormComponent },
   { path: 'admin/create/book', component: BookFormComponent },
   { path: ':id/category', component: BookListByCategoryComponent },
-  { path: 'my-list-reading/book', component: BookReadingComponent },
+  { path: 'my-reading-list/:id', component: BookReadingComponent },
   {path: 'uploadFile', component: UploadFileFormComponent},
   { path: 'about', component: AboutComponent },
   { path: 'login', component: LoginComponent },

@@ -8,7 +8,8 @@ import { AuthorizationService } from 'src/app/auth/service/authorization.service
   styleUrls: ['./users-registered.component.css']
 })
 export class UsersRegisteredComponent implements OnInit {
-  users: User[] = [];
+  users?: User[] = [];
+
   constructor(private authorizationService: AuthorizationService) {
     this.getAllUsers();
   }
@@ -19,7 +20,6 @@ export class UsersRegisteredComponent implements OnInit {
   getAllUsers() {
     this.authorizationService.findAll().subscribe(data => {
       this.users = data;
-      console.info(data);
     });
   }
   onDelete() {

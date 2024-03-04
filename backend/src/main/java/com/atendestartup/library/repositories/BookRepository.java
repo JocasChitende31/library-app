@@ -93,7 +93,7 @@ public interface BookRepository extends JpaRepository<Book, Long> {
 				INNER JOIN
 				tb_belonging ON tb_books.id = tb_belonging.book_id
 				WHERE tb_belonging.category_id = :catId
-				ORDER BY tb_belonging.positio
+				ORDER BY tb_belonging.position
 						""")
 	List<BookMinProjection> searchByCategoryId(Long catId);
 	@Modifying

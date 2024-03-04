@@ -26,9 +26,6 @@ public class ReadingListController {
         /* String id = body.getId();
         String user = body.getUser();
         Long book = body.getBook(); */
-        if(this.readingListService.findByBookId(body.getBook().getId()) != null)
-            return ResponseEntity.badRequest().body("Already exist on the list!");
-        else
             this.readingListService.addBook(body);
         return ResponseEntity.ok("Book added successfully!");
     }
@@ -47,5 +44,4 @@ public class ReadingListController {
         else
             return ResponseEntity.notFound().build();
     }
-
 }
