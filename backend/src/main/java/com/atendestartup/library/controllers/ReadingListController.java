@@ -20,6 +20,7 @@ public class ReadingListController {
 
     @Autowired
     private ReadingListService readingListService;
+    
     @PostMapping(value = "/add-reading-list")
     public ResponseEntity addToReadingList(@RequestBody @Valid ReadingListDTO body){
         /* String id = body.getId();
@@ -31,12 +32,14 @@ public class ReadingListController {
             this.readingListService.addBook(body);
         return ResponseEntity.ok("Book added successfully!");
     }
+    
     @GetMapping(value = "/reading-list")
     public ResponseEntity findAll(){
         List<ReadingListDTO> data = this.readingListService.findAll();
         return ResponseEntity.ok(data);
     }
-    @GetMapping(value = "my-reading-list/{userId}")
+    
+    @GetMapping(value = "/my-reading-list/{userId}")
     public ResponseEntity findMyReadingList(@PathVariable String userId){
         List<MyReadingListDTO> data = this.readingListService.findMyReadingList(userId);
         if(!data.isEmpty())
