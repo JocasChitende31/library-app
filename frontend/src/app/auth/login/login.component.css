@@ -52,11 +52,11 @@
         width: 97.5%;
         border-radius: 1px;
     }
-
-    .mat-form-field-label {
+/*
+    mat-form-field-label {
         color: slategray;
         padding: 0px 5px;
-    }
+    } */
 
     .mat-form-field-underline {
         background-color: slategray;
@@ -93,9 +93,9 @@
         font-size: 20px;
     }
 
-    .mat-input-element {
+      /* ::ng-deep .mat-input-element {
         color: white;
-    }
+    } */
 }
 ::ng-deep .mat-raised-button{
     letter-spacing: 2px;
