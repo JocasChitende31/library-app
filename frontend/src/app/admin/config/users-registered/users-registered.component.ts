@@ -16,7 +16,7 @@ export class UsersRegisteredComponent implements OnInit {
 
   ngOnInit(): void {
   }
-  
+
   getAllUsers() {
     this.authorizationService.findAll().subscribe(data => {
       this.users = data;
@@ -25,5 +25,5 @@ export class UsersRegisteredComponent implements OnInit {
   onDelete() {
 
   }
- 
+
 }
