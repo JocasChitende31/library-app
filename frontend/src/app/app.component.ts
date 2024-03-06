@@ -6,10 +6,10 @@ import { Component, Input } from '@angular/core';
 })
 export class AppComponent {
   title : String;
-  cardTitle: String;
+  subTitle: String;
 
   constructor(){
-    this.title = 'Atende.Library';
-    this.cardTitle = 'Livraria';
+    this.title = 'Livraria';
+    this.subTitle = 'CentroSul';
   }
 }
