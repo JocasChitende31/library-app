@@ -22,7 +22,7 @@ import { BookReadingComponent } from './user/book-reading/book-reading.component
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: '', redirectTo: 'books', pathMatch: 'full' },
   { path: 'admin/create/book', component: BookFormComponent },
   { path: 'admin/books', component: BookListComponent },
   { path: 'books', component: BookListUserComponent },
