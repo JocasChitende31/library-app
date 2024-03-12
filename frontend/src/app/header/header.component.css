@@ -8,7 +8,8 @@
     border-bottom: 2px solid #2b7cce;
     font-weight: 600;
 }
-hr{
+.hr-menu-top,
+.hr-menu-down{
   display: none;
 }
 .dropdown-menu {
@@ -43,6 +44,7 @@ hr{
 
 .material-icons {
     padding: 2px;
+    color: #1e72c7;
 }
 
 .nav-link {
@@ -59,7 +61,8 @@ hr{
 }
 
 @media screen and (max-width: 991px) {
-  hr{
+  .hr-menu-top,
+  .hr-menu-down{
     display: flex;
   }
   .list-group {
@@ -68,7 +71,6 @@ hr{
     width: 100%;
   }
   .dropdown-menu{
-
     position: absolute;
     top: 44.5px;
     left: -100px;

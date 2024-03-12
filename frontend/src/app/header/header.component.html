@@ -10,7 +10,7 @@
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-          <hr>
+          <hr class="hr-menu-top">
             <ul class="navbar-nav mr-auto list-group">
                 <li class="nav-item"><a class="nav-link list-group-item-action" routerLinkActive="selected"
                         routerLink="/books">Página Inicial</a></li>
@@ -20,7 +20,7 @@
                 <li class="nav-item"><a class="nav-link list-group-item-action" routerLink="/about"
                         routerLinkActive="selected">Sobre</a></li>
             </ul>
-            <hr>
+            <hr class="hr-menu-down">
         </div>
         <div class="navbar-nav navbar-right user-toggle" *ngIf="getLoggedUserRole() === 'USER'">
             <li class="dropdown nav-item user-toggle">
