@@ -2,14 +2,15 @@
 <div class=" navbar navbar-expand-lg navbar-light bg-light"
     style="border: 1px solid rgb(215, 215, 215); z-index: 2000000;">
     <div class="container-fluid">
-        <div class="navbar-header">
-            <!-- <a routerLink="/books" class="navbar-brand"><i class="material-icons">local_library</i></a> -->
+      <div class="navbar-header">
+        <!-- <a routerLink="/books" class="navbar-brand"><i class="material-icons">local_library</i></a> -->
             <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown"
                 aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
         </div>
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
+          <hr>
             <ul class="navbar-nav mr-auto list-group">
                 <li class="nav-item"><a class="nav-link list-group-item-action" routerLinkActive="selected"
                         routerLink="/books">Página Inicial</a></li>
@@ -19,9 +20,10 @@
                 <li class="nav-item"><a class="nav-link list-group-item-action" routerLink="/about"
                         routerLinkActive="selected">Sobre</a></li>
             </ul>
+            <hr>
         </div>
-        <div class="navbar-nav navbar-right" *ngIf="getLoggedUserRole() === 'USER'">
-            <li class="dropdown nav-item ">
+        <div class="navbar-nav navbar-right user-toggle" *ngIf="getLoggedUserRole() === 'USER'">
+            <li class="dropdown nav-item user-toggle">
                 <a href="#" class="dropdown-toggle-split nav-link" data-toggle="dropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="selected">
                     <span class="text-success">{{getLoggedName()}}</span> <i class="material-icons">account_circle</i>
@@ -125,7 +127,7 @@
                 </a>
                 <ul class="dropdown-menu mr-5 " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
                     <div>
-                        <h6 class="dropdown-menu_title text-center">Espaço Conta</h6>
+                        <h4 class="dropdown-menu_title text-center">Espaço Conta</h4>
                         <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="login" routerLinkActive="selected">Entrar <i
                                     class="material-icons">login</i></a>
@@ -139,5 +141,6 @@
                 </ul>
             </li>
         </div>
+
     </div>
 </div>

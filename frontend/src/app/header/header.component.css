@@ -8,7 +8,9 @@
     border-bottom: 2px solid #2b7cce;
     font-weight: 600;
 }
-
+hr{
+  display: none;
+}
 .dropdown-menu {
     top: 44.5px;
     border-top-right-radius: 0;
@@ -54,4 +56,22 @@
 }
 .mr-15{
     margin-right: 500px !important;
+}
+
+@media screen and (max-width: 991px) {
+  hr{
+    display: flex;
+  }
+  .list-group {
+    display: flex;
+    align-items: flex-start;
+    width: 100%;
+  }
+  .dropdown-menu{
+
+    position: absolute;
+    top: 44.5px;
+    left: -100px;
+    padding: auto;
+  }
 }
