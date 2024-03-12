@@ -11,7 +11,7 @@
 <mat-card class="login">
     <mat-card-content>
         <form class="form-login" fxLayout.gt-md="column" [formGroup]="loginForm">
-            <h3 class=" text-center" style="color: white;">Use Suas Credências<mat-icon>library_add_check</mat-icon></h3>
+            <h3 class=" text-center" style="color: white;">usE suaS credênciaS <mat-icon style="color:greenyellow;">library_add_check</mat-icon></h3>
             <mat-form-field>
                 <mat-label>Nome do usuário ou email</mat-label>
                 <mat-icon matPrefix mat18>account_box</mat-icon>
@@ -34,7 +34,7 @@
     </mat-card-content>
 </mat-card>
 <mat-footer class="footer" fxLayout="row" fxLayoutAlign="space-around center">
-    <div fxLayout="row" class="footer-icon" style="padding: 0px 0;  ">
+    <div fxLayout="row" class="footer-icon" style="padding: 0;  ">
     <!--     <a href="#" style="color: white; padding: 5px 10px; border: 1px solid #673ab7; border-radius: 5px; ">
             Inscrever-se
         </a>
@@ -42,7 +42,7 @@
         <a href="#" style="color: white; padding: 5px 10px; border: 1px solid #673ab7; border-radius: 5px;">
             Google
         </a> -->
-        <a href="/signup" style="color: white;  border-radius: 5px; letter-spacing: 1.5px; "><h2>INSCREVER-SE</h2></a>
+        <a class="footer-title" href="/signup" ><b>INSCREVER-SE</b> </a>
     </div>
 </mat-footer>
 <div class="pt-5"></div>
