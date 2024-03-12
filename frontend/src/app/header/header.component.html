@@ -49,13 +49,13 @@
                     role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
                     style="display: flex; align-items: center;">
                     <!--Administrador<span class="caret"></span>-->
-                    <span class="text-success">{{getLoggedName()}}</span><i class="material-icons">admin_panel_settings</i>
+                    <span class="text-success">{{getLoggedName()}}</span><i class="material-icons color-icon">admin_panel_settings</i>
                 </a>
                 <ul class="dropdown-menu " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
                     <div>
 
-                        <h6 class="dropdown-menu_title mat-icon"><i class="material-icons"
-                                style="padding: 2px;">people_alt</i> Secção_Autor</h6>
+                        <b class="dropdown-menu_title mat-icon"><i class="material-icons"
+                                style="padding: 2px;">people_alt</i> Secção Autor</b>
                         <!--  <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="/admin/create/author"
                                 routerLinkActive="selected"><i class="material-icons">add_box</i> Adicionar</a>
@@ -70,8 +70,8 @@
                     </div>
 
                     <div>
-                        <h6 class="dropdown-menu_title mat-icon"><i class="material-icons">category</i> Secção_Categoria
-                        </h6>
+                        <b class="dropdown-menu_title mat-icon"><i class="material-icons">category</i> Secção Categoria
+                        </b>
                         <!--  <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="/admin/create/category"
                                 routerLinkActive="selected"><i class="material-icons">add_box</i> Adicionar</a>
@@ -85,7 +85,7 @@
                         </li>
                     </div>
                     <div>
-                        <h6 class="dropdown-menu_title mat-icon"><i class="material-icons">book</i>Secção_Livro</h6>
+                        <b class="dropdown-menu_title mat-icon"><i class="material-icons">book</i>Secção_Livro</b>
                         <!-- <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="/admin/create/book"
                                 routerLinkActive="selected"><i class="material-icons">add_box</i> Adicionar</a>
@@ -99,16 +99,16 @@
                         </li>
                     </div>
                     <div>
-                        <h6 class="dropdown-menu_title mat-icon"><i
-                                class="material-icons">miscellaneous_services</i>Configurações</h6>
+                        <b class="dropdown-menu_title mat-icon"><i
+                                class="material-icons">miscellaneous_services</i>Configurações</b>
                         <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="admin/config/logged/profile/{{getLoggedName()}}"
                                 routerLinkActive="selected"><i class="material-icons">manage_accounts</i> Gerenciar</a>
                         </li>
                     </div>
                     <div>
-                        <h6 class="dropdown-menu_title mat-icon"><i
-                                class="material-icons text-success">fiber_manual_record</i> Perfil Status </h6>
+                        <b class="dropdown-menu_title mat-icon"><i
+                                class="material-icons text-success">fiber_manual_record</i> Perfil Status </b>
                         <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link text-danger" (click)="logout()" routerLinkActive="selected" style="cursor: pointer;"> Terminar
                                 Sessão <i class="material-icons text-danger">exit_to_app</i></a>
@@ -121,11 +121,11 @@
             <li class="dropdown nav-item mr-2">
                 <a href="#" class="dropdown-toggle-split nav-link" data-toggle="dropdown" role="button"
                     data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" routerLinkActive="selected">
-                    <i class="material-icons">account_circle</i>
+                    <i class="material-icons color-icon">account_circle</i>
                 </a>
                 <ul class="dropdown-menu mr-5 " aria-labelledby="navbarDropdown" style="background-color: #f8f9fa77;">
                     <div>
-                        <h6 class="dropdown-menu_title text-center">Espaço Conta</h6>
+                        <h4 class="dropdown-menu_title text-center">Espaço Conta</h4>
                         <li class="dropdown-item font-weight-light p-0">
                             <a class="nav-link" routerLink="login" routerLinkActive="selected">Entrar <i
                                     class="material-icons">login</i></a>

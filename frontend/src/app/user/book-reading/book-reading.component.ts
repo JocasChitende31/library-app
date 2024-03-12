@@ -16,12 +16,11 @@ export class BookReadingComponent implements OnInit {
   myReadingList: ReadingList[] = [];
 
   constructor(private readingListService: ReadingListService, private userService: AuthorizationService, private router: Router ) {
-  
       let loginUser = localStorage.getItem("userLogged");
       this.findUserLogged(loginUser);
       this.findIfThereIsContentToDisplay();
   }
-  
+
   ngOnInit(): void {
   }
 
@@ -37,8 +36,7 @@ export class BookReadingComponent implements OnInit {
   findUserLogged(loginUser:any){
     this.userService.getByLogin(loginUser).subscribe(userFound=>{
       this.findMyReadingList(userFound.id);
-  })
-  };
+  })};
 
   findIfThereIsContentToDisplay(){
     if (this.myReadingList.length <= 0) {

@@ -83,8 +83,12 @@
                                 routerLink="/details/{{book.id}}/book" style="display: flex;"> <mat-icon class="mat-18 mr-1"> remove_red_eye</mat-icon>
                                  Detalhes</a>
                         </li>
-                        <li class="list-inline-item"><a class="btn btn-success"
-                                routerLink="/addbook/{{book.id}}/reading-list" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</a>
+                        <li class="list-inline-item">
+                          <form [formGroup]="addToReadingListForm">
+                            <input type="text" class="form-control" id="userId" name="userId" formControlName="userId" value="{{userLoggedId}}">
+                            <input type="number" class="form-control" id="bookId" name="bookId" formControlName="bookId" value="{{book?.id}}">
+                            <button class="btn btn-success" (click)="saveItemToReadingList()" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</button>
+                          </form>
                         </li>
                         <li class="list-inline-item"><button *ngIf="book.downloaderRefPDF !==null"class="btn btn-success" type="button" data-toggle="modal"
                             data-target="#exampleModal" (click)="downloadFile(book?.downloaderRefPDF)" style="display: flex;"><mat-icon class="mat-18 mr-1">download_for_offline</mat-icon>Download
