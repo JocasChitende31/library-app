@@ -1,13 +1,13 @@
 <div class="pt-5"></div>
 
-<h6 class="font-weight-light mt-5">
+<h4 class="font-weight-light mt-5">
     <hr class="mb-3">
-    Categorias > <small class="text-info"> <i class="font-weight-light" style="font-style: normal;">Livros </i> <b
+    Categorias > <small class="text-info"> <i style="font-style: normal; font-weight: bold; letter-spacing: 1px;">Livros </i> <b
             style="color: white;
-            font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
+            font-size: 12px;  border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
             background-color: red;">{{qtdT}}</b>
     </small>
-</h6>
+</h4>
 
 <div class="mb-3 mt-2 d-flex flex-wrap ">
     <!-- <br> -->
@@ -19,12 +19,12 @@
 </div>
 <hr>
 <div class="mt-2 ">
-    <h5 class="font-weight-light">Todos</h5>
+    <h4 class="font-weight-light">Todos</h4>
 </div>
 <div class="text-center" *ngIf="books.length <= 0">
     <hr>
     <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
-        <h5 class="text-white font-weight-light">{{serverUnvaliable}}</h5>
+        <h2 class="text-white font-weight-light">{{serverUnvaliable}}</h2>
     </div>
 </div>
 <div *ngFor="let book of books">
