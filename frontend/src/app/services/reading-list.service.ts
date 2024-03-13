@@ -19,4 +19,7 @@ export class ReadingListService {
     let params = new HttpParams().set('id', userId);
     return this.http.get<ReadingList[]>(this.readingListUrl + `/my-reading-list/${userId}`, {params: params});
   }
+  public saveToMyReadingList(item: ReadingList){
+   return this.http.post<ReadingList>(`${this.readingListUrl}/add-reading-list`, item);
+  }
 }

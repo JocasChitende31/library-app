@@ -78,6 +78,7 @@ export class BookFormComponent implements OnInit {
       this.authors = data;
     })
   }
+
   bookSubmit() {
     if (this.bookForm.valid) {
       this.bookService.save(this.bookForm.value).subscribe(res => {
@@ -87,21 +88,24 @@ export class BookFormComponent implements OnInit {
       })
     }
   }
+
   updateBook() {
     if (this.bookForm.valid) {
       this.bookService.update(this.bookId, this.bookForm.value).subscribe(res => {
         this.goToBookList();
-
       })
     }
   }
+
   goToBookList() {
     this.router.navigate(['/admin/books']);
   }
+
   findFiles(){
     this.filesService.getFiles().subscribe(data=>{
       this.files = data;
       console.info(data);
     })
   }
+
 }
