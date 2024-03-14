@@ -1,17 +1,17 @@
+
 import { User } from "../auth/model/user";
 import { Book } from "./book";
 
 export class ReadingListPost {
 
   id: String;
-  userId: User;
-  boookId: Book;
+  user: User;
+  book: Book;
 
-  constructor(id: String, userId: User, boookId: Book) {
+  constructor(id: String, user: User, book: Book) {
     this.id = id;
-    this.userId = userId;
-    this.boookId = boookId;
+    this.user = user;
+    this.book = book;
   }
 
-  
 }

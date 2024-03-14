@@ -27,4 +27,5 @@ export class AuthorizationService {
   public getByLogin(login: any): Observable<Perfil> {
     return this.http.get<Perfil>(this.baseUrl + `/user/${login}`, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
   }
+ 
 }

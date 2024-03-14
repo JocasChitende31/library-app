@@ -20,7 +20,7 @@ export class AuthorService {
   }
   public findById(authId: any): Observable<Author> {
     let params = new HttpParams().set('id', authId);
-    return this.http.get<Author>(`${this.authorUrl}/${authId}/author`, { params: params, context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true)  });
+    return this.http.get<Author>(`${this.authorUrl}/${authId}/author`);
   }
   public save(author: Author) {
     return this.http.post<Author>(`${this.authorUrl}/create/author`, author);
