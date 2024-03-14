@@ -20,10 +20,9 @@ export class AuthorizationService {
 
   public login(user: User) {
     return this.http.post(this.baseUrl + '/login', user, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
-
   }
   public findAll(): Observable<User[]> {
-    return this.http.get<User[]>(this.baseUrl + '/users', { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
+    return this.http.get<User[]>(this.baseUrl + '/users');
   }
   public getByLogin(login: any): Observable<Perfil> {
     return this.http.get<Perfil>(this.baseUrl + `/user/${login}`, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
