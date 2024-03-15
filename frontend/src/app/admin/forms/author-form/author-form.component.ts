@@ -28,9 +28,14 @@ export class AuthorFormComponent implements OnInit {
     private authorService: AuthorService
   ) {
     // this.author = new Author();
+    this.getAuthorItem();
   }
   ngOnInit(): void {
-    this.authId = this.route.snapshot.paramMap.get('id');
+
+  }
+  getAuthorItem(){
+    const id = Number(this.route.snapshot.paramMap.get('id'));
+    this.authId = id;
     if (this.authId) {
       this.authorService.findById(this.authId).subscribe(res => {
         this.authorForm.patchValue({

@@ -6,18 +6,20 @@
 
 <div ng-cloack>
     <mat-tab-group>
+      <mat-tab>
+        <ng-template mat-tab-label>
+            {{getLoggedName()}}<i class="material-icons">lock_person</i>
+        </ng-template>
+        <app-perfil></app-perfil>
+    </mat-tab>
         <mat-tab>
+
             <ng-template mat-tab-label>
                 <i class="material-icons">list</i> Users
             </ng-template>
             <app-users-registered></app-users-registered>
         </mat-tab>
         <mat-tab label="Sistema"> Sistemas </mat-tab>
-        <mat-tab>
-            <ng-template mat-tab-label>
-                {{getLoggedName()}}<i class="material-icons">lock_person</i> 
-            </ng-template>
-            <app-perfil></app-perfil>
-        </mat-tab>
+
     </mat-tab-group>
 </div>

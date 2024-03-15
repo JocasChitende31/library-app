@@ -24,11 +24,14 @@ public class ReadingList {
 
     @ManyToOne(cascade = CascadeType.MERGE)
     @JsonIgnore
+    @JsonProperty
     @JoinColumn(name = "user_id", referencedColumnName = "id")
 
     private User user;
 
     @ManyToOne(cascade = CascadeType.MERGE)
+    @JsonIgnore
+    @JsonProperty
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
 

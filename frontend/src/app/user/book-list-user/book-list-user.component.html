@@ -85,8 +85,22 @@
                         </li>
                         <li class="list-inline-item">
                           <form [formGroup]="addToReadingListForm">
-                            <input type="text" class="form-control" id="userId" name="userId" formControlName="userId" value="{{userLoggedId}}">
-                            <input type="number" class="form-control" id="bookId" name="bookId" formControlName="bookId" value="{{book?.id}}">
+                            <div class="col-md-12 mt-2">
+                              <label for="user" class="form-label">IdUser</label>
+                              <select name="user" id="user" class="form-control" formControlName="user">
+                                <option [selected]>J</option>
+                                  <option value="{{userLoggedObj}}" defaultSelected>
+                                      {{userLoggedId?.login}}</option>
+                              </select>
+                            </div>
+                            <div class="col-md-12 mt-2">
+                              <label for="book" class="form-label">IdBook</label>
+                              <select name="book" id="book" class="form-control" formControlName="book">
+                                  <option value="{{book.id}}" selected >
+                                      {{book.title}}
+                                  </option>
+                              </select>
+                            </div>
                             <button class="btn btn-success" (click)="saveItemToReadingList()" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</button>
                           </form>
                         </li>

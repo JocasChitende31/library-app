@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup, Validators } from '@angular/forms';
+import { FormControl, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/auth/service/authorization.service';
 import { Book } from 'src/app/models/book';
@@ -22,15 +22,16 @@ export class BookListUserComponent implements OnInit {
   qtdT: Number = 0;
   bookId: any;
   books: Book[] = [];
-  userLoggedId?:String;
+  userLoggedId?:any;
+  userLoggedObj: any;
   @Input() categories: Category[] = [];
   linkGenerated = '';
   titleOfBookDownload?: String;
 
   addToReadingListForm = new FormGroup({
     id: new FormControl(''),
-    userId: new FormControl('', Validators.required),
-    bookId: new FormControl('', Validators.required)
+    user: new FormControl,
+    book: new FormControl
   });
 
   addToReadListSmsSuccess = '';
@@ -54,8 +55,12 @@ export class BookListUserComponent implements OnInit {
 
     let userLogged = localStorage.getItem('userLogged');
     this.userService.getByLogin(userLogged).subscribe(data=>{
-      console.info(data);
-      this.userLoggedId = data.id;
+      let obj = JSON.stringify({
+        id: data.id
+      });
+      console.info("Normalized data", obj);
+      this.userLoggedId = data;
+      this.userLoggedObj = obj;
     })
 
   }
@@ -107,9 +112,11 @@ export class BookListUserComponent implements OnInit {
 
   saveItemToReadingList(){
         console.info(this.addToReadingListForm.value)
+        let result = JSON.stringify(this.addToReadingListForm.value);
+        console.info("Dados a Submeter: ", result);
         this.readingListService.saveToMyReadingList(this.addToReadingListForm.value).subscribe(item=>{
           this.addToReadListSmsSuccess = 'Livro Adicionado a Lista'
-          console.info(item);
+          console.info(item.id);
         })
   }
 }
