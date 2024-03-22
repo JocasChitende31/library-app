@@ -1,39 +1,42 @@
 package com.atendestartup.library.entities;
 
 
-import com.fasterxml.jackson.annotation.JsonCreator;
-import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.fasterxml.jackson.annotation.JsonProperty;
-import jakarta.persistence.*;
-import jakarta.validation.constraints.NotNull;
-import org.springframework.lang.NonNull;
-
 import java.util.Objects;
 import java.util.UUID;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import jakarta.persistence.Basic;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.Table;
+
 @Entity
 @Table(name = "tb_reading_lists")
-public class ReadingList {
+//@JsonIgnoreProperties(ignoreUnknown = true)
+public class ReadingList  {
+	
+//	public static final long SerialVersionUID = 8703616441477399287L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     @Basic(optional=false)
     @Column(name="id")
-    private String id = UUID.randomUUID().toString();
+	private String id = UUID.randomUUID().toString();
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JsonIgnore
-    @JsonProperty
     @JoinColumn(name = "user_id", referencedColumnName = "id")
-
     private User user;
 
     @ManyToOne(cascade = CascadeType.MERGE)
-    @JsonIgnore
-    @JsonProperty
     @JoinColumn(name = "book_id", referencedColumnName = "id")
     private Book book;
+
 
     public ReadingList(){
 
@@ -53,8 +56,7 @@ public class ReadingList {
     public void setId(String id) {
         this.id = id;
     }
-
-
+    
     public User getFkUser(){
         return  this.user;
     }
@@ -68,6 +70,15 @@ public class ReadingList {
         this.book = book;
     }
 
+//    public String toJson() throws JsonProcessingException{
+//    	ObjectMapper mapper = new ObjectMapper();
+//    	return mapper.writeValueAsString(this);
+//    	
+//    }
+//    public static ReadingList fromJsonToObject(String json) throws JsonProcessingException {
+//    	ObjectMapper mapper = new ObjectMapper();
+//    	return mapper.readValue(json, ReadingList.class);
+//    }
     @Override
     public int hashCode(){
         return Objects.hash(this.id,this.book, this.book);

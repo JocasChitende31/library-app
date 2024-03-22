@@ -39,7 +39,12 @@ public class AuthorizationService implements UserDetailsService {
         List<RegisterDTO> data = listUser.stream().map(x -> new RegisterDTO(x.getId(), x.getLogin(), x.getPassword(), x.getRole())).toList();
         return data;
     }
-
+    @Transactional
+    public RegisterDTO findByLoginName(String login) {
+    	User data = this.userRepository.findByLoginName(login);
+    	RegisterDTO singleUser = new RegisterDTO(data.getId(), data.getLogin(), data.getPassword(), data.getRole());
+    	return singleUser;
+    }
     @Transactional
     public void update(String id, RegisterDTO body) {
         String newLogin = body.login();
