@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormBuilder, FormGroup } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/auth/service/authorization.service';
 import { Book } from 'src/app/models/book';
@@ -22,17 +22,13 @@ export class BookListUserComponent implements OnInit {
   qtdT: Number = 0;
   bookId: any;
   books: Book[] = [];
-  userLoggedId?:any;
+  userLoggedId?: any;
   userLoggedObj: any;
   @Input() categories: Category[] = [];
   linkGenerated = '';
   titleOfBookDownload?: String;
 
-  addToReadingListForm = new FormGroup({
-    id: new FormControl(''),
-    user: new FormControl,
-    book: new FormControl
-  });
+  addToReadingListForm: FormGroup;
 
   addToReadListSmsSuccess = '';
 
@@ -43,29 +39,41 @@ export class BookListUserComponent implements OnInit {
     private readingListService: ReadingListService,
     private userService: AuthorizationService,
     private route: ActivatedRoute,
-    private router: Router
+    private router: Router,
+    private formBuilder: FormBuilder
   ) {
+
+
     this.bookId = this.route.snapshot.params['id'];
     if (this.books.length <= 0) {
-    setTimeout(() => {
+      setTimeout(() => {
         this.serverUnvaliable = 'Serviço temporariamente indisponível';
         this.bgDanger = 'bg-danger';
       }, 3500);
     }
 
     let userLogged = localStorage.getItem('userLogged');
-    this.userService.getByLogin(userLogged).subscribe(data=>{
-      let obj = JSON.stringify({
-        id: data.id
-      });
-      console.info("Normalized data", obj);
-      this.userLoggedId = data;
-      this.userLoggedObj = obj;
-    })
+    if (userLogged != null) {
+      this.userService.getByName(userLogged).subscribe(data => {
+        console.info("Normalized data", data);
+        this.userLoggedId = data;
+        this.userLoggedObj = data;
+      })
+    }
 
+    this.addToReadingListForm = this.formBuilder.group({
+      id: [null],
+      user: [null],
+      book: [null]
+    });
   }
   ngOnInit(): void {
     this.bookId = this.route.snapshot.paramMap.get('id');
+    this.findAllBook();
+    this.findAllCategory();
+  }
+
+  findAllBook() {
     this.bookService.findAll().subscribe(data => {
       this.books = data;
 
@@ -75,10 +83,12 @@ export class BookListUserComponent implements OnInit {
       }
       this.qtdT = i;
     });
+  }
+
+  findAllCategory() {
     this.categoryService.findAll().subscribe(data => {
       this.categories = data;
     })
-
   }
 
   onDelete(bookId: any) {
@@ -110,13 +120,12 @@ export class BookListUserComponent implements OnInit {
     this.titleOfBookDownload = 'Indisponível';
   }
 
-  saveItemToReadingList(){
-        console.info(this.addToReadingListForm.value)
-        let result = JSON.stringify(this.addToReadingListForm.value);
-        console.info("Dados a Submeter: ", result);
-        this.readingListService.saveToMyReadingList(this.addToReadingListForm.value).subscribe(item=>{
-          this.addToReadListSmsSuccess = 'Livro Adicionado a Lista'
-          console.info(item.id);
-        })
+  saveItemToReadingList() {
+    console.info("Submission", this.addToReadingListForm.value)
+
+    this.readingListService.saveToMyReadingList(this.addToReadingListForm.value).subscribe(item => {
+      this.addToReadListSmsSuccess = 'Livro Adicionado a Lista';
+      console.info(item.id);
+    })
   }
 }

@@ -4,14 +4,18 @@ import { Book } from "./book";
 
 export class ReadingListPost {
 
-  id: String;
-  user: User;
-  book: Book;
+  id: String | undefined;
+  user: User | undefined;
+  book: Book | undefined;
 
-  constructor(id: String, user: User, book: Book) {
+
+   constructor() {
+
+  }
+ /*   constructor(id: String, user: User, book: Book) {
     this.id = id;
     this.user = user;
     this.book = book;
-  }
+  } */
 
 }

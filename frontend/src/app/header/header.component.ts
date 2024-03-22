@@ -17,7 +17,7 @@ userOn?: String;
     this.getLoggedUserRole();
 
     let userLogged = localStorage.getItem("userLogged");
-    this.findUserLogged(userLogged);
+    if(userLogged) this.findUserLogged(userLogged);
   }
 
   ngOnInit(): void {
