@@ -9,6 +9,14 @@ import org.springframework.security.core.userdetails.UserDetails;
 public interface UserRepository extends JpaRepository<User, String> {
 
     UserDetails findByLogin(String login);
+    
+    
+    
+    @Query(nativeQuery=true, value ="""
+    		SELECT * FROM tb_users WHERE tb_users.login =:login
+    		""")
+    User findByLoginName(String login);
+    
     @Modifying
     @Query(nativeQuery = true, value = """
             	UPDATE tb_users SET login =:newLogin, password =:newPassword, role =:newRole WHERE id =:id

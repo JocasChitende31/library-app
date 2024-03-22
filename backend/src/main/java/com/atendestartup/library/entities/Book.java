@@ -1,19 +1,16 @@
 package com.atendestartup.library.entities;
 
-import java.util.HashSet;
 import java.util.List;
 import java.util.Objects;
-import java.util.Set;
-
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
-
-import javax.naming.Name;
 
 @Entity
 @Table(name = "tb_books")
+//@JsonIgnoreProperties(ignoreUnknown = true)
 public class Book {
 
+//	public static final long  SerialVersionUID = 8703616441477399287L;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	@Basic(optional=false)
@@ -39,8 +36,10 @@ public class Book {
 	private String downloaderRefPDF;
 
 	@OneToMany(mappedBy = "book")
-	@JsonIgnore
 	private List<ReadingList> readingLists;
+
+	
+	
 	public Book() {
 
 	}

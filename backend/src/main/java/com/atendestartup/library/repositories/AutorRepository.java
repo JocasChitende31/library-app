@@ -1,6 +1,5 @@
 package com.atendestartup.library.repositories;
 
-import com.atendestartup.library.DTO.AuthorDTO;
 import com.atendestartup.library.entities.Author;
 import com.atendestartup.library.projections.AuthorProjection;
 import org.springframework.data.jpa.repository.JpaRepository;

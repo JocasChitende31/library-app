@@ -3,6 +3,8 @@ package com.atendestartup.library.entities;
 import java.util.*;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+
 import jakarta.persistence.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -32,6 +34,7 @@ public class User implements UserDetails {
 	@OneToMany(mappedBy = "user")
 	@JsonIgnore
 	private List<ReadingList> readingList;
+	
 	public User() {
 	}
 
