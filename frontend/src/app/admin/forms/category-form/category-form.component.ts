@@ -28,9 +28,11 @@ export class CategoryFormComponent implements OnInit {
     // this.category = new Category();
     this.getCategoryItem();
   }
+
   ngOnInit(): void {
 
   }
+
   getCategoryItem(){
     const catId = Number(this.route.snapshot.paramMap.get('id'));
     this.catId = catId;
@@ -47,6 +49,7 @@ export class CategoryFormComponent implements OnInit {
   categorySubmit() {
     if (this.categoryForm.valid) {
       this.categoryService.save(this.categoryForm.value).subscribe(result => {
+        console.info(this.categoryForm.value);
         this.goToList();
         this.categoryForm.reset();
 

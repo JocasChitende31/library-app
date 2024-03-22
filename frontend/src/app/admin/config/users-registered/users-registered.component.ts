@@ -19,6 +19,7 @@ export class UsersRegisteredComponent implements OnInit {
 
   getAllUsers() {
     this.authorizationService.findAll().subscribe(data => {
+      console.info("users:",data);
       this.users = data;
     });
   }
