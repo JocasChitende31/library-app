@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder} from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/auth/service/authorization.service';
 import { Book } from 'src/app/models/book';
@@ -28,7 +28,11 @@ export class BookListUserComponent implements OnInit {
   linkGenerated = '';
   titleOfBookDownload?: String;
 
-  addToReadingListForm: FormGroup;
+  addToReadingListForm = this.formBuilder.group({
+    id: '',
+    user:'',
+    book: ''
+  });
 
   addToReadListSmsSuccess = '';
 
@@ -43,52 +47,42 @@ export class BookListUserComponent implements OnInit {
     private formBuilder: FormBuilder
   ) {
 
+    //this.bookId = this.route.snapshot.params['id'];
+    const paramId = this.route.snapshot.paramMap;
+    this.bookId = Number(paramId.get('id'));
 
-    this.bookId = this.route.snapshot.params['id'];
+    let userLogged = localStorage.getItem('userLogged');
+    if (userLogged != null) {
+      this.userService.getByName(userLogged).subscribe(data => {
+        console.info("Normalized data", data);
+        this.userLoggedId = data.id;
+        this.userLoggedObj = data;
+      })
+    }
+
+  }
+  ngOnInit(): void {
+    this.findAllBooksAndCategories();
+  }
+
+  findAllBooksAndCategories() {
     if (this.books.length <= 0) {
       setTimeout(() => {
         this.serverUnvaliable = 'Serviço temporariamente indisponível';
         this.bgDanger = 'bg-danger';
       }, 3500);
     }
-
-    let userLogged = localStorage.getItem('userLogged');
-    if (userLogged != null) {
-      this.userService.getByName(userLogged).subscribe(data => {
-        console.info("Normalized data", data);
-        this.userLoggedId = data;
-        this.userLoggedObj = data;
-      })
-    }
-
-    this.addToReadingListForm = this.formBuilder.group({
-      id: [null],
-      user: [null],
-      book: [null]
-    });
-  }
-  ngOnInit(): void {
-    this.bookId = this.route.snapshot.paramMap.get('id');
-    this.findAllBook();
-    this.findAllCategory();
-  }
-
-  findAllBook() {
     this.bookService.findAll().subscribe(data => {
       this.books = data;
-
+      this.categoryService.findAll().subscribe(resul => {
+        this.categories = resul;
+      })
       let i = 0;
       for (let index = 0; index < data.length; index++) {
         i++;
       }
       this.qtdT = i;
     });
-  }
-
-  findAllCategory() {
-    this.categoryService.findAll().subscribe(data => {
-      this.categories = data;
-    })
   }
 
   onDelete(bookId: any) {

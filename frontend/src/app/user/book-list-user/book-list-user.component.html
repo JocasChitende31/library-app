@@ -84,26 +84,25 @@
                                  Detalhes</a>
                         </li>
                         <li class="list-inline-item">
-                          <form [formGroup]="addToReadingListForm">
+                          <form [formGroup]="addToReadingListForm" (ngSubmit)="saveItemToReadingList()" >
                             <div class="col-md-12 mt-2">
                               <label for="user" class="form-label">IdUser</label>
-                              <input type="text" name="user" id="user" class="form-control" formControlName="user" [value]="userLoggedObj">
-                             <!--  <select name="user" id="user" class="form-control" formControlName="user">
-                                <option [selected]>J</option>
-                                  <option value="{{userLoggedObj|json}}" defaultSelected>
+                              <!-- <input type="text" name="user" id="user" class="form-control" formControlName="user" [value]="userLoggedObj"> -->
+                              <select name="user" id="user" class="form-control" formControlName="user">
+                                  <option value="{{userLoggedObj | json}}" defaultSelected>
                                       {{userLoggedObj?.login}}</option>
-                              </select> -->
+                              </select>
                             </div>
                             <div class="col-md-12 mt-2">
                               <label for="book" class="form-label">IdBook</label>
-                              <input type="text" class="form-control" id="book" name="book" formControlName="book" value="{{book}}">
-                              <!-- <select name="book" id="book" class="form-control" formControlName="book">
-                                  <option value="{{book|json}}" selected >
+                              <!-- <input type="text" class="form-control" id="book" name="book" formControlName="book" value="{{book}}"> -->
+                              <select name="book" id="book" class="form-control" formControlName="book">
+                                  <option value="{{book|json}}" selected>
                                       {{book.title}}
                                   </option>
-                                </select> -->
+                                </select> 
                             </div>
-                            <button class="btn btn-success" (click)="saveItemToReadingList()" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</button>
+                            <button type="submit" class="btn btn-success" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</button>
                           </form>
                         </li>
                         <li class="list-inline-item"><button *ngIf="book.downloaderRefPDF !==null"class="btn btn-success" type="button" data-toggle="modal"
