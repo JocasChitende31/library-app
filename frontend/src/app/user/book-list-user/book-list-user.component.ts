@@ -1,5 +1,5 @@
 import { Component, Input, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup } from '@angular/forms';
+import { FormBuilder } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/auth/service/authorization.service';
 import { Book } from 'src/app/models/book';
@@ -27,8 +27,13 @@ export class BookListUserComponent implements OnInit {
   @Input() categories: Category[] = [];
   linkGenerated = '';
   titleOfBookDownload?: String;
+  idForTarget: any;
 
-  addToReadingListForm: FormGroup;
+  addToReadingListForm = this.formBuilder.group({
+    id: '',
+    user:'',
+    book: ''
+  });
 
   addToReadListSmsSuccess = '';
 
@@ -40,55 +45,64 @@ export class BookListUserComponent implements OnInit {
     private userService: AuthorizationService,
     private route: ActivatedRoute,
     private router: Router,
-    private formBuilder: FormBuilder
+    private formBuilder: FormBuilder,
   ) {
 
+    //this.bookId = this.route.snapshot.params['id'];
+    const paramId = this.route.snapshot.paramMap;
+    this.bookId = Number(paramId.get('id'));
+    this.findBookById(this.idForTarget);
 
-    this.bookId = this.route.snapshot.params['id'];
-    if (this.books.length <= 0) {
-      setTimeout(() => {
-        this.serverUnvaliable = 'Serviço temporariamente indisponível';
-        this.bgDanger = 'bg-danger';
-      }, 3500);
-    }
+  }
+  ngOnInit(): void {
 
+    this.bookService.findById(this.bookId)
     let userLogged = localStorage.getItem('userLogged');
+
     if (userLogged != null) {
       this.userService.getByName(userLogged).subscribe(data => {
+        let obj = this.addToReadingListForm.patchValue({
+          id: '',
+          user: data,
+          book:  {id: this.bookId}
+        })
         console.info("Normalized data", data);
         this.userLoggedId = data;
         this.userLoggedObj = data;
       })
     }
 
-    this.addToReadingListForm = this.formBuilder.group({
-      id: [null],
-      user: [null],
-      book: [null]
+    this.books.forEach( f => {
+      console.log("idParams", f);
     });
+    //console.info("patchValue", JSON.stringify(obj));
+    this.findAllBooksAndCategories();
   }
-  ngOnInit(): void {
-    this.bookId = this.route.snapshot.paramMap.get('id');
-    this.findAllBook();
-    this.findAllCategory();
-  }
+  findBookById(id: any){
+    //var even = Number(event.target.user.value);
+    this.bookService.findById(id).subscribe(book=>{
+      console.log(book);
+    })
 
-  findAllBook() {
+  }
+  findAllBooksAndCategories() {
+    if (this.books.length <= 0) {
+      setTimeout(() => {
+        this.serverUnvaliable = 'Serviço temporariamente indisponível';
+        this.bgDanger = 'bg-danger';
+      }, 3500);
+    }
     this.bookService.findAll().subscribe(data => {
       this.books = data;
-
+      this.categoryService.findAll().subscribe(resul => {
+        this.categories = resul;
+      })
       let i = 0;
       for (let index = 0; index < data.length; index++) {
         i++;
       }
       this.qtdT = i;
     });
-  }
-
-  findAllCategory() {
-    this.categoryService.findAll().subscribe(data => {
-      this.categories = data;
-    })
   }
 
   onDelete(bookId: any) {
@@ -118,11 +132,19 @@ export class BookListUserComponent implements OnInit {
       })
     }
     this.titleOfBookDownload = 'Indisponível';
+
   }
 
-  saveItemToReadingList() {
+  saveItemToReadingList(event: any) {
+    var even = event.target.user.value;
+    this.idForTarget = event.target.user.value;
+    let idTaget = Number(event);
+    console.log("eventTargetOnInit",idTaget)
+    console.info("Event1", event.target.user.value);
+    console.info("Event2idBook", event.target.bookid.value);
     console.info("Submission", this.addToReadingListForm.value)
-
+      let obj = this.addToReadingListForm.getRawValue();
+      console.info('GetValue', obj);
     this.readingListService.saveToMyReadingList(this.addToReadingListForm.value).subscribe(item => {
       this.addToReadListSmsSuccess = 'Livro Adicionado a Lista';
       console.info(item.id);

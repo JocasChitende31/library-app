@@ -10,19 +10,20 @@ import { BookServiceService } from '../../services/book-service.service';
 })
 export class BookDetailsComponent implements OnInit {
   book: Book | undefined;
-  id: Number | undefined;
+  idBook: Number | undefined;
   constructor(
     private bookService: BookServiceService,
     private route: ActivatedRoute
   ) {
-    this.getBookItem();
+    const id = this.route.snapshot.paramMap;
+    this.idBook = Number(id.get('id'));
   }
 
   ngOnInit(): void {
-    
+    this.getBookItem(this.idBook);
   }
-  getBookItem(){
-    const id = Number(this.route.snapshot.paramMap.get('id'));
+  
+  getBookItem(id: any){
     this.bookService.findById(id).subscribe(data => {
       this.book = data;
     })
