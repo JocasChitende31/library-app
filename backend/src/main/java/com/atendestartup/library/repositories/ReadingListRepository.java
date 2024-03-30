@@ -15,7 +15,9 @@ public interface ReadingListRepository extends JpaRepository<ReadingList, String
         INSERT INTO tb_reading_lists (user_id, book_id) values(:user,:book)
     """)
    void insertIntoReadingList(String user, Long book);
-    ReadingList findByBookId(Long id);
+    
+   //ReadingList findByBookId(Long book);
+   
     @Query(nativeQuery = true, value = """
         SELECT 
         tb_reading_lists.id, 

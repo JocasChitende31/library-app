@@ -1,10 +1,9 @@
-import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { AppConstants } from '../env/app-constants';
 import { ReadingList } from '../models/reading-list';
 import { ReadingListPost } from '../models/reading-list-post';
-import { DISABLE_GLOBAL_EXCEPTION_HANDLING } from './../core/interceptors/token.interceptor';
 
 @Injectable({
   providedIn: 'root'
@@ -22,5 +21,9 @@ export class ReadingListService {
   }
   public saveToMyReadingList(item: ReadingListPost){
    return this.http.post<ReadingListPost>(`${this.readingListUrl}/add-reading-list`, item);
+  }
+  public deleteItemFromMyReadingList(itemId:any){
+    let params = new HttpParams().set('id', itemId);
+    return this.http.delete<ReadingListPost>(`${this.readingListUrl}/delete/item/${itemId}`, {params:params})
   }
 }
