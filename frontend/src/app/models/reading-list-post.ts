@@ -9,13 +9,10 @@ export class ReadingListPost {
   book: Book | undefined;
 
 
-   constructor() {
-
-  }
- /*   constructor(id: String, user: User, book: Book) {
+constructor(id: String, user: User, book: Book) {
     this.id = id;
     this.user = user;
     this.book = book;
-  } */
+  }
 
 }

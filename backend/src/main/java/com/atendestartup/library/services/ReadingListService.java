@@ -23,6 +23,7 @@ public class ReadingListService {
     @Transactional
     public void addBook(@Valid ReadingListDTO body){
         ReadingList data = new ReadingList(body.getId(), body.getUser(), body.getBook());
+        System.out.println(data);
         this.readingListRepository.save(data);
     }
     @Transactional

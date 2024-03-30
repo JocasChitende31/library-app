@@ -96,12 +96,10 @@
                             </div>
                             <div class="col-md-12 mt-2">
                               <label for="book" class="form-label">IdBook</label>
-                              <input type="text" class="form-control" id="book" name="book" formControlName="book" value="{{book | json}}">
-                              <!-- <select name="book" id="book" class="form-control" formControlName="book">
-                                  <option value="{{book|json}}" selected>
-                                      {{book.title}}
-                                  </option>
-                                </select> -->
+                              <!-- <input type="text" class="form-control" id="book" name="book" formControlName="book" value="{{book.id}}" ngForm> -->
+                              <select name="book" id="book" class="form-control" formControlName="book">
+                                  <option value="{{book}}" [selected]>{{book.title}}</option>
+                                </select>
                             </div>
                             <button type="submit" class="btn btn-success" style="display: flex;"> <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</button>
                           </form>
