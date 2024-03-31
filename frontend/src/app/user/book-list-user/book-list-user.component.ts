@@ -34,7 +34,7 @@ export class BookListUserComponent implements OnInit {
     book:''
   });
 
-  addToReadListSmsSuccess = '';
+  addToReadListSmsSuccess?:String;
 
   constructor(
     private bookService: BookServiceService,
@@ -50,6 +50,7 @@ export class BookListUserComponent implements OnInit {
     //this.bookId = this.route.snapshot.params['id'];
     const paramId = this.route.snapshot.paramMap;
     this.bookId = Number(paramId.get('id'));
+    this.addToReadListSmsSuccess;
 
   }
   ngOnInit(): void {
@@ -123,13 +124,14 @@ export class BookListUserComponent implements OnInit {
 
   }
 
-  saveItemToReadingList(event: any) {
-   
+  saveItemToReadingList() {
+
     console.info("Submission", this.addToReadingListForm.value)
-      
+
     this.readingListService.saveToMyReadingList(this.addToReadingListForm.value).subscribe(item => {
-      this.addToReadListSmsSuccess = 'Livro Adicionado a Lista';
-      console.info(item.id);
-    })
+      this.addToReadListSmsSuccess = 'Livro Adicionado a Lista' + item;
+
+      console.info(item);
+    });
   }
 }

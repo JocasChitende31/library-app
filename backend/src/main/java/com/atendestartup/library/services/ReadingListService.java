@@ -23,14 +23,13 @@ public class ReadingListService {
     @Transactional
     public void addBook(@Valid ReadingListDTO body){
         ReadingList data = new ReadingList(body.getId(), body.getUser(), body.getBook());
-        System.out.println(data);
         this.readingListRepository.save(data);
     }
-    @Transactional
-    public ReadingList findByBookId(Long id){
-        ReadingList data = this.readingListRepository.findByBookId(id);
-        return data;
-    }
+
+	/*
+	 * @Transactional public ReadingList findByBookId(Long bookId){ ReadingList data
+	 * = this.readingListRepository.findByBookId(bookId); return data; }
+	 */
     @Transactional
     public List<ReadingListDTO> findAll(){
         List<ReadingList> resul = this.readingListRepository.findAll();
@@ -42,5 +41,11 @@ public class ReadingListService {
         List<ReadingListProjection> resul  = this.readingListRepository.findMyReadingList(id);
         List<MyReadingListDTO> dto = resul.stream().map(x -> new MyReadingListDTO(x)).toList();
         return dto;
+    }
+    
+    @Transactional
+    public void deleteItemFromMyList(String id) {
+    	ReadingList item = this.readingListRepository.findById(id).get();
+    	this.readingListRepository.delete(item);
     }
 }

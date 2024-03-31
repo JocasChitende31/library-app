@@ -35,8 +35,8 @@ public class Book {
 	@Column(name="downloader_ref_pdf")
 	private String downloaderRefPDF;
 
-	@OneToMany(mappedBy = "book")
-	private List<ReadingList> readingLists;
+	//@OneToMany(mappedBy = "book")
+	//private List<ReadingList> readingLists;
 
 	
 	
@@ -146,12 +146,13 @@ public class Book {
 		this.downloaderRefPDF = downloaderRefPDF;
 	}
 
-	public List<ReadingList> getReadingLists(){
-		return this.readingLists;
-	}
-	public void setReadingLists(List<ReadingList> readingLists){
-		this.readingLists = readingLists;
-	}
+	/*
+	 * public List<ReadingList> getReadingLists(){ return this.readingLists; }
+	 */
+	/*
+	 * public void setReadingLists(List<ReadingList> readingLists){
+	 * this.readingLists = readingLists; }
+	 */
 	@Override
 	public int hashCode() {
 		return Objects.hash(fkAuthor, fkCategory, id);
