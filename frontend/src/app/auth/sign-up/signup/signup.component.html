@@ -1,0 +1,43 @@
+<div class="pt-5"></div>
+<div class="pt-2"></div>
+<div class="mt-5 title"></div>
+
+<mat-header class="header" fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="row" class="header-icon">
+    <mat-icon class="mat-18">add_reaction</mat-icon>
+  </div>
+</mat-header>
+
+<mat-card class="signup">
+  <mat-card-content>
+    <form class="form-signup" fxLayout.gt-md="column">
+      <h3 class="title-header text-center">Criar Conta</h3>
+      <mat-form-field>
+        <mat-label>Digite um nome de usuário (ex. Jeo03)</mat-label>
+        <mat-icon matPrefix mat18>person_add_alt_1</mat-icon>
+        <input matInput placeholder="JeoAntunes03" type="text" name="login" id="login" class="" required>
+        <mat-error>Por favor, preencha este campo!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Digitar palavra-passe</mat-label>
+        <mat-icon matPrefix mat18>lock_person</mat-icon>
+        <input matInput type="password" name="password" id="password" required>
+        <mat-error>Por favor, preencha este campo!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Confirmar palavra-passe</mat-label>
+        <mat-icon matPrefix mat18>lock_person</mat-icon>
+        <input matInput type="password" name="password" id="password" required>
+        <mat-error>Por favor, preencha este campo!</mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="btn-success">Cadastrar <mat-icon mat18>check</mat-icon></button>
+      <div class="text-center mt-2 font-weight-light">
+        <b>OBS:</b><a style="color: white; text-align: right;">
+          Use caracteres especiais para fortalecer a palavra-passe!
+        </a>
+      </div>
+    </form>
+  </mat-card-content>
+</mat-card>
+<a routerLink="/login" fxLayout="row" class="footer" fxLayoutAlign="space-around center">ENTRAR</a>
+<div class="pt-4 mb-3"></div>

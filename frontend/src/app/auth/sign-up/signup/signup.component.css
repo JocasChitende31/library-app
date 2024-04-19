@@ -1,0 +1,196 @@
+.header {
+
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+  background: linear-gradient(to right, #0d355e, #1e72c7);
+  border-radius: 5px;
+  border-top-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+  color: aliceblue;
+  padding: 10px;
+  margin: 1.5px auto;
+  height: auto;
+  width: 50%;
+}
+
+.header-icon {
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  padding: 0 0 20px 0;
+  text-align: center;
+  margin: 0 auto;
+}
+
+.signup {
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+  background: linear-gradient(to right, #0d355e, #1e72c7);
+  border-radius: 10px;
+  border-top-right-radius: 0%;
+  border-bottom-left-radius: 0%;
+  color: white;
+  height: auto;
+  width: 50%;
+  margin: 0 auto;
+
+}
+
+.form-signup {
+  display: flex !important;
+  flex-direction: column !important;
+  width: 100% !important;
+  margin: 0 auto !important;
+}
+
+.form-signup mat-icon {
+  margin: 0 5px 0 0 !important;
+}
+
+.form-signup .btn-success {
+  letter-spacing: 1px;
+}
+
+.footer-icon {
+  margin: 0 auto;
+}
+
+.mat-18 {
+  font-size: 48px;
+  margin: 0;
+}
+
+.title-header {
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+  background: linear-gradient(to right, #0d355e, #1e72c7);
+  border-radius: 5px;
+  border-top-left-radius: 0%;
+  border-bottom-right-radius: 0%;
+
+  padding: 5px;
+  margin: 10px auto;
+  height: auto;
+  width: 50%;
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  font-weight: 100 !important;
+  font-size: 1.5rem;
+  text-align: center;
+  color: aliceblue !important;
+  letter-spacing: 2px;
+
+}
+
+::placeholder {
+  color: rgb(173, 173, 173);
+}
+
+::ng-deep .mat-form-field {
+  .mat-input-element {
+    color: slategray;
+    padding: 5px 5px 5px 10px;
+    background-color: #99adc11b !important;
+    width: 97%;
+    border-radius: 1px;
+
+  }
+
+  .mat-form-field-label {
+    color: rgb(178, 191, 204);
+    padding: 2px 5px 0 5px;
+  }
+
+  .mat-form-field-underline {
+    background-color: slategray;
+  }
+
+  .mat-form-field-focused {
+    background-color: slategray;
+  }
+
+  .mat-form-field-ripple {
+    background-color: slategray;
+  }
+
+  .mat-form-field-required-marker {
+    color: red;
+    font-size: large;
+  }
+}
+
+::ng-deep .mat-form-field.mat-focused {
+  .mat-form-field-label {
+    color: white;
+    font-size: large;
+  }
+
+  .mat-form-field-ripple {
+    background-color: white;
+  }
+
+  .mat-form-field-required-marker {
+    color: red;
+    font-size: 20px;
+  }
+
+  ::ng-deep .mat-input-element {
+    color: white;
+  }
+}
+
+::ng-deep .mat-raised-button {
+  background-color: green !important;
+  color: white;
+  transition: all .4s ease-in-out;
+  letter-spacing: 2px;
+
+}
+
+::ng-deep .mat-raised-button:hover {
+  background-color: rgb(0, 155, 0) !important;
+  transition: all .4s ease-in-out;
+
+}
+
+.footer {
+
+  font-family: system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  color: aliceblue;
+  font-weight: bold;
+  font-size: 1.2rem;
+  letter-spacing: 2px;
+
+  background-color: #11477d;
+
+  border-radius: 5px;
+  border-bottom-right-radius: 0%;
+  border-top-left-radius: 0%;
+
+  padding: 24px 10px !important;
+  margin: 2px auto;
+  height: auto;
+  width: 50%;
+
+
+  text-decoration: none;
+  transition: all .4s ease-in-out !important;
+
+}
+
+.footer:hover {
+  background-color: #155494;
+  transition: all .4s ease-in-out !important;
+}
+
+@media screen and (max-width: 868px) {
+  .header {
+    width: 100% !important;
+  }
+
+  .signup {
+    width: 100%;
+  }
+
+  .footer {
+    width: 100%;
+  }
+}

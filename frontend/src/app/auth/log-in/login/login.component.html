@@ -1,0 +1,40 @@
+<div class="pt-5"></div>
+<div class="pt-2"></div>
+<div class="mt-5 title"></div>
+
+<mat-header class="header" fxLayout="row" fxLayoutAlign="space-around center">
+  <div fxLayout="row" class="header-icon">
+    <mat-icon class="mat-18">login</mat-icon>
+  </div>
+</mat-header>
+
+<mat-card class="login">
+  <mat-card-content>
+    <form class="form-login" fxLayout.gt-md="column" [formGroup]="loginForm">
+      <h3 class="title-header text-center" style="color: white;">Acessar Conta</h3>
+      <mat-form-field>
+        <mat-label>Nome do usuário ou email</mat-label>
+        <mat-icon matPrefix mat18>account_box</mat-icon>
+        <input matInput placeholder="JeoChitende31" name="login" type="text" formControlName="login" required>
+        <mat-error>Por favor, preencha este campo!</mat-error>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label>Palavra-passe</mat-label>
+        <mat-icon matPrefix mat18>lock</mat-icon>
+        <input matInput placeholder="Palavra passe" type="password" formControlName="password" required>
+        <mat-error>Por favor, preencha este campo!</mat-error>
+      </mat-form-field>
+      <button mat-raised-button (click)="login()">Entrar <mat-icon>arrow_circle_right</mat-icon></button>
+    </form>
+    <div class="text-center mt-2 font-weight-light">
+      <a href="#" style="color: white; text-align: right;">
+        Esqueceu! Recuperar palavra-passe.
+      </a>
+    </div>
+  </mat-card-content>
+</mat-card>
+
+<a routerLink="/signup" fxLayout="row" class="footer" style="padding: 0;  " fxLayoutAlign="space-around center">INSCREVER-SE</a>
+
+<div class="pt-5 mt-5"></div>
+<div class="mb-3"></div>

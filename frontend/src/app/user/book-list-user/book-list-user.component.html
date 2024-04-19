@@ -27,7 +27,7 @@
         <h2 class="text-white font-weight-light">{{serverUnvaliable}}</h2>
     </div>
 </div>
-<div>
+<div hidden>
   <p class="alert alert-danger">{{addToReadListSmsSuccess}}ffgg</p>
 </div>
 <div *ngFor="let book of books">
@@ -87,9 +87,9 @@
                                  Detalhes</a>
                         </li>
                         <li class="list-inline-item">
-                          <form [formGroup]="addToReadingListForm" (ngSubmit)="saveItemToReadingList()" >
-                            <input type="text" value="{{book.id}}" name="bookid" >
-                            <div class="col-md-12 mt-2">
+                          <form [formGroup]="addToReadingListForm" (ngSubmit)="saveItemToReadingList()">
+                            <input type="text" value="{{book.id}}" name="bookid" hidden>
+                            <div class="col-md-12 mt-2" hidden>
                               <label for="user" class="form-label">IdUser</label>
                                <input type="text" name="user" id="user" class="form-control" formControlName="user" value="{{userLoggedObj | json}}" ngForm>
                              <!--  <select name="user" id="user" class="form-control" formControlName="user">
@@ -97,7 +97,7 @@
                                       {{userLoggedObj?.login}}</option>
                               </select> -->
                             </div>
-                            <div class="col-md-12 mt-2">
+                            <div class="col-md-12 mt-2" hidden>
                               <label for="book" class="form-label">IdBook</label>
 
                                <!--<input type="number" class="form-control" id="book" name="book" formControlName="book"  value="{{book.id}}"> -->

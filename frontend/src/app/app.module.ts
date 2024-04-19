@@ -15,7 +15,7 @@ import { CategoryFormComponent } from './admin/forms/category-form/category-form
 import { AuthorListComponent } from './admin/lists/author-list/author-list.component';
 import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
-import { LoginComponent } from './auth/login/login.component';
+import { LoginComponent } from './auth/log-in/login/login.component';
 import { FooterComponent } from './footer/footer.component';
 import { HeaderComponent } from './header/header.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
@@ -31,18 +31,18 @@ import { MatOptionModule } from '@angular/material/core';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
 import { MatMenuModule } from '@angular/material/menu';
+import { MatProgressBarModule } from '@angular/material/progress-bar';
 import { MatSelectModule } from '@angular/material/select';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
 import { MatTableModule } from '@angular/material/table';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { ConfigDashboardComponent } from './admin/config/config-dashboard/config-dashboard.component';
 import { UsersRegisteredComponent } from './admin/config/users-registered/users-registered.component';
-import { PerfilComponent } from './auth/login/perfil/perfil.component';
-import { SignupComponent } from './auth/signup/signup.component';
-import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { UploadFileFormComponent } from './admin/forms/upload-file-form/upload-file-form.component';
+import { PerfilComponent } from './auth/log-in/login/perfil/perfil.component';
+import { SignupComponent } from './auth/sign-up/signup/signup.component';
+import { TokenInterceptor } from './core/interceptors/token.interceptor';
 
 @NgModule({
   declarations: [

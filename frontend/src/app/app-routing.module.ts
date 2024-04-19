@@ -4,7 +4,6 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { AboutComponent } from './about/about.component';
 import { ConfigDashboardComponent } from './admin/config/config-dashboard/config-dashboard.component';
-import { UsersRegisteredComponent } from './admin/config/users-registered/users-registered.component';
 import { AuthorFormComponent } from './admin/forms/author-form/author-form.component';
 import { BookFormComponent } from './admin/forms/book-form/book-form.component';
 import { CategoryFormComponent } from './admin/forms/category-form/category-form.component';
@@ -12,8 +11,7 @@ import { UploadFileFormComponent } from './admin/forms/upload-file-form/upload-f
 import { AuthorListComponent } from './admin/lists/author-list/author-list.component';
 import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
-import { LoginComponent } from './auth/login/login.component';
-import { PerfilComponent } from './auth/login/perfil/perfil.component';
+import { PerfilComponent } from './auth/log-in/login/perfil/perfil.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BookDetailsComponent } from './user/book-details/book-details.component';
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
@@ -32,20 +30,21 @@ const routes: Routes = [
   { path: 'admin/authors', component: AuthorListComponent },
   { path: 'admin/update/:id/author', component: AuthorFormComponent },
   { path: 'admin/create/author', component: AuthorFormComponent },
-  { path: 'admin/categories', component: CategoryListComponent},
+  { path: 'admin/categories', component: CategoryListComponent },
   { path: 'admin/create/category', component: CategoryFormComponent },
   { path: 'admin/update/:id/category', component: CategoryFormComponent },
   { path: 'admin/create/book', component: BookFormComponent },
   { path: ':id/category', component: BookListByCategoryComponent },
   { path: 'my-reading-list/:id', component: BookReadingComponent },
-  {path: 'uploadFile', component: UploadFileFormComponent},
+  { path: 'uploadFile', component: UploadFileFormComponent },
   { path: 'about', component: AboutComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'login', loadChildren: () => import('./auth/log-in/log-in-routing.module').then(m => m.LogInRoutingModule) },
+  { path: 'signup', loadChildren: () => import('./auth/sign-up/sign-up-routing.module').then(m => m.SignUpRoutingModule) },
   {
     path: 'admin/config/logged/profile/:name', component: ConfigDashboardComponent,
-    children: [{
+    /* children: [{
       path: 'users', component: UsersRegisteredComponent
-    }]
+    }] */
   },
   {
     path: 'user/profile/:name', component: PerfilComponent
