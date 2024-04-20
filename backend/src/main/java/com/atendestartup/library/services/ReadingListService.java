@@ -25,7 +25,6 @@ public class ReadingListService {
         ReadingList data = new ReadingList(body.getId(), body.getUser(), body.getBook());
         this.readingListRepository.save(data);
     }
-
 	/*
 	 * @Transactional public ReadingList findByBookId(Long bookId){ ReadingList data
 	 * = this.readingListRepository.findByBookId(bookId); return data; }
@@ -42,7 +41,6 @@ public class ReadingListService {
         List<MyReadingListDTO> dto = resul.stream().map(x -> new MyReadingListDTO(x)).toList();
         return dto;
     }
-    
     @Transactional
     public void deleteItemFromMyList(String id) {
     	ReadingList item = this.readingListRepository.findById(id).get();
