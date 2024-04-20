@@ -177,7 +177,10 @@
   .header {
     width: 100%;
   }
-
+  .title-header {
+    padding: 0px;
+    font-size: 1rem;
+  }
   .login {
     width: 100%;
   }

@@ -16,7 +16,7 @@
                 <!-- <td>{{user.password}}</td> -->
                 <td>{{user.role}}</td>
                 <td><a routerLink="" class="btn text-primary">Editar</a></td>
-                <td><button (click)="onDelete()" class="btn text-danger">Eliminar</button></td>
+                <td><button (click)="delete(user.id)" class="btn text-danger">Eliminar</button></td>
             </tr>
         </tbody>
     </table>

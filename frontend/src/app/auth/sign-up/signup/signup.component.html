@@ -10,27 +10,37 @@
 
 <mat-card class="signup">
   <mat-card-content>
-    <form class="form-signup" fxLayout.gt-md="column">
+    <form [formGroup]="form" class="form-signup" fxLayout.gt-md="column">
       <h3 class="title-header text-center">Criar Conta</h3>
       <mat-form-field>
         <mat-label>Digite um nome de usuário (ex. Jeo03)</mat-label>
         <mat-icon matPrefix mat18>person_add_alt_1</mat-icon>
-        <input matInput placeholder="JeoAntunes03" type="text" name="login" id="login" class="" required>
-        <mat-error>Por favor, preencha este campo!</mat-error>
+        <input matInput placeholder="JeoAntunes03" type="text" name="login" id="login" formControlName="login" class=""
+          required>
+        <mat-error>ATENÇÃO: Campo vazio ou inválido. Por favor, verifique!</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Digitar palavra-passe</mat-label>
         <mat-icon matPrefix mat18>lock_person</mat-icon>
-        <input matInput type="password" name="password" id="password" required>
-        <mat-error>Por favor, preencha este campo!</mat-error>
+        <input matInput type="password" name="password" id="password" formControlName="password" required>
+        <mat-error>ATENÇÃO: Campo vazio ou inválido. Por favor, verifique!</mat-error>
       </mat-form-field>
       <mat-form-field>
         <mat-label>Confirmar palavra-passe</mat-label>
         <mat-icon matPrefix mat18>lock_person</mat-icon>
-        <input matInput type="password" name="password" id="password" required>
-        <mat-error>Por favor, preencha este campo!</mat-error>
+        <input matInput type="password" name="password-confirm" id="password-confirm" formControlName="passwordConfirm"
+          required>
+        <mat-error>ATENÇÃO: Campo vazio ou inválido. Por favor, verifique!</mat-error>
       </mat-form-field>
-      <button mat-raised-button class="btn-success">Cadastrar <mat-icon mat18>check</mat-icon></button>
+      <mat-error class="passwor-confirmation-sms" *ngIf="passCombineSms">Cofirmação Errada: Por Favor, verifique sua passe!</mat-error>
+      <mat-form-field>
+        <mat-label>role</mat-label>
+        <mat-icon matPrefix mat18>lock_person</mat-icon>
+        <input matInput type="text" name="role" id="role" formControlName="role"  required>
+        <mat-error>ATENÇÃO: Campo vazio ou inválido. Por favor, verifique!</mat-error>
+      </mat-form-field>
+      <button mat-raised-button class="btn-success" (click)="register()">Cadastrar <mat-icon
+          mat18>check</mat-icon></button>
       <div class="text-center mt-2 font-weight-light">
         <b>OBS:</b><a style="color: white; text-align: right;">
           Use caracteres especiais para fortalecer a palavra-passe!

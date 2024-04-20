@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
-import { Perfil } from '../../../model/perfil';
-import { AuthorizationService } from '../../../service/authorization.service';
+import { Perfil } from '../../model/perfil';
+import { AuthorizationService } from '../../service/authorization.service';
 
 @Component({
   selector: 'app-perfil',

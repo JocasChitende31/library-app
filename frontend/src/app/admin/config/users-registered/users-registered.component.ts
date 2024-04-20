@@ -23,8 +23,10 @@ export class UsersRegisteredComponent implements OnInit {
       this.users = data;
     });
   }
-  onDelete() {
+  delete(id: any) {
+    this.authorizationService.delete(id).subscribe(data =>{
 
+    })
   }
 
 }

@@ -11,7 +11,7 @@ import { UploadFileFormComponent } from './admin/forms/upload-file-form/upload-f
 import { AuthorListComponent } from './admin/lists/author-list/author-list.component';
 import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
-import { PerfilComponent } from './auth/log-in/login/perfil/perfil.component';
+import { PerfilComponent } from './auth/login/perfil/perfil.component';
 import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BookDetailsComponent } from './user/book-details/book-details.component';
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
@@ -20,8 +20,8 @@ import { BookReadingComponent } from './user/book-reading/book-reading.component
 
 
 const routes: Routes = [
-  { path: 'admin/create/book', component: BookFormComponent },
   { path: '', redirectTo: '/books', pathMatch: 'full' },
+  { path: 'admin/create/book', component: BookFormComponent },
   { path: 'admin/books', component: BookListComponent },
   { path: 'books', component: BookListUserComponent },
   { path: 'addbook/:id/reading-list', component: BookReadingComponent },

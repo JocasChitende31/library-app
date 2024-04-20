@@ -1,4 +1,4 @@
-import { HttpClient, HttpContext } from '@angular/common/http';
+import { HttpClient, HttpContext, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { DISABLE_GLOBAL_EXCEPTION_HANDLING } from 'src/app/core/interceptors/token.interceptor';
@@ -31,4 +31,11 @@ export class AuthorizationService {
     return this.http.get<User>(this.baseUrl + `/search-user/${login}`);
   }
 
+  public register(user: User){
+    return this.http.post<User>(this.baseUrl + `/register`, user, {context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true)});
+  }
+  public delete(id: string): Observable<User> {
+    const params  = new HttpParams().set('id', id);
+    return this.http.delete<User>(this.baseUrl + `/user/${id}/delete`, {params : params})
+  }
 }
