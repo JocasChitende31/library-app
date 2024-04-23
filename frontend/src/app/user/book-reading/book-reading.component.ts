@@ -15,39 +15,46 @@ export class BookReadingComponent implements OnInit {
   bgDanger: String = '';
   myReadingList: ReadingList[] = [];
 
-  constructor(private readingListService: ReadingListService, private userService: AuthorizationService, private router: Router ) {
-      let loginUser = localStorage.getItem("userLogged");
-      this.findUserLogged(loginUser);
-      this.findIfThereIsContentToDisplay();
+  constructor(private readingListService: ReadingListService, private userService: AuthorizationService, private router: Router) {
+    let loginUser = localStorage.getItem("userLogged");
+    this.findUserLogged(loginUser);
+    this.findIfThereIsContentToDisplay();
   }
 
   ngOnInit(): void {
   }
 
-  findMyReadingList(userId:any){
-    this.readingListService.findMyReadingList(userId).subscribe(data=>{
+  findMyReadingList(userId: any) {
+    this.readingListService.findMyReadingList(userId).subscribe(data => {
       console.log("Favoritos: ", data);
       this.myReadingList = data;
-    }, error=>{
+    }, error => {
       console.log("error", error);
     });
   }
 
-  findUserLogged(loginUser:any){
-    this.userService.getByLogin(loginUser).subscribe(userFound=>{
+  findUserLogged(loginUser: any) {
+    this.userService.getByLogin(loginUser).subscribe(userFound => {
       this.findMyReadingList(userFound.id);
-  })};
+    })
+  };
 
-  findIfThereIsContentToDisplay(){
+  findIfThereIsContentToDisplay() {
     if (this.myReadingList.length <= 0) {
       setTimeout(() => {
-          this.noContent = 'Sem favoritos, pode adicionar!';
-          this.bgDanger = 'bg-danger';
-        }, 1000);
-      }
+        this.noContent = 'Sem favoritos, pode adicionar!';
+        this.bgDanger = 'bg-danger';
+      }, 1000);
+    }
+  }
+  delete(id: any) {
+    this.readingListService.deleteItemFromMyReadingList(id).subscribe(data => {
+      console.log(data);
+    })
+    // window.location.reload();
   }
 
-  rediretTo(){
+  rediretTo() {
     this.router.navigate(['/login']);
   }
 }

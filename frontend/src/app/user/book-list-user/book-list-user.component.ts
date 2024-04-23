@@ -4,6 +4,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { AuthorizationService } from 'src/app/auth/service/authorization.service';
 import { Book } from 'src/app/models/book';
 import { Category } from 'src/app/models/category';
+import { ReadingListPost } from 'src/app/models/reading-list-post';
 import { BookServiceService } from 'src/app/services/book-service.service';
 import { CategoryService } from 'src/app/services/category.service';
 import { ReadingListService } from 'src/app/services/reading-list.service';
@@ -27,14 +28,10 @@ export class BookListUserComponent implements OnInit {
   @Input() categories: Category[] = [];
   linkGenerated = '';
   titleOfBookDownload?: String;
+  itemReadingList?: ReadingListPost;
 
-  addToReadingListForm = this.formBuilder.group({
-    id: '',
-    user:'',
-    book:''
-  });
 
-  addToReadListSmsSuccess?:String;
+  addToReadListSmsSuccess?: String;
 
   constructor(
     private bookService: BookServiceService,
@@ -55,22 +52,6 @@ export class BookListUserComponent implements OnInit {
   }
   ngOnInit(): void {
 
-    this.bookService.findById(this.bookId)
-    let userLogged = localStorage.getItem('userLogged');
-
-    if (userLogged != null) {
-      this.userService.getByName(userLogged).subscribe(data => {
-        this.addToReadingListForm.patchValue({
-          id: '',
-          user: data,
-        })
-        console.info("Normalized data", data);
-        this.userLoggedId = data;
-        this.userLoggedObj = data;
-      })
-    }
-
-    //console.info("patchValue", JSON.stringify(obj));
     this.findAllBooksAndCategories();
   }
 
@@ -124,14 +105,25 @@ export class BookListUserComponent implements OnInit {
 
   }
 
-  saveItemToReadingList() {
+  saveItemToReadingList(idBook: any) {
+    let userLogged = localStorage.getItem('userLogged');
 
-    console.info("Submission", this.addToReadingListForm.value)
+    if (userLogged != null) {
+      this.userService.getByName(userLogged).subscribe(user => {
+        this.bookService.findById(idBook).subscribe(book => {
 
-    this.readingListService.saveToMyReadingList(this.addToReadingListForm.value).subscribe(item => {
-      this.addToReadListSmsSuccess = 'Livro Adicionado a Lista' + item;
-
-      console.info(item);
-    });
+          this.itemReadingList = new ReadingListPost('', user, book);
+          console.log(" reading object", { user, book });
+          this.readingListService.saveToMyReadingList(this.itemReadingList).subscribe(item => {
+            this.addToReadListSmsSuccess = 'Livro Adicionado a Lista' + item;
+            console.info(item);
+            window.location.reload();
+          });
+        })
+      })
+    } else {
+      this.router.navigate(['/login']);
+    }
   }
+
 }

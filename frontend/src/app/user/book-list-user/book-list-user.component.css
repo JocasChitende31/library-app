@@ -13,11 +13,19 @@ hr{
     margin: 0;
     padding: 0;
 }
+.modal-content{
+  border-top: 5px solid #1e72c7;
+  border-bottom: 5px solid #1e72c7;
+}
 .modal-body{
     display: flex;
     justify-content: center;
     justify-items: center;
     align-items: center;
+}
+.close{
+  color: red;
+  border: none;
 }
 .btn-secondary{
     background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));

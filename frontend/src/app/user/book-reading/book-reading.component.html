@@ -1,4 +1,4 @@
-<div class="pt-5"></div>
+<div class="pt-5" ></div>
 <div class="mt-5">
   <div class="card " style="border: none;">
     <h1 class="card-title pl-3"> <mat-icon class="mat-18 mr-1 favorite-icon ">favorite</mat-icon> Favoritos</h1>
@@ -10,7 +10,7 @@
     </div>
     <div >
       <div class="container">
-        <div class="row">
+        <div class="row" >
           <div class="card" style="width: 20rem;" *ngFor="let myList of myReadingList">
             <div class="card-body">
               <img src="{{myList.imgUrl}}"
@@ -22,7 +22,7 @@
                 <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
                 <a href="..." class="btn btn-success   mr-1"><mat-icon
                     class="mat-18">download_for_offline</mat-icon></a>
-                <a href="..." class="btn btn-danger  "><mat-icon class="mat-18">delete_forever</mat-icon></a>
+                <button type="button" (click)="delete(myList.id)" class="btn btn-danger "><mat-icon class="mat-18">delete_forever</mat-icon></button>
               </div>
             </div>
           </div>

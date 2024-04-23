@@ -1,12 +1,14 @@
 /* You can add global styles to this file, and also import other style files */
 
-html, body { height: 100%;
-  ;
+html, body {
+  /* height: 100%; */
+  /* background-color: rgb(249, 248, 247); */
+  background-color: rgba(137, 137, 137, 0.005);
 }
 body {font-family: -apple-system, BlinkMacSystemFont,
   "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell",
   "Fira Sans", "Droid Sans", "Helvetica Neue",
-  sans-serif
+  sans-serif;
 
 }
 h1{

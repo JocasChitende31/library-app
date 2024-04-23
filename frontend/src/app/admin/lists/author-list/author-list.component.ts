@@ -26,11 +26,13 @@ export class AuthorListComponent implements OnInit {
     })
 
   }
+  
   onDelete(authId: any) {
     this.authService.delete(authId).subscribe(result => {
       this.gotToListAuthor();
     })
   }
+
   gotToListAuthor() {
     this.router.navigate(['/admin/authors']);
     window.location.reload();

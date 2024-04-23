@@ -10,17 +10,18 @@ import { Book } from '../models/book';
 })
 export class BookServiceService {
 
-  
+
   private bookUrl: String;
 
   constructor(private http: HttpClient) {
     this.bookUrl = AppConstants.baseUrlApi;
-    
+
   }
 
   public findAll(): Observable<Book[]> {
     return this.http.get<Book[]>(`${this.bookUrl}/books`, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
   }
+  
   public findById(bookId: any): Observable<Book> {
     return this.http.get<Book>(`${this.bookUrl}/${bookId}/book`, { context: new HttpContext().set(DISABLE_GLOBAL_EXCEPTION_HANDLING, true) });
   }

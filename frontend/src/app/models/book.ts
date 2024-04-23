@@ -15,4 +15,8 @@ export class Book {
     nationality: String | undefined;
     status: String | undefined;
     downloaderRefPDF: String | undefined;
+
+    constructor(id:number){
+      this.id = id;
+    }
 }

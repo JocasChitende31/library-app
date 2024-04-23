@@ -14,6 +14,7 @@ button{
     padding: 5px;
     text-decoration: underline;
 }
+
 .modal-body{
     display: flex;
     justify-content: center;

@@ -22,7 +22,7 @@ export class ReadingListService {
   public saveToMyReadingList(item: ReadingListPost){
    return this.http.post<ReadingListPost>(`${this.readingListUrl}/add-reading-list`, item);
   }
-  public deleteItemFromMyReadingList(itemId:any){
+  public deleteItemFromMyReadingList(itemId:string){
     let params = new HttpParams().set('id', itemId);
     return this.http.delete<ReadingListPost>(`${this.readingListUrl}/delete/item/${itemId}`, {params:params})
   }
