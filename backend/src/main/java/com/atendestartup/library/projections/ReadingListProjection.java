@@ -4,7 +4,7 @@ public interface ReadingListProjection {
     String getId();
     String getUser();
     String getLogin();
-    Long getBook();
+    Long 	getBook();
     String getTitle();
     String getImgUrl();
 }

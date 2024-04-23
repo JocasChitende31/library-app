@@ -10,7 +10,7 @@ public class  ReadingListDTO {
 
     private String id;
     private User user;
-    private Long book;
+    private Book book;
 
     public ReadingListDTO(){
 
@@ -32,7 +32,7 @@ public class  ReadingListDTO {
     public User getUser(){
         return this.user;
     }
-    public Long getBook(){
+    public Book getBook(){
         return  this.book;
     }
 

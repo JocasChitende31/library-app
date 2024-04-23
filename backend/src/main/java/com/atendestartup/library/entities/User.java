@@ -83,6 +83,7 @@ public class User implements UserDetails {
 	public List<ReadingList> getReadingList(){
 		return this.readingList;
 	}
+	
 	public void setReadingList(List<ReadingList> readingList){
 		this.readingList = readingList;
 	}

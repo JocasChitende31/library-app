@@ -14,6 +14,7 @@ import jakarta.persistence.Basic;
 import jakarta.persistence.CascadeType;
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
@@ -35,25 +36,24 @@ public class ReadingList {
     @Column(name="id")
 	private String id = UUID.randomUUID().toString();
 
-    @ManyToOne(cascade = CascadeType.MERGE)
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id", referencedColumnName = "id")
     @NotNull
     private User user;
 
-    //@ManyToOne(cascade = CascadeType.MERGE)
-    //@JoinColumn(name = "book_id", referencedColumnName = "id")
-    //@JsonDeserialize()
-    @Column(name="book_id")
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "book_id", referencedColumnName = "id")
     @NotNull
-    private Long book;
+    private Book book;
 
 
     public ReadingList(){
 
+    	
     }
 
     @JsonCreator
-    public ReadingList(String id, User user, Long book){
+    public ReadingList(String id, User user, Book book){
         this.id = id;
         this.user = user;
         this.book = book;
@@ -73,10 +73,10 @@ public class ReadingList {
     public void setFkUser(User user){
         this.user = user;
     }
-    public Long getFkBook(){
+    public Book getFkBook(){
         return  this.book;
     }
-    public void setFkBook(Long book){
+    public void setFkBook(Book book){
         this.book = book;
     }
 
@@ -94,6 +94,6 @@ public class ReadingList {
             return false;
         ReadingList other = (ReadingList) obj;
         //return  Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user) && Objects.equals(this.book, other.book);
-        return  Objects.equals(this.id, other.id) && Objects.equals(this.user, other.user);
+        return  Objects.equals(this.id, other.id) && Objects.equals(user, other.user) && Objects.equals(book, other.book);
     }
 }
