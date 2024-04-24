@@ -1,26 +1,29 @@
-<div class="pt-5"></div>
-
-<h4 class="font-weight-light mt-5">
-  <hr class="mb-3">
-  Categorias > <small class="text-info"> <i style="font-style: normal; font-weight: bold; letter-spacing: 1px;">Livros
-    </i> <b style="color: white;
-            font-size: 12px;  border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
-            background-color: red;">{{qtdT}}</b>
+<div class="pt-5 mt-5"></div>
+<div class="col-5 p-0" class="home-title">
+  <h2 class="title-manager" style="color: red;">{{user}} <mat-icon class="mat-18"> auto_stories</mat-icon></h2>
+</div>
+<hr class="mb-3">
+<h4 class="title-manager search" style=" font-size:medium;"><mat-icon matPrefix
+    class="mat-18">manage_search</mat-icon>Por Categoria /
+  <small style="color: grey; font-size:medium;"> Total de Livros <b style="color: white;
+  font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
+  background-color: red;">{{qtdT}}</b>
   </small>
 </h4>
-
+<hr>
 <div class="mb-3 mt-2 d-flex flex-wrap te ">
   <!-- <br> -->
-  <div *ngFor="let category of categories" class="mr-4">
+  <div *ngFor="let category of categories" class="mr-4 category">
     <!-- href="/{{category.id}}/books" -->
-    <a routerLink="/{{category.id}}/category" class="badge badge-light" style="color:#0d355e;"
-      routerLinkActive="selected">{{category.genre}}</a>
+    <a routerLink="/{{category.id}}/category" class="item-category" routerLinkActive="selected">{{category.genre}}</a>
   </div>
+
 </div>
 <hr>
-<div class="mt-2 ">
-  <h4 class="font-weight-light">Todos</h4>
+<div class="all-books mb-3 mt-3">
+  <h2 class="title-manager"><mat-icon matPrefix class="mat-18">playlist_add_check</mat-icon>Todos</h2>
 </div>
+<!-- <hr class="mb-3"> -->
 <div class="text-center" *ngIf="books.length <= 0">
   <hr>
   <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
@@ -28,9 +31,9 @@
   </div>
 </div>
 <div hidden>
-  <p class="alert alert-danger">{{addToReadListSmsSuccess}}ffgg</p>
+  <p class="alert alert-danger">{{addToReadListSmsSuccess}}</p>
 </div>
-<div *ngFor="let book of books">
+<div class="book" *ngFor="let book of books">
   <div class="card mb-4 p-2" style=" border: #0d355e;
     border-bottom: 5px solid #1e72c7;;">
     <div class="row g-0">

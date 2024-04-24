@@ -17,7 +17,7 @@ import { FileServService } from 'src/app/services/upload-service/file-serv.servi
 })
 
 export class BookListUserComponent implements OnInit {
-
+  user= 'Página Principal'
   serverUnvaliable: String = '';
   bgDanger: String = '';
   qtdT: Number = 0;
@@ -111,13 +111,10 @@ export class BookListUserComponent implements OnInit {
     if (userLogged != null) {
       this.userService.getByName(userLogged).subscribe(user => {
         this.bookService.findById(idBook).subscribe(book => {
-
           this.itemReadingList = new ReadingListPost('', user, book);
           console.log(" reading object", { user, book });
           this.readingListService.saveToMyReadingList(this.itemReadingList).subscribe(item => {
             this.addToReadListSmsSuccess = 'Livro Adicionado a Lista' + item;
-            console.info(item);
-            window.location.reload();
           });
         })
       })

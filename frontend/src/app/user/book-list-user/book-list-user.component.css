@@ -1,40 +1,111 @@
-.card{
-    border-radius: 5px !important;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08) !important;
-    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08) !important;
-    border: 0px solid none !important;
-    border-bottom: 5px solid #1e72c7;
+.home-title {
+
+  h2 {
+    display: flex;
+    align-items: center;
+
+    .mat-18 {
+      margin-left: 10px;
+    }
+  }
 }
-button{
-    cursor: pointer;
-    letter-spacing: .5px;
+
+.search {
+  display: flex;
+  align-items: center;
+
+  mat-icon {
+    font-size: large;
+  }
 }
-hr{
-    margin: 0;
+
+.category {
+  display: flex;
+  justify-items: center;
+  align-items: center;
+  margin: 0 0 0 10px;
+
+  .item-category {
+    padding: 5px 0px;
+    font-size: small;
+    /* margin: 20px 0; */
+    text-decoration: none;
+  }
+
+}
+
+.all-books {
+  h2 {
     padding: 0;
+    margin: 0;
+
+    display: flex;
+    align-items: center;
+
+    color: grey;
+
+    mat-icon {
+      font-size: 20px;
+      /* margin-left: 5px; */
+      margin-top: 5px;
+    }
+  }
+
 }
-.modal-content{
+
+.card {
+  border-radius: 5px !important;
+  -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08) !important;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08) !important;
+  border: 0px solid none !important;
+  border-bottom: 5px solid #1e72c7;
+
+}
+
+button {
+  cursor: pointer;
+  letter-spacing: .5px;
+}
+
+hr {
+  margin: 0;
+  padding: 0;
+}
+
+.modal-content {
   border-top: 5px solid #1e72c7;
   border-bottom: 5px solid #1e72c7;
 }
-.modal-body{
-    display: flex;
-    justify-content: center;
-    justify-items: center;
-    align-items: center;
+
+.modal-body {
+  display: flex;
+  justify-content: center;
+  justify-items: center;
+  align-items: center;
 }
-.close{
+
+.close {
   color: red;
   border: none;
 }
-.btn-secondary{
-    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
-    background: linear-gradient(to right, #0d355e, #1e72c7);
-    color: white;
+
+.btn-secondary {
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+  background: linear-gradient(to right, #0d355e, #1e72c7);
+  color: white;
 }
-.btn-secondary:hover{
-    background: -webkit-gradient(linear, left top, right top, from(#1e72c7f5), to(#0d365ef1));
-    background: linear-gradient(to right, #0d365ef0, #1e72c7f3);
-    color: white;
+
+.btn-secondary:hover {
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7f5), to(#0d365ef1));
+  background: linear-gradient(to right, #0d365ef0, #1e72c7f3);
+  color: white;
+
+}
+.btn{
+  transition: all .4s ease-in-out;
+
+}
+.btn:hover{
+  transition: all .4s ease-in-out;
 }
 

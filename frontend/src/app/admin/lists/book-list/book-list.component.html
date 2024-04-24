@@ -1,135 +1,139 @@
 <div class="pt-5 mt-5"></div>
-<div class="title-manager col-5 p-0"
-    style="display: flex; flex-direction: row; align-items: center; align-content: center">
-    Admin > <h6 class=" text-title" style="color: #2b7cce !important;">Gerenciar de Livros</h6>
+<div class="col-5 p-0"class="all-books">
+  <h2 class="title-manager" style="color: red;">{{admin}}<mat-icon class="mat-18">manage_accounts</mat-icon></h2>
 </div>
 <hr>
-<h6 class="font-weight-light ">Por Categoria > <small class="text-info"> <i class="font-weight-light"
-            style="font-style: normal;">Livros </i> <b style="color: white;
+<h4 class="title-manager search" style=" font-size:medium;"><mat-icon matPrefix class="mat-18">manage_search</mat-icon>Por Categoria / <small style="color: grey; font-size:medium;">Total de Livros <b style="color: white;
             font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
             background-color: red;">{{qtdT}}</b>
-    </small></h6>
+  </small></h4>
 <div class="mb-3 d-flex flex-wrap">
-    <br>
-    <div *ngFor="let category of categories" class="mr-4">
-        <!-- href="/{{category.id}}/books" -->
-        <a routerLink="/{{category.id}}/category" class="badge badge-light" style="color:#0d355e;"
-            routerLinkActive="selected">{{category.genre}}</a>
-    </div>
+  <br>
+  <div *ngFor="let category of categories" class="mr-4 category">
+    <!-- href="/{{category.id}}/books" -->
+    <a routerLink="/{{category.id}}/category" class="item-category" routerLinkActive="selected">{{category.genre}}</a>
+  </div>
 </div>
 <hr>
-<div>
-    <a routerLink="/admin/create/book">Adicionar Novo Livro</a>
-    &nbsp;
-    <a routerLink="/uploadFile">Upload File PDF</a>
+<div class="menu-add-content">
+  <a class="add-item-content" routerLink="/admin/create/book"><mat-icon class="mat-18">add</mat-icon>Novo Livro</a>
+  <span></span>
+  <a class="add-item-content" routerLink="/uploadFile"><mat-icon class="mat-18">add</mat-icon>Novo Autor</a>
+  <span></span>
+  <a class="add-item-content" routerLink="/uploadFile"><mat-icon class="mat-18">add</mat-icon>Nova Categoria</a>
+  <span></span>
+  <a class="add-item-content" routerLink="/uploadFile"><mat-icon class="mat-18">upload</mat-icon>File PDF</a>
 </div>
 <hr>
-<div>
-    <h5 class="font-weight-light">Todos</h5>
+<div class="all-books mb-2">
+  <h2 class="title-manager"><mat-icon matPrefix class="mat-18">list</mat-icon>Todos</h2>
 </div>
 <div class="text-center" *ngIf="books.length <= 0">
-    <hr>
-    <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
-        <h5 class="text-white font-weight-light">{{serverUnvaliable}}</h5>
-    </div>
+  <hr>
+  <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
+    <h5 class="text-white font-weight-light">{{serverUnvaliable}}</h5>
+  </div>
 </div>
 <div *ngFor="let book of books">
-    <div class="card mb-4 p-2" style="border: #0d355e;">
-        <div class="row g-0">
-            <div class="col-md-2 mb-0 mr-4">
-                <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
-                    style="max-width: 200px; max-height: 100vh; padding-top: 5px;">
+  <div class="card mb-4 p-2" style="border: #0d355e;">
+    <div class="row g-0">
+      <div class="col-md-2 mb-0 mr-4">
+        <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
+          style="max-width: 200px; max-height: 100vh; padding-top: 5px;">
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title" hidden><b>#{{book.id}}</b></h5>
+          <h5 class="card-title">{{book.title}} </h5>
+          <hr>
+          <div class="d-flex flex-wrap">
+            <div class="mr-5">
+              <h6 class="font-weight-light">Ano de Lançamento</h6>
+              <p class="card-text text-muted">{{book.bookYear}} </p>
             </div>
-            <div class="col-md-9">
-                <div class="card-body">
-                    <h5 class="card-title" hidden><b>#{{book.id}}</b></h5>
-                    <h5 class="card-title">{{book.title}} </h5>
-                    <hr>
-                    <div class="d-flex flex-wrap">
-                        <div class="mr-5">
-                            <h6 class="font-weight-light">Ano de Lançamento</h6>
-                            <p class="card-text text-muted">{{book.bookYear}} </p>
-                        </div>
-                        <div class="mr-5">
-                            <h6 class="font-weight-light">Ediçao</h6>
-                            <p class="card-text text-muted">{{book.edition}}a</p>
-                        </div>
-                        <div class="mr-5">
-                            <h6 class="font-weight-light">Categoria</h6>
-                            <p class="card-text" hidden>{{book.fkCategory}}</p>
-                            <p class="card-text text-muted">{{book.genre}}</p>
-                        </div>
-                        <div>
-                            <h6 class="font-weight-light">Editora</h6>
-                            <p class="card-text text-muted">{{book.publisher}}</p>
-                        </div>
+            <div class="mr-5">
+              <h6 class="font-weight-light">Ediçao</h6>
+              <p class="card-text text-muted">{{book.edition}}a</p>
+            </div>
+            <div class="mr-5">
+              <h6 class="font-weight-light">Categoria</h6>
+              <p class="card-text" hidden>{{book.fkCategory}}</p>
+              <p class="card-text text-muted">{{book.genre}}</p>
+            </div>
+            <div>
+              <h6 class="font-weight-light">Editora</h6>
+              <p class="card-text text-muted">{{book.publisher}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex flex-wrap mt-3">
+            <div class="mr-5">
+              <h6 class="font-weight-light">Autor do Livro</h6>
+              <p class="card-text" hidden>{{book.fkAuthor}}</p>
+              <p class="card-text text-muted">{{book.name}}</p>
+            </div>
+            <div class="">
+              <h6 class="font-weight-light">Nacionalidade</h6>
+              <p class="card-text text-muted">{{book.nationality}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex">
+            <div>
+              <h6 class="font-weight-light">Pequeno Resumo</h6>
+              <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
+            </div>
+          </div>
+          <hr>
+          <ul class="list-inline text-right">
+            <li class="list-inline-item"><a class="btn btn-secondary" routerLink="/details/{{book.id}}/book"
+                style="display: flex;"><mat-icon class="mat-18 mr-1"> remove_red_eye</mat-icon>
+                Detalhes</a>
+            </li>
+            <li class="list-inline-item"><a class="btn btn-success" routerLink="/addbook/{{book.id}}/reading-list"
+                style="display: flex;"><mat-icon class="mat-18 mr-1">my_library_add</mat-icon> A minha
+                List Leitura</a>
+            </li>
+            <li class="list-inline-item"><button *ngIf="book.downloaderRefPDF !==null" class="btn btn-success"
+                type="button" data-toggle="modal" data-target="#exampleModal"
+                (click)="downloadFile(book?.downloaderRefPDF)" style="display: flex;"><mat-icon
+                  class="mat-18 mr-1">download_for_offline</mat-icon>Download
+                PDF</button>
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <h5 class="modal-title" id="exampleModalLabel">Clique no link abaixo: {{titleOfBookDownload}}</h5>
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
                     </div>
-                    <hr>
-                    <div class="d-flex flex-wrap mt-3">
-                        <div class="mr-5">
-                            <h6 class="font-weight-light">Autor do Livro</h6>
-                            <p class="card-text" hidden>{{book.fkAuthor}}</p>
-                            <p class="card-text text-muted">{{book.name}}</p>
-                        </div>
-                        <div class="">
-                            <h6 class="font-weight-light">Nacionalidade</h6>
-                            <p class="card-text text-muted">{{book.nationality}}</p>
-                        </div>
+                    <div class="modal-body" *ngIf="linkGenerated">
+                      <a class="btn btn-secondary" href="{{linkGenerated}}" type="button">Baixar
+                        <i class="material-icons">download</i></a>
                     </div>
-                    <hr>
-                    <div class="d-flex">
-                        <div>
-                            <h6 class="font-weight-light">Pequeno Resumo</h6>
-                            <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
-                        </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
                     </div>
-                    <hr>
-                    <ul class="list-inline text-right">
-                        <li class="list-inline-item"><a class="btn btn-secondary" routerLink="/details/{{book.id}}/book" style="display: flex;"><mat-icon class="mat-18 mr-1"> remove_red_eye</mat-icon>
-                            Detalhes</a>
-                        </li>
-                        <li class="list-inline-item"><a class="btn btn-success"
-                                routerLink="/addbook/{{book.id}}/reading-list" style="display: flex;"><mat-icon class="mat-18 mr-1">my_library_add</mat-icon> A minha
-                                List Leitura</a>
-                        </li>
-                        <li class="list-inline-item"><button *ngIf="book.downloaderRefPDF !==null"class="btn btn-success" type="button" data-toggle="modal"
-                                data-target="#exampleModal" (click)="downloadFile(book?.downloaderRefPDF)" style="display: flex;" ><mat-icon class="mat-18 mr-1">download_for_offline</mat-icon>Download
-                                PDF</button>
-                            <!-- Modal -->
-                            <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog"
-                                aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                        <div class="modal-header">
-                                            <h5 class="modal-title" id="exampleModalLabel">Clique no link abaixo: {{titleOfBookDownload}}</h5>
-                                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">&times;</span>
-                                            </button>
-                                        </div>
-                                        <div class="modal-body" *ngIf="linkGenerated">
-                                            <a class="btn btn-secondary" href="{{linkGenerated}}" type="button">Baixar
-                                                <i class="material-icons">download</i></a>
-                                        </div>
-                                        <div class="modal-footer">
-                                            <button type="button" class="btn btn-danger"
-                                                data-dismiss="modal">Fechar</button>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </li>
-                        <!-- {{book?.downloaderRefPDF}} -->
-                            
-                        <li class="list-inline-item "><a routerLink="/admin/update/{{book.id}}/book"
-                                class="btn btn-primary text-white" style="display: flex;"> <mat-icon class="mat-18 mr-1">edit</mat-icon>Editar</a></li>
-                        <li class="list-inline-item "><button class="btn btn-danger"
-                                (click)="onDelete(book?.id)" style="display:flex ;" ><mat-icon class="mat-18 mr-1">delete_forever</mat-icon>Eliminar</button></li>
-                    </ul>
+                  </div>
                 </div>
-            </div>
+              </div>
 
+            </li>
+            <!-- {{book?.downloaderRefPDF}} -->
+
+            <li class="list-inline-item "><a routerLink="/admin/update/{{book.id}}/book"
+                class="btn btn-primary text-white" style="display: flex;"> <mat-icon
+                  class="mat-18 mr-1">edit</mat-icon>Editar</a></li>
+            <li class="list-inline-item "><button class="btn btn-danger" (click)="onDelete(book?.id)"
+                style="display:flex ;"><mat-icon class="mat-18 mr-1">delete_forever</mat-icon>Eliminar</button></li>
+          </ul>
         </div>
+      </div>
+
     </div>
+  </div>
 
 </div>

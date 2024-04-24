@@ -1,37 +1,103 @@
-
-.card h1{
-  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
-  background: linear-gradient(to right, #0d355e, #1e72c7);
-  color: white;
-  font-weight: bolder;
+*{
   letter-spacing: 1px;
-
-  border-top-left-radius: 5px;
-  border-top-right-radius: 5px;
-  padding: 20px 0;
-
-  margin-bottom: 0px;
-  box-shadow: 0 1px 1px rgba(0,0,0,0.11), 0 2px 2px rgba(0,0,0,0.11), 0 4px 4px rgba(0,0,0,0.11), 0 6px 8px rgba(0,0,0,0.11), 0 8px 16px rgba(0,0,0,0.11);
 }
-.favorite-icon{
+.card {
+
+  border-top: 1px solid #1e72c7 !important;
+  padding: 0 10px;
+
+  .favorite-title {
+    h2 {
+      display: flex;
+      align-items: center;
+      color: red;
+
+      .favorite-icon {
+        font-size:20px;
+        margin-left: 5px;
+        margin-top: 5px;
+      }
+    }
+  }
+  .favorite-total-books {
+    h4 {
+      display: flex;
+      align-items: center;
+      padding: 0 10px;
+    }
+  }
+  .favorite-list-content {
+    h2 {
+      display: flex;
+      align-items: center;
+      color: grey;
+
+      .favorite-icon {
+        font-size:20px;
+        margin-left: 5px;
+        margin-top: 5px;
+      }
+    }
+  }
+}
+
+/* .favorite-icon{
   color: red;
-}
+} */
 .container .row {
-  display:  flex;
-  justify-content: center;
-}
-.container .row .card{
-      margin: 1rem;
-      border: none;
-      border-bottom: 5px solid #1e72c7;
-      box-shadow: 0 1px 1px #1e72c7, 0 2px 2px #1e72c7, 0 4px 4px rgba(0,0,0,0.11), 0 6px 8px rgba(0,0,0,0.11), 0 8px 16px rgba(0,0,0,0.11);
-}
-.card-img-top{
-  height: 280px;
+  display: flex;
+  justify-content:flex-start;
+
+
+  /* width: 300px; */
+
 }
 
-.btn{
-border-radius: 10%;
-height: 40px;
-margin:0 10px 0 10px;
+.container .row .card {
+  height: auto;
+  width: 15rem;
+  margin: 1rem;
+  border: none;
+  border-bottom: 5px solid #1e72c7;
+  box-shadow: 0 1px 1px #1e72c7, 0 2px 2px #1e72c7, 0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
+
+  .card-body {
+    padding: 5px 5px;
+      margin: 5px 5px;
+
+    .card-title{
+      font-size: 15px;
+      letter-spacing: .5px;
+      font-weight: 100;
+      color: #1e72c7;
+    }
+    .card-image{
+
+
+      .card-img-top {
+        height: 200px;
+        opacity: .9;
+        cursor: pointer;
+        transition: all  .4s ease-in-out;
+      }
+      .card-img-top:hover{
+        opacity: 1;
+        transition: all  .4s ease-in-out;
+      }
+    }
+
+  }
+}
+
+
+
+.btn {
+  border-radius: 10%;
+  height: 35px;
+  width: auto;
+  margin: 0 10px 0 10px;
+  transition: all  .4s ease-in-out;
+}
+.btn:hover{
+  transition: all  .4s ease-in-out;
 }

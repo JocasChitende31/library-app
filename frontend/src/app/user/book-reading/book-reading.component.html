@@ -1,28 +1,43 @@
-<div class="pt-5" ></div>
+<div class="pt-5"></div>
 <div class="mt-5">
-  <div class="card " style="border: none;">
-    <h1 class="card-title pl-3"> <mat-icon class="mat-18 mr-1 favorite-icon ">favorite</mat-icon> Favoritos</h1>
+  <div class="card" style="border: none;">
+    <div class="favorite-title mt-3">
+      <h2 class=" title-manager "> Favoritos<mat-icon class="mat-18 favorite-icon ">favorite</mat-icon></h2>
+    </div>
+    <hr class="mt-0">
+    <div class="favorite-total-books">
+      <h4 class="title-manager" style="font-size:medium;">Livros / <small style=" color:grey; font-size:medium;"> Total de Favoritos <b style="color: white;
+        font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
+        background-color: red;">{{2}}</b></small></h4>
+    </div>
+    <hr class="mt-0">
+    <div class="favorite-list-content">
+      <h2 class="title-manager"> <mat-icon class="mat-18 favorite-icon ">playlist_add_check</mat-icon> Meus Favoritos</h2>
+    </div>
+    <hr class="mt-0">
     <div class="text-center" *ngIf="myReadingList.length <= 0">
       <hr>
       <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
         <h2 class="text-white font-weight-light">{{noContent}}</h2>
       </div>
     </div>
-    <div >
+    <div>
       <div class="container">
-        <div class="row" >
-          <div class="card" style="width: 20rem;" *ngFor="let myList of myReadingList">
+        <div class="row">
+          <div class="card" *ngFor="let myList of myReadingList">
             <div class="card-body">
-              <img src="{{myList.imgUrl}}"
-                class="card-img-top" alt="">
-              <hr>
-              <h5 class="card-title">{{myList.title}}</h5>
-              <hr>
+              <div class="card-image">
+                <img src="{{myList.imgUrl}}" class="card-img-top" alt="">
+              </div>
+              <hr class="pb-1 mb-1">
+              <h5 class="card-title text-center">{{myList.title}}</h5>
+              <hr class="pt-0 mt-0">
               <div class=" d-flex justify-content-center">
                 <a href="..." class="btn btn-primary mr-1"><mat-icon class="mat-18">menu_book</mat-icon></a>
                 <a href="..." class="btn btn-success   mr-1"><mat-icon
                     class="mat-18">download_for_offline</mat-icon></a>
-                <button type="button" (click)="delete(myList.id)" class="btn btn-danger "><mat-icon class="mat-18">delete_forever</mat-icon></button>
+                <button type="button" (click)="delete(myList.id)" class="btn btn-danger"><mat-icon
+                    class="mat-18">delete_forever</mat-icon></button>
               </div>
             </div>
           </div>

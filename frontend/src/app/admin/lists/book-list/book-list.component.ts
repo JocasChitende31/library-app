@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Files } from 'src/app/models/upload-model/files';
 import { FileServService } from 'src/app/services/upload-service/file-serv.service';
 import { Book } from '../../../models/book';
 import { Category } from '../../../models/category';
@@ -22,7 +21,8 @@ export class BookListComponent implements OnInit {
   books: Book[] = [];
   categories: Category[] = [];
   userLogged: [] = [];
-  
+  admin = localStorage.getItem('role');
+
   titleOfBookDownload?: String;
 
 
@@ -39,7 +39,8 @@ export class BookListComponent implements OnInit {
     this.findAllBook();
     this.findAllCategories();
     this.servicerNotAvaileble();
-   
+
+
   }
 
   ngOnInit(): void {
@@ -98,6 +99,6 @@ export class BookListComponent implements OnInit {
 
     this.titleOfBookDownload = 'Indisponível';
   }
-  
+
 
 }
