@@ -1,0 +1,21 @@
+<div>
+  <table class="table table-hover overflow-scroll">
+    <thead class="bg-t-th-light-blue">
+      <tr>
+        <th scope="col">#</th>
+        <th scope="col">Categoria/Gênero</th>
+        <th scope="colgroup" colspan="2" class="text-center">Ações</th>
+      </tr>
+    </thead>
+    <tbody class="tbody" *ngFor="let category of categories">
+      <tr >
+        <th scope="row">{{category.id}}</th>
+        <td>{{category.genre}}</td>
+        <td class="text-center"><a class="btn text-primary "
+            routerLink="/admin/update/{{category?.id}}/category">Editar</a></td>
+        <td class="text-center"><button class="btn text-danger" (click)="onDelete(category?.id)">Eliminar</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+</div>

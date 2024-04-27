@@ -10,31 +10,15 @@ import { CategoryService } from 'src/app/services/category.service';
 })
 export class CategoryListComponent implements OnInit {
 
-  categories: Category[] = [];
+  admin = 'ADMIN';
 
   constructor(
-    private categoryService: CategoryService,
-    private router: Router,
-    private routeActived: ActivatedRoute
+
   ) { }
 
   ngOnInit(): void {
-    this.categoryService.findAll().subscribe(data => {
-      this.categories = data;
-    })
-  }
-  
-  onDelete(catId: any) {
-    this.categoryService.delete(catId).subscribe(data => {
-      this.goToListCatategories();
-    });
+
   }
 
-  goToListCatategories(){
-    this.router.navigate(['/admin/categories']);
-    window.location.reload();
-  }
-  loadCreateCategory(){
-    this.router.navigate(['/create/category'], {relativeTo: this.routeActived});
-  }
+
 }

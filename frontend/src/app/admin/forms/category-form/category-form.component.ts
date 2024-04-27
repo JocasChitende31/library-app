@@ -65,6 +65,6 @@ export class CategoryFormComponent implements OnInit {
   }
 
   goToList() {
-    this.router.navigate(['/admin/categories']);
+    this.router.navigate(['/admin/category/list']);
   }
 }

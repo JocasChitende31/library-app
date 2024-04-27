@@ -14,6 +14,7 @@ export class BookReadingComponent implements OnInit {
   noContent: String = '';
   bgDanger: String = '';
   myReadingList: ReadingList[] = [];
+  qtd: Number = 0;
 
   constructor(private readingListService: ReadingListService, private userService: AuthorizationService, private router: Router) {
     let loginUser = localStorage.getItem("userLogged");
@@ -22,20 +23,27 @@ export class BookReadingComponent implements OnInit {
   }
 
   ngOnInit(): void {
+
   }
 
   findMyReadingList(userId: any) {
+
     this.readingListService.findMyReadingList(userId).subscribe(data => {
-      console.log("Favoritos: ", data);
       this.myReadingList = data;
-    }, error => {
-      console.log("error", error);
+
+      let i = 0;
+      this.myReadingList.forEach(resul => {
+        i++;
+      })
+      this.qtd = i;
+
     });
   }
 
   findUserLogged(loginUser: any) {
     this.userService.getByLogin(loginUser).subscribe(userFound => {
       this.findMyReadingList(userFound.id);
+
     })
   };
 

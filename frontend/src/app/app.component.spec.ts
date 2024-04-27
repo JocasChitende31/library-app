@@ -20,7 +20,7 @@ describe('AppComponent', () => {
     expect(app).toBeTruthy();
   });
 
-  it(`should have as title 'libraryClient'`, () => {
+  it(`should have as title 'Livraria Centro Sul'`, () => {
     const fixture = TestBed.createComponent(AppComponent);
     const app = fixture.componentInstance;
     expect(app.title).toEqual('libraryClient');
@@ -30,6 +30,6 @@ describe('AppComponent', () => {
     const fixture = TestBed.createComponent(AppComponent);
     fixture.detectChanges();
     const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('libraryClient app is running!');
+    expect(compiled.querySelector('.content span')?.textContent).toContain('Livraria Centro Sul app is running!');
   });
 });

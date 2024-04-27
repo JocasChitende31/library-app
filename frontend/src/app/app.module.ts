@@ -43,6 +43,7 @@ import { UploadFileFormComponent } from './admin/forms/upload-file-form/upload-f
 import { PerfilComponent } from './auth/login/perfil/perfil.component';
 import { SignupComponent } from './auth/sign-up/signup/signup.component';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
+import { CategoriesComponent } from './admin/lists/category-list/categories/categories.component';
 
 @NgModule({
   declarations: [
@@ -66,7 +67,8 @@ import { TokenInterceptor } from './core/interceptors/token.interceptor';
     UsersRegisteredComponent,
     ConfigDashboardComponent,
     PerfilComponent,
-    UploadFileFormComponent
+    UploadFileFormComponent,
+    CategoriesComponent
   ],
   imports: [
     BrowserModule,

@@ -1,0 +1,38 @@
+.bg-t-th-light-blue {
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+  background: linear-gradient(to right, #0d355e, #1e72c7);
+  color: white;
+  
+}
+table{
+  margin-top: 25px;
+}
+hr{
+  margin: 0;
+  padding: 0;
+}
+a{
+  background-color: white;
+}
+a:hover{
+  background-color: #efefefb4;
+  text-decoration: underline;
+}
+button{
+  background-color: white;
+}
+button:hover{
+  background-color: #efefefb4;
+  text-decoration: underline;
+}
+tbody{
+  background-color: #f8f9fa;
+
+
+
+}
+.title-manager h6{
+  background-color: solid rgb(215, 215, 215);
+  padding: 5px;
+  text-decoration: underline;
+}

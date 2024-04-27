@@ -17,6 +17,7 @@ import { BookDetailsComponent } from './user/book-details/book-details.component
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
 import { BookReadingComponent } from './user/book-reading/book-reading.component';
+import { CategoriesComponent } from './admin/lists/category-list/categories/categories.component';
 
 
 const routes: Routes = [
@@ -27,11 +28,23 @@ const routes: Routes = [
   { path: 'addbook/:id/reading-list', component: BookReadingComponent },
   { path: 'details/:id/book', component: BookDetailsComponent },
   { path: 'admin/update/:id/book', component: BookFormComponent },
-  { path: 'admin/authors', component: AuthorListComponent },
-  { path: 'admin/update/:id/author', component: AuthorFormComponent },
-  { path: 'admin/create/author', component: AuthorFormComponent },
-  { path: 'admin/categories', component: CategoryListComponent },
-  { path: 'admin/create/category', component: CategoryFormComponent },
+  {
+    path: 'admin/authors', component: AuthorListComponent,
+    children: [
+      { path: 'create/author', component: AuthorFormComponent }
+    ]
+  },
+  {
+    path: 'admin/update/:id/author', component: AuthorFormComponent
+  },
+  {
+    path: 'admin/category', component: CategoryListComponent,
+    children: [
+      { path: 'list', component: CategoriesComponent },
+      { path: 'create', component: CategoryFormComponent },
+    ]
+  },
+
   { path: 'admin/update/:id/category', component: CategoryFormComponent },
   { path: 'admin/create/book', component: BookFormComponent },
   { path: ':id/category', component: BookListByCategoryComponent },
@@ -49,7 +62,8 @@ const routes: Routes = [
   {
     path: 'user/profile/:name', component: PerfilComponent
   },
-  { path: '**', pathMatch: 'full', component: PageNotFoundComponent }
+  { path: '**', redirectTo: '/books', pathMatch: 'full' }
+  // { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

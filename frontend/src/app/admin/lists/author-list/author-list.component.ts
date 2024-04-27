@@ -9,6 +9,7 @@ import { AuthorService } from 'src/app/services/author.service';
   styleUrls: ['./author-list.component.css']
 })
 export class AuthorListComponent implements OnInit {
+  admin = "ADMIN";
   authors: Author[] = [];
   author: Author;
 
@@ -26,7 +27,7 @@ export class AuthorListComponent implements OnInit {
     })
 
   }
-  
+
   onDelete(authId: any) {
     this.authService.delete(authId).subscribe(result => {
       this.gotToListAuthor();

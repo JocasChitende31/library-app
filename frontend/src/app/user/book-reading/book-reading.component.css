@@ -1,6 +1,7 @@
-*{
+* {
   letter-spacing: 1px;
 }
+
 .card {
 
   border-top: 1px solid #1e72c7 !important;
@@ -13,12 +14,13 @@
       color: red;
 
       .favorite-icon {
-        font-size:20px;
+        font-size: 20px;
         margin-left: 5px;
         margin-top: 5px;
       }
     }
   }
+
   .favorite-total-books {
     h4 {
       display: flex;
@@ -26,6 +28,7 @@
       padding: 0 10px;
     }
   }
+
   .favorite-list-content {
     h2 {
       display: flex;
@@ -33,7 +36,7 @@
       color: grey;
 
       .favorite-icon {
-        font-size:20px;
+        font-size: 20px;
         margin-left: 5px;
         margin-top: 5px;
       }
@@ -46,7 +49,7 @@
 } */
 .container .row {
   display: flex;
-  justify-content:flex-start;
+  justify-content: flex-start;
 
 
   /* width: 300px; */
@@ -62,27 +65,30 @@
   box-shadow: 0 1px 1px #1e72c7, 0 2px 2px #1e72c7, 0 4px 4px rgba(0, 0, 0, 0.11), 0 6px 8px rgba(0, 0, 0, 0.11), 0 8px 16px rgba(0, 0, 0, 0.11);
 
   .card-body {
-    padding: 5px 5px;
-      margin: 5px 5px;
+    padding: 5px 1px;
+    margin: 5px 1px;
 
-    .card-title{
+    .card-title {
       font-size: 15px;
       letter-spacing: .5px;
       font-weight: 100;
       color: #1e72c7;
     }
-    .card-image{
+
+    .card-image {
 
 
       .card-img-top {
         height: 200px;
         opacity: .9;
         cursor: pointer;
-        transition: all  .4s ease-in-out;
+        transition: all .4s ease-in-out;
+        border-radius: 5px;
       }
-      .card-img-top:hover{
+
+      .card-img-top:hover {
         opacity: 1;
-        transition: all  .4s ease-in-out;
+        transition: all .4s ease-in-out;
       }
     }
 
@@ -96,8 +102,9 @@
   height: 35px;
   width: auto;
   margin: 0 10px 0 10px;
-  transition: all  .4s ease-in-out;
+  transition: all .4s ease-in-out;
 }
-.btn:hover{
-  transition: all  .4s ease-in-out;
+
+.btn:hover {
+  transition: all .4s ease-in-out;
 }
