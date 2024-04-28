@@ -27,3 +27,14 @@ mat-tab-group{
     z-index: 0;
     position: relative;
   }
+  .all-books {
+    margin-top: -5px;
+
+    h2 {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      align-items: center;
+      color: grey;
+    }
+  }

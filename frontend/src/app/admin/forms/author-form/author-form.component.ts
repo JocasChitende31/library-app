@@ -19,8 +19,8 @@ export class AuthorFormComponent implements OnInit {
     status: new FormControl('', Validators.required)
   });
   authId: any;
-  titleCreateAuthor = "Adicionar Autor";
-  titleUpdateAuthor = "Actualizar Registo do Autor";
+  titleCreateAuthor = "FORMÚLARIO PARA NOVO REGISTO";
+  titleUpdateAuthor = "ACTUALIZAR REGISTO";
 
   constructor(
     private route: ActivatedRoute,

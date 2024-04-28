@@ -9,7 +9,7 @@
   padding: 10px;
   margin: 1.5px auto;
   height: auto;
-  width: 50%;
+  width: 40%;
 }
 
 .header-icon {
@@ -30,7 +30,7 @@
   border-bottom-left-radius: 0%;
   color: white;
   height: auto;
-  width: 50%;
+  width: 40%;
   margin: 0 auto;
 
 }
@@ -183,7 +183,7 @@
   padding: 24px 10px !important;
   margin: 2px auto;
   height: auto;
-  width: 50%;
+  width: 40% !important;
 
 
   text-decoration: none;

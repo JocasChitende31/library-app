@@ -1,16 +1,28 @@
-.container .card{
-    background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
-    background: linear-gradient(to right, #0d355e, #1e72c7);
-    color: white;
-    margin-top: 25px;
+.container .card {
+  background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));
+  background: linear-gradient(to right, #0d355e, #1e72c7);
+  color: white;
+  margin-top: 10px;
+
 }
-.container h4{
-    font-weight:500;color: white;
+
+.card-title {
+  display: flex;
+  align-items: center;
+  padding: 5px 0;
+  margin: 0;
+
+  div {
+    letter-spacing: 1px;
+    color: white !important;
+  }
 }
-.container .form{
-    /* background-color: #f6f2f1b8; */
-    background-color: #f8f9fa;
+
+.container .form {
+  /* background-color: #f6f2f1b8; */
+  background-color: #f8f9fa;
 }
-.margin-form_b{
-    margin-bottom: 240px;
+
+.margin-form_b {
+  margin-bottom: 240px;
 }

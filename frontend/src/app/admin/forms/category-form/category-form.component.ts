@@ -17,8 +17,8 @@ export class CategoryFormComponent implements OnInit {
   });
 
   catId: any;
-  titleCreateCategory = "Adicionar Categoria";
-  titleUpdateCategory = "Actualizar Registo da Categoria"
+  titleCreateCategory = "FORMÚLARIO PARA NOVO REGISTO";
+  titleUpdateCategory = "ACTUALIZAR REGISTO"
 
   constructor(
     private route: ActivatedRoute,

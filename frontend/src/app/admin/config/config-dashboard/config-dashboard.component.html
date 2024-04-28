@@ -1,25 +1,35 @@
 <div class="pt-5 mt-5"></div>
-<div class="title-manager col-5 p-0"
-    style="display: flex; flex-direction: row; align-items: center; align-content: center">
-    Admin > <h6 class="text-title" style="color: #2b7cce !important;">Configurações</h6>
+<div class="col-5 p-0" class="all-books">
+  <h2 class="title-manager" style="color: red;">{{admin}}<mat-icon class="mat-18">manage_accounts</mat-icon><b
+      style="color: rgb(195, 195, 195);">/Configurações</b></h2>
 </div>
-
+<hr class="mt-2">
 <div ng-cloack>
-    <mat-tab-group>
-      <mat-tab>
-        <ng-template mat-tab-label>
-            {{getLoggedName()}}<i class="material-icons">lock_person</i>
-        </ng-template>
-        <app-perfil></app-perfil>
+  <mat-tab-group>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <!-- {{getLoggedName()}} -->
+        <a href="#">
+          <i class="material-icons">supervised_user_circle</i>
+        </a>
+      </ng-template>
+      <app-perfil></app-perfil>
     </mat-tab>
-        <mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <a href="#">
+          <i class="material-icons">groups</i>
+        </a>
+      </ng-template>
+      <app-users-registered></app-users-registered>
+    </mat-tab>
+    <mat-tab>
+      <ng-template [ngOutletContext]="context" mat-tab-label>
+        <a href="#">
+          <i class="material-icons">settings_suggest</i>
+        </a>
+      </ng-template>
+    </mat-tab>
 
-            <ng-template mat-tab-label>
-                <i class="material-icons">list</i> Users
-            </ng-template>
-            <app-users-registered></app-users-registered>
-        </mat-tab>
-        <mat-tab label="Sistema"> Sistemas </mat-tab>
-
-    </mat-tab-group>
+  </mat-tab-group>
 </div>

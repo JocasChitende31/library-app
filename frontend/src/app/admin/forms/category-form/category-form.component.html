@@ -1,18 +1,18 @@
 <div class="pt-0"></div>
-<div class="container mt-0 mb-5">
-    <div class="card mb-3 p-2">
+<div class="container mt-0 mb-1">
+    <div class="card mb-1 ">
         <div class="col-md-12">
-            <h4 class="card-title text-center p-2">
+            <h3 class="card-title ">
                 <div *ngIf="!catId">
                     {{titleCreateCategory}}
                 </div>
                 <div *ngIf="catId">
                     {{titleUpdateCategory}}
                 </div>
-            </h4>
+            </h3>
         </div>
     </div>
-    <div class="pt-0 pb-5">
+    <div class="pt-0 pb-1">
         <div class="col-md-12">
             <form class="form pt-3 pb-2" [formGroup]="categoryForm">
                 <div class="row pt-0 pl-3 pr-3 form-group">

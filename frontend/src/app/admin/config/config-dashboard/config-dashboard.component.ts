@@ -5,13 +5,15 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./config-dashboard.component.css'],
 })
 export class ConfigDashboardComponent implements OnInit {
+
+  admin = "ADMIN";
   
-  constructor() { 
+  constructor() {
     this.getLoggedName();
   }
 
   ngOnInit(): void {
-    
+
   }
   getLoggedName(){
     return localStorage.getItem('userLogged');

@@ -44,6 +44,7 @@ import { PerfilComponent } from './auth/login/perfil/perfil.component';
 import { SignupComponent } from './auth/sign-up/signup/signup.component';
 import { TokenInterceptor } from './core/interceptors/token.interceptor';
 import { CategoriesComponent } from './admin/lists/category-list/categories/categories.component';
+import { AuthorsComponent } from './admin/lists/author-list/authors/authors.component';
 
 @NgModule({
   declarations: [
@@ -68,7 +69,8 @@ import { CategoriesComponent } from './admin/lists/category-list/categories/cate
     ConfigDashboardComponent,
     PerfilComponent,
     UploadFileFormComponent,
-    CategoriesComponent
+    CategoriesComponent,
+    AuthorsComponent
   ],
   imports: [
     BrowserModule,

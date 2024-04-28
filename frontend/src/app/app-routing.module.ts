@@ -12,12 +12,13 @@ import { AuthorListComponent } from './admin/lists/author-list/author-list.compo
 import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
 import { PerfilComponent } from './auth/login/perfil/perfil.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+// import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { AuthorsComponent } from './admin/lists/author-list/authors/authors.component';
+import { CategoriesComponent } from './admin/lists/category-list/categories/categories.component';
 import { BookDetailsComponent } from './user/book-details/book-details.component';
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
 import { BookReadingComponent } from './user/book-reading/book-reading.component';
-import { CategoriesComponent } from './admin/lists/category-list/categories/categories.component';
 
 
 const routes: Routes = [
@@ -29,9 +30,10 @@ const routes: Routes = [
   { path: 'details/:id/book', component: BookDetailsComponent },
   { path: 'admin/update/:id/book', component: BookFormComponent },
   {
-    path: 'admin/authors', component: AuthorListComponent,
+    path: 'admin/author', component: AuthorListComponent,
     children: [
-      { path: 'create/author', component: AuthorFormComponent }
+      { path: 'list', component: AuthorsComponent },
+      { path: 'create', component: AuthorFormComponent }
     ]
   },
   {
@@ -44,7 +46,6 @@ const routes: Routes = [
       { path: 'create', component: CategoryFormComponent },
     ]
   },
-
   { path: 'admin/update/:id/category', component: CategoryFormComponent },
   { path: 'admin/create/book', component: BookFormComponent },
   { path: ':id/category', component: BookListByCategoryComponent },
