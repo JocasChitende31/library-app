@@ -7,13 +7,21 @@
 <hr class="mt-2">
 <!-- <div ng-cloack> -->
 <div>
-  <mat-tab-group dynamicHeight="true">
+  <mat-tab-group>
     <mat-tab>
       <ng-template mat-tab-label class="mat-tab-label">
         <a routerLink="/admin/category" routerLinkActive="selected"><mat-icon class="mat-18">
           home</mat-icon></a>
       </ng-template>
-      <!-- <h1>Categoria</h1> -->
+      <div class="home-dashboard-admin">
+        <h1>Home Admin Categoria</h1>
+        <p class="welcome-sms"><a routerLink="" class="m-0 p-0"> {{getLoggedName()}}</a>, &nbsp;seja bem-vindo/a ao
+          dashboard de configurações da Categoria</p>
+        <b>Navegação:</b>
+        <p><i class="material-icons">list</i>Lista das categorias disponíveis</p>
+        <p><i class="material-icons">add_box</i>Adicionar nova categoria no sistema </p>
+        <p><i class="material-icons">info</i> Informações avançadas da secção</p>
+      </div>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
@@ -24,12 +32,10 @@
       <ng-template mat-tab-label>
         <a routerLink="create"><i class="material-icons">add </i></a>
       </ng-template>
-      <!-- <app-category-form></app-category-form> -->
     </mat-tab>
     <mat-tab label="Third">
       <ng-template mat-tab-label>
         <a href="#"><i class="material-icons"> info </i></a>
-
       </ng-template>
     </mat-tab>
   </mat-tab-group>

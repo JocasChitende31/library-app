@@ -1,54 +1,113 @@
-<div class="pt-5"></div>
-<h6 class="font-weight-light text-muted mt-5">Categorias ><b *ngFor="let category of categories">
-
-        <small class="text-info" *ngIf="category.id === categoryId?.id">
-            {{category.genre}} <i
-                style="color: white; font-weight:bolder; font-size: 13px; border: .1px solid red; border-radius: 60%; padding: .5px 3.5px; background-color: red;">{{qtd}}</i>
-
-        </small>
-    </b>
-
-</h6>
-
-<div class="mb-3 d-flex flex-wrap">
-    <br>
-    <div *ngFor="let category of categories" class="mr-4">
-        <!-- routerLink="/{{category.id}}/books"  -->
-        <!-- href="/{{category.id}}/books" -->
-        <!-- <a routerLinkActive="selected" routerLink="/{{category?.id}}/category" class="badge badge-light">{{category.genre}}</a> -->
-        <a href="/{{category?.id}}/category" class="btn badge badge-light">{{category.genre}}</a>
-
+<div class="pt-5 mt-5"></div>
+<div class="col-5 home-title ml-0 pl-0 ">
+  <h2 class="title-manager" style="color: red;">{{user}} <mat-icon class="mat-18"> </mat-icon></h2>
+</div>
+<hr class="mb-3 ">
+<h4 class="title-manager search" style=" font-size:medium;"><mat-icon matPrefix
+    class="mat-18">manage_search</mat-icon>Por Categoria /
+  <small style="color: grey; font-size:medium;">
+    <div *ngFor="let category of categories">
+      <div *ngIf="category.id === categoryId?.id">
+        {{category.genre}}
+      </div>
     </div>
+  </small>
+</h4>
+<hr>
+<div class="mb-3 mt-2 d-flex flex-wrap ">
+  <!-- <br> -->
+  <div *ngFor="let category of categories" class="mr-4 category">
+    <!-- href="/{{category.id}}/books" -->
+    <a href="/{{category?.id}}/category" class="item-category" routerLinkActive="selected">{{category.genre}}</a>
+  </div>
 
 </div>
+
 <hr>
 <div class="mt-2" *ngIf="qtd != 0">
-    <h6 class="text-danger"> <b class=" text-muted font-weight-light">Livro(s) encontrado(os) na categoria ></b>
-        {{categoryId?.genre}}</h6>
+  <div class="all-books mb-3 mt-3">
+    <h2 class="title-manager"><mat-icon matPrefix class="mat-18">playlist_add_check</mat-icon> Livro(s) encontrado(os)<b
+        class="qtd">({{qtd}})</b></h2>
+  </div>
 </div>
 <div class="mt-2" *ngIf="qtd===0">
-    <h6 class="text-danger"></h6>
+  <h6 class="text-danger"></h6>
 </div>
-<div *ngIf="qtd === 0">
-    <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
-        <h5 class="text-white font-weight-light">{{serviceUnavailable}}</h5>
-    </div>
-
+<div class="text-center" *ngIf="qtd === 0">
+  <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
+    <h2 class="text-white font-weight-light">{{serviceUnavailable}}</h2>
+  </div>
 </div>
-<div *ngFor="let book of books">
+<!-- <div *ngFor="let book of books">
 
-    <div class="card mb-4 p-2" style="border:#0d355e; border-bottom: 5px solid #1e72c7; ">
-        <div class="row g-0">
-            <div class="col-md-2 mb-0 mr-4">
-                <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
-                    style="max-width: 200px; max-height: 100vh;">
+  <div class="card mb-4 p-2" style="border:#0d355e; border-bottom: 5px solid #1e72c7; ">
+    <div class="row g-0">
+      <div class="col-md-2 mb-0 mr-4">
+        <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
+          style="max-width: 200px; max-height: 100vh;">
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title" hidden><b>#{{book.id}}</b></h5>
+          <h5 class="card-title">{{book.title}} </h5>
+          <hr>
+          <div class="d-flex flex-wrap mt-3">
+            <div class="mr-5">
+              <h6 class="font-weight-light">Ano de Lançamento</h6>
+              <p class="card-text text-muted">{{book.bookYear}} </p>
             </div>
-            <div class="col-md-9">
-                <div class="card-body">
-                    <h5 class="card-title" hidden><b>#{{book.id}}</b></h5>
-                    <h5 class="card-title">{{book.title}} </h5>
-                    <hr>
-                    <div class="d-flex flex-wrap mt-3">
+            <div class="mr-5">
+              <h6 class="font-weight-light">Ediçao</h6>
+              <p class="card-text text-muted">{{book.edition}}a</p>
+            </div>
+            <div class="mr-5">
+              <h6 class="font-weight-light">Categoria</h6>
+              <p class="card-text" hidden>{{book.fkCategory}}</p>
+              <p class="card-text text-muted">{{book.genre}}</p>
+            </div>
+            <div>
+              <h6 class="font-weight-light">Editora</h6>
+              <p class="card-text text-muted">{{book.publisher}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex flex-wrap mt-3">
+            <div class="mr-5">
+              <h6 class="font-weight-light">Autor do Livro</h6>
+              <p class="card-text" hidden>{{book.fkAuthor}}</p>
+              <p class="card-text text-muted">{{book.name}}</p>
+            </div>
+            <div class="">
+              <h6 class="font-weight-light">Nacionalidade</h6>
+              <p class="card-text text-muted">{{book.nationality}}</p>
+            </div>
+          </div>
+          <hr>
+          <div class="d-flex">
+            <div>
+              <h6 class="font-weight-light">Pequeno Resumo</h6>
+              <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</div> -->
+<div class="book" *ngFor="let book of books">
+  <div class="card mb-4 p-2" style=" border: #0d355e;
+    border-bottom: 5px solid #1e72c7;;">
+    <div class="row g-0">
+      <div class="col-md-2 mb-0 mr-4">
+        <img src="{{book.imgUrl}}" alt="{{book.title}}" class="img-fluid rounded-start"
+          style="max-width: 200px; max-height: 100vh;">
+      </div>
+      <div class="col-md-9">
+        <div class="card-body">
+          <h5 class="card-title" hidden><b>#{{book.id}}</b></h5>
+          <h1 class="card-title">{{book.title}}</h1>
+          <!--       <div class="d-flex flex-wrap mt-3">
                         <div class="mr-5">
                             <h6 class="font-weight-light">Ano de Lançamento</h6>
                             <p class="card-text text-muted">{{book.bookYear}} </p>
@@ -66,8 +125,8 @@
                             <h6 class="font-weight-light">Editora</h6>
                             <p class="card-text text-muted">{{book.publisher}}</p>
                         </div>
-                    </div>
-                    <hr>
+                    </div> -->
+          <!-- <hr>
                     <div class="d-flex flex-wrap mt-3">
                         <div class="mr-5">
                             <h6 class="font-weight-light">Autor do Livro</h6>
@@ -78,17 +137,60 @@
                             <h6 class="font-weight-light">Nacionalidade</h6>
                             <p class="card-text text-muted">{{book.nationality}}</p>
                         </div>
-                    </div>
-                    <hr>
-                    <div class="d-flex">
-                        <div>
-                            <h6 class="font-weight-light">Pequeno Resumo</h6>
-                            <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
-                        </div>
-                    </div>
-                </div>
+                    </div> -->
+          <hr>
+          <div class="d-flex mt-3 mb-2">
+            <div>
+              <h3>Breve Resumo</h3>
+              <p class="card-text text-muted text-justify">{{book.shortSummary}}</p>
             </div>
+          </div>
+          <hr>
+          <ul class="list-inline text-right mt-3 mb-0">
+            <li class="list-inline-item"><a class="btn btn-secondary" routerLink="/details/{{book.id}}/book"
+                style="display: flex;"> <mat-icon class="mat-18 mr-1"> remove_red_eye</mat-icon>
+                Detalhes</a>
+            </li>
+            <li class="list-inline-item">
+              <!-- <button type="submit" class="btn btn-success" style="display: flex;"
+                (click)="saveItemToReadingList(book.id)">
+                <mat-icon class="mat-18 mr-1">my_library_add</mat-icon> Favoritos</button> -->
+            </li>
+            <li class="list-inline-item">
+              <!-- <button *ngIf="book.downloaderRefPDF !==null" class="btn btn-success"
+                type="button" data-toggle="modal" data-target="#exampleModal"
+                (click)="downloadFile(book?.downloaderRefPDF)" style="display: flex;"><mat-icon
+                  class="mat-18 mr-1">download_for_offline</mat-icon>Download
+                PDF</button> -->
+              <!-- Modal -->
+              <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <!-- <h5 class="modal-title" id="exampleModalLabel">Clique no link abaixo: {{titleOfBookDownload}}</h5> -->
+                      <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                      </button>
+                    </div>
+                   <!--  <div class="modal-body" *ngIf="linkGenerated">
+                      <a class="btn btn-secondary" href="{{linkGenerated}}" type="button">Baixar
+                        <i class="material-icons">download</i></a>
+                    </div> -->
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-danger" data-dismiss="modal">Fechar</button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+            </li>
+            <!-- {{book?.downloaderRefPDF}} -->
+          </ul>
         </div>
+      </div>
+
     </div>
+  </div>
 
 </div>

@@ -1,13 +1,11 @@
 <div class="pt-5 mt-5"></div>
-<div class="col-5 p-0" class="home-title">
+<div class="col-5 home-title">
   <h2 class="title-manager" style="color: red;">{{user}} <mat-icon class="mat-18"> auto_stories</mat-icon></h2>
 </div>
 <hr class="mb-3">
 <h4 class="title-manager search" style=" font-size:medium;"><mat-icon matPrefix
     class="mat-18">manage_search</mat-icon>Por Categoria /
-  <small style="color: grey; font-size:medium;"> Total de Livros <b style="color: white;
-  font-size: 13px; border: .1px solid red; border-radius: 50%; padding: .5px 3.5px;
-  background-color: red;">{{qtdT}}</b>
+  <small style="color: grey; font-size:medium;"> Total
   </small>
 </h4>
 <hr>
@@ -20,8 +18,10 @@
 
 </div>
 <hr>
-<div class="all-books mb-3 mt-3">
-  <h2 class="title-manager"><mat-icon matPrefix class="mat-18">playlist_add_check</mat-icon>Todos</h2>
+<div class="all-books mb-3 mt-3" style="display: flex;">
+  <h2 class="title-manager"><mat-icon matPrefix class="mat-18">playlist_add_check</mat-icon>Todos</h2><b style="color: red;
+  font-size: 12px; font-weight: 500; border-radius: 50%; padding: .5px 3.5px;
+  ">({{qtdT}})</b>
 </div>
 <!-- <hr class="mb-3"> -->
 <div class="text-center" *ngIf="books.length <= 0">

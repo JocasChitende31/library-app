@@ -17,7 +17,7 @@ export class SignupComponent implements OnInit {
     login: ['', Validators.required],
     password: ['', Validators.required],
     passwordConfirm: ['', Validators.required],
-    role: ['', Validators.required]
+    role: ['']
   })
   passCombineSms: boolean = false;
   constructor(private authService: AuthorizationService, private formBuilder: FormBuilder) {
@@ -30,13 +30,26 @@ export class SignupComponent implements OnInit {
   register() {
 
     let userObj = this.form.value;
-    this.user = new User(userObj.login, userObj.password, userObj.role);
+    // this.user = new User(userObj.login, userObj.password, userObj.role);
 
     if (userObj.password != userObj.passwordConfirm) {
       this.passCombineSms = !this.passCombineSms;
     } else {
-      this.authService.register(this.user).subscribe(data => {
-      })
+      if (userObj.role === '') {
+        let r = this.form.get('role');
+        let roleDefault = r?.setValue('USER') || 'USER';
+        // console.log(roleDefault);
+
+        this.user = new User(userObj.login, userObj.password, roleDefault);
+
+        this.authService.register(this.user).subscribe(data => {
+        })
+      } else {
+        this.user = new User(userObj.login, userObj.password, userObj.role);
+        this.authService.register(this.user).subscribe(data => {
+        })
+      }
+
     }
 
     // this.authService

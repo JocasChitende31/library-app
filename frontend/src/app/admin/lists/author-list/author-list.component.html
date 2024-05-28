@@ -10,19 +10,26 @@
   <mat-tab-group class="mat-elevation-z0">
     <mat-tab>
       <ng-template mat-tab-label>
-        <a routerLink="admin/author" ><i class="material-icons">home</i></a>
+        <a routerLink="/admin/author"><i class="material-icons">home</i></a>
       </ng-template>
-
+      <div class="home-dashboard-admin">
+        <h1>Home Admin Autor</h1>
+        <p class="welcome-sms"><a routerLink="" class="m-0 p-0"> {{getLoggedName()}}</a>, &nbsp;seja bem-vindo/a ao
+          dashboard de configurações do Autor</p>
+        <b>Navegação:</b>
+        <p><i class="material-icons">list</i>Lista dos Autores disponíveis</p>
+        <p><i class="material-icons">add_box</i>Adicionar novo Autor no sistema </p>
+        <p><i class="material-icons">info</i> Informações avançadas da secção</p>
+      </div>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        <a routerLink="list" ><i class="material-icons">list</i></a>
+        <a routerLink="list"><i class="material-icons">list</i></a>
       </ng-template>
 
     </mat-tab>
     <mat-tab> <ng-template mat-tab-label>
-      <a routerLink="create"><i class="material-icons">add_box</i></a>
-
+        <a routerLink="create"><i class="material-icons">add_box</i></a>
       </ng-template>
     </mat-tab>
     <mat-tab label="Third">

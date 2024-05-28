@@ -1,12 +1,30 @@
-.card{
-    border-radius: 5px !important;
-    -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08) !important;
-    box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08) !important;
-    border: 0px solid none !important;
-    border-bottom: 5px solid #1e72c7;
+
+.card {
+  border-radius: 5px !important;
+  -webkit-box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08) !important;
+  box-shadow: 0 1px 20px 0 rgba(69, 90, 100, 0.08) !important;
+  border: 0px solid none !important;
+  border-bottom: 5px solid #1e72c7;
 }
-.selected:active{
-    background-color: #0d355e;
-    color: white;
-    z-index: -1;
+
+.selected:active {
+  background-color: #0d355e;
+  color: white;
+  z-index: -1;
+}
+
+
+
+.qtd {
+  position:relative;
+  top: -15px;
+  left: -12px;
+  /* border: 1px solid red; */
+  padding: 0px;
+  font-size: small;
+  border-radius: 50px;
+  margin-left: 5px;
+  color: red;
+  font-weight: 500;
+
 }

@@ -13,8 +13,10 @@ import { BookListComponent } from './admin/lists/book-list/book-list.component';
 import { CategoryListComponent } from './admin/lists/category-list/category-list.component';
 import { PerfilComponent } from './auth/login/perfil/perfil.component';
 // import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { UsersRegisteredComponent } from './admin/config/users-registered/users-registered.component';
 import { AuthorsComponent } from './admin/lists/author-list/authors/authors.component';
 import { CategoriesComponent } from './admin/lists/category-list/categories/categories.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
 import { BookDetailsComponent } from './user/book-details/book-details.component';
 import { BookListByCategoryComponent } from './user/book-list-by-category/book-list-by-category.component';
 import { BookListUserComponent } from './user/book-list-user/book-list-user.component';
@@ -55,16 +57,17 @@ const routes: Routes = [
   { path: 'login', loadChildren: () => import('./auth/log-in/log-in-routing.module').then(m => m.LogInRoutingModule) },
   { path: 'signup', loadChildren: () => import('./auth/sign-up/sign-up-routing.module').then(m => m.SignUpRoutingModule) },
   {
-    path: 'admin/config/logged/profile/:name', component: ConfigDashboardComponent,
-    /* children: [{
-      path: 'users', component: UsersRegisteredComponent
-    }] */
+    path: 'admin/config', component: ConfigDashboardComponent,
+    children: [
+      { path: 'logged/profile/:name', component: PerfilComponent},
+      { path: 'manager/users', component: UsersRegisteredComponent}
+    ]
   },
   {
     path: 'user/profile/:name', component: PerfilComponent
   },
-  { path: '**', redirectTo: '/books', pathMatch: 'full' }
-  // { path: '**', component: PageNotFoundComponent }
+  // { path: '**', component: '/books', pathMatch: 'full' }
+  { path: '**', component: PageNotFoundComponent }
 ];
 
 @NgModule({

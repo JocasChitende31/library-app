@@ -8,20 +8,35 @@
   <mat-tab-group>
     <mat-tab>
       <ng-template mat-tab-label>
-        <!-- {{getLoggedName()}} -->
-        <a href="#">
-          <i class="material-icons">supervised_user_circle</i>
+        <a routerLink="/admin/config">
+          <i class="material-icons">home</i>
         </a>
       </ng-template>
-      <app-perfil></app-perfil>
+      <div class="home-dashboard-admin">
+        <h1>Home Admin Config</h1>
+        <p class="welcome-sms"><a href="" class="m-0 p-0"> {{getLoggedName()}}</a>, &nbsp; seja bem-vindo/a ao dashboard de configurações do sistema</p>
+        <b>Navegação:</b>
+        <p ><i class="material-icons" >supervised_user_circle</i>Perfil do usuário logado</p>
+        <p ><i class="material-icons" >sgroups</i> Usuários registados no sistema</p>
+        <p ><i class="material-icons" >settings_suggest</i> Configurações avançadas</p>
+      </div>
     </mat-tab>
     <mat-tab>
       <ng-template mat-tab-label>
-        <a href="#">
+        <!-- {{getLoggedName()}} -->
+        <a routerLink="logged/profile/:{{getLoggedName()}}">
+          <i class="material-icons">supervised_user_circle</i>
+        </a>
+      </ng-template>
+
+    </mat-tab>
+    <mat-tab>
+      <ng-template mat-tab-label>
+        <a routerLink="manager/users">
           <i class="material-icons">groups</i>
         </a>
       </ng-template>
-      <app-users-registered></app-users-registered>
+
     </mat-tab>
     <mat-tab>
       <ng-template [ngOutletContext]="context" mat-tab-label>
@@ -32,4 +47,5 @@
     </mat-tab>
 
   </mat-tab-group>
+  <router-outlet></router-outlet>
 </div>

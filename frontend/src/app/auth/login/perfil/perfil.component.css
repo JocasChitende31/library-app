@@ -1,15 +1,18 @@
 
 .padding{
-    padding: 3rem !important;
+  padding: .5rem 1rem 1rem 1rem !important;
+
 }
 .user-card-full{
-    overflow: hidden;
+  overflow: hidden;
+
 }
 .card{
     border-radius: 5px;
     /* -webkit-box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08);
     box-shadow: 0 1px 20px 0 rgba(69,90,100,0.08); */
     border: none;
+
     margin-bottom: 30px;
 }
 .m-r-0{
@@ -19,7 +22,7 @@
     margin-left: 0px;
 }
 .user-card-full .user-profile{
-    border-radius: 5px 0 0 5px;
+    border-radius: 4px 0 0 4px;
 }
 .bg-c-lite-blue{
     background: -webkit-gradient(linear, left top, right top, from(#1e72c7), to(#0d355e));

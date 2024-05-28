@@ -19,6 +19,7 @@ export class AuthorListComponent implements OnInit {
     private route: ActivatedRoute
   ) {
     this.author = new Author();
+    this.getLoggedName();
   }
 
   ngOnInit(): void {
@@ -38,5 +39,7 @@ export class AuthorListComponent implements OnInit {
     this.router.navigate(['/admin/authors']);
     window.location.reload();
   }
-
+  getLoggedName(){
+    return localStorage.getItem('userLogged');
+  }
 }

@@ -77,7 +77,7 @@ export class BookListUserComponent implements OnInit {
 
   onDelete(bookId: any) {
     this.bookService.deleteBook(bookId).subscribe(data => {
-      console.log(bookId);
+      // console.log(bookId);
       this.goToBookList();
     })
   }
@@ -112,7 +112,7 @@ export class BookListUserComponent implements OnInit {
       this.userService.getByName(userLogged).subscribe(user => {
         this.bookService.findById(idBook).subscribe(book => {
           this.itemReadingList = new ReadingListPost('', user, book);
-          console.log(" reading object", { user, book });
+          // console.log(" reading object", { user, book });
           this.readingListService.saveToMyReadingList(this.itemReadingList).subscribe(item => {
             this.addToReadListSmsSuccess = 'Livro Adicionado a Lista' + item;
           });

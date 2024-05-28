@@ -11,6 +11,7 @@ import { CategoryService } from '../../services/category.service';
   styleUrls: ['./book-list-by-category.component.css']
 })
 export class BookListByCategoryComponent implements OnInit {
+  user: string = 'Pesquisa'
   serviceUnavailable: String = "";
   qtd: Number = 0;
   categories: Category[] = [];

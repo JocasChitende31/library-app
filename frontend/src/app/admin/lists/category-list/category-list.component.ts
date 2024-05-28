@@ -14,11 +14,15 @@ export class CategoryListComponent implements OnInit {
 
   constructor(
 
-  ) { }
+  ) {
+    this.getLoggedName();
+  }
 
   ngOnInit(): void {
 
   }
 
-
+  getLoggedName(){
+    return localStorage.getItem('userLogged');
+  }
 }
