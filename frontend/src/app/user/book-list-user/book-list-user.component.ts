@@ -58,7 +58,7 @@ export class BookListUserComponent implements OnInit {
   findAllBooksAndCategories() {
     if (this.books.length <= 0) {
       setTimeout(() => {
-        this.serverUnvaliable = 'Serviço temporariamente indisponível';
+        this.serverUnvaliable = 'Serviço Temporariamente Indisponível';
         this.bgDanger = 'bg-danger';
       }, 3500);
     }

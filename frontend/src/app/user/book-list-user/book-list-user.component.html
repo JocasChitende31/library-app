@@ -1,5 +1,5 @@
 <div class="pt-5 mt-5"></div>
-<div class="col-5 home-title">
+<div class="home-title">
   <h2 class="title-manager" style="color: red;">{{user}} <mat-icon class="mat-18"> auto_stories</mat-icon></h2>
 </div>
 <hr class="mb-3">
@@ -27,7 +27,8 @@
 <div class="text-center" *ngIf="books.length <= 0">
   <hr>
   <div class="text-center p-5 mt-5 mb-5 {{bgDanger}}">
-    <h2 class="text-white font-weight-light">{{serverUnvaliable}}</h2>
+
+    <h2 class="text-white">&#9888; <br> {{serverUnvaliable}} </h2>
   </div>
 </div>
 <div hidden>
