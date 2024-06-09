@@ -237,5 +237,6 @@
   .footer {
     width: 100% !important;
     padding: 10px 10px !important;
+    margin-bottom: 50px !important;
   }
 }
